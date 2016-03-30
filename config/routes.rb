@@ -2,6 +2,46 @@ Rails.application.routes.draw do
 
 namespace :front do
  get 'organization' => 'adminorganization#organization'
+
+ get 'activity' => 'adminorganization#activity'
+
+ get 'campaing' => 'adminorganization#campaing'
+
+ get 'city' => 'adminorganization#city'
+
+ get 'contract' => 'adminorganization#contract'
+
+ get 'country' => 'adminorganization#country'
+
+ get 'customer' => 'adminorganization#customer'
+
+ get 'operator' => 'adminorganization#operator'
+
+ get 'pagotarjeta' => 'adminorganization#pagotarjeta'
+
+ get 'paymentmethod' => 'adminorganization#paymentmethod'
+
+ get 'payservice' => 'adminorganization#payservice'
+
+ get 'payservicetdc' => 'adminorganization#payservicetdc'
+
+ get 'payservicetdb' => 'adminorganization#payservicetdb'
+
+ get 'planservice' => 'adminorganization#planservice'
+
+ get 'planservice' => 'adminorganization#planservice'
+
+ get 'product' => 'adminorganization#product'
+
+ get 'rol' => 'adminorganization#rol'
+
+ get 'service' => 'adminorganization#service'
+
+ get 'socialmedia' => 'adminorganization#socialmedia'
+
+ get 'state' => 'adminorganization#state'
+
+ 
  
 
 end
