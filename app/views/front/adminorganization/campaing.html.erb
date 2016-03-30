@@ -1,153 +1,109 @@
-<head>
-  <!--  PARA MANEJAR Ñ y ACENTOS y RESPONSIVO -->
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!--  TITULO DEL SITIO -->
-  <title>Crümbik</title>
-  <script src="../js/jquery.js"></script>
-
-  <!--  INCLUSION DE HEADS CSS y JS -->
-  <script type="text/javascript">
-    function unWrapPlaceholder(){
-     $(this).contents().unwrap();
-   }  $(function(){
-    $("#Heads").load("Templates/Heads.html", unWrapPlaceholder); 
-    $("#BarraSuperior").load("Templates/BarraSuperior.html", unWrapPlaceholder); 
-    $("#BarraLateral").load("Templates/BarraLateral.html", unWrapPlaceholder);
-
-
-  });
-</script> 
-<div id="Heads"></div>
-
-</head>
-
-<body>
-  <!-- === BARRA SUPERIOR  === -->
-  <!-- === Inclusion de archivo  === -->
-  <div id="BarraSuperior"></div>
-  <!-- === FIN DE BARRA SUPERIOR  === -->
-</nav>
-
-
-<!-- === INICIO INCLUSION BARRA LATERAL === -->
-<div class="container-fluid">
-  <div id="wrapper">
-   <div id="BarraLateral"></div>  
-
-   <!-- === FIN  BARRA LATERAL === -->      
-   <br><!--Saltos de Linea-->
-   <br>
-   <br>
-   <!-- === INICIO CONTENIDO DE LA VENTANA === -->
-   <div id="page-content-wrapper">
-     <div class="container-fluid">
-      <div class="row">
+  <!-- === INICIO CONTENIDO DE LA VENTANA === -->
+<div id="page-content-wrapper">
+  <div class="container-fluid">
+    <div class="row">
   
-    <form role="form" id="form" data-toggle="validator">
+      <form role="form" id="form" data-toggle="validator">
         <!-- === INICIO PANEL DE EDICIÓN === -->   
         <div id="ModalNewCampaing" class="modal fade" role="dialog">
          <div class="modal-dialog">
 
-        <div class="panel panel-primary">
-          <div class="panel-heading">
+          <div class="panel panel-primary">
+            <div class="panel-heading">
             <h3 class="panel-title">Gestión de Estados</h3>
-          </div>
+            </div>
+          
           <div class="panel-body">
             En este panel podrá agregar, modificar o eliminar los estados del CRM.
-
               <p></p>
              <!-- === INPUTS TXT === -->  
             <div class="form-group col-md-6">
-                                                <label for="ejemplo_email_1">Nombre</label>
-                                                <input type="text" class="form-control" id="txtNombre"
-                                                       placeholder="Nombre de La Campaña Publicitaria" name="Nombre">
-                                              </div>
+              <label for="ejemplo_email_1">Nombre</label>
+               <input type="text" class="form-control" id="txtNombre"
+                      placeholder="Nombre de La Campaña Publicitaria" name="Nombre">
+            </div>
 
-                                              <div class="form-group col-md-6">
-                                                <label for="ejemplo_email_1">Fecha De Inicio</label>
-                                                <input type="Date" class="form-control" id="txtFechaInicio"
-                                                       placeholder="Fecha de Inicio" name="FechaInicio">
-                                              </div>
+            <div class="form-group col-md-6">
+             <label for="ejemplo_email_1">Fecha De Inicio</label>
+             <input type="Date" class="form-control" id="txtFechaInicio"
+                    placeholder="Fecha de Inicio" name="FechaInicio">
+            </div>
 
-                                              <div class="form-group col-md-6">
-                                                <label for="ejemplo_email_1">Fecha De Fin</label>
-                                                <input type="Date" class="form-control" id="txtFechaFinal"
-                                                       placeholder="Fecha Final" name="FechaFinal">
-                                              </div>
+            <div class="form-group col-md-6">
+              <label for="ejemplo_email_1">Fecha De Fin</label>
+              <input type="Date" class="form-control" id="txtFechaFinal"
+                     placeholder="Fecha Final" name="FechaFinal">
+            </div>
 
-                                              <div class="form-group col-md-6">
-                                               <label > Tipo De Cliente</label>
-                                                 <select id="cmbTipoCliente" class="form-control" name="TipoCliente">
-                                                     <option>Seleccione Un Cliente</option>
-                                                     <option>Vip Platinio</option>
-                                                     <option>Vip Gold</option>
-                                                     <option>Vip </option>
-                                                 </select>
-                                             </div>
+            <div class="form-group col-md-6">
+              <label > Tipo De Cliente</label>
+              <select id="cmbTipoCliente" class="form-control" name="TipoCliente">
+                <option>Seleccione Un Cliente</option>
+                <option>Vip Platinio</option>
+                <option>Vip Gold</option>
+                <option>Vip </option>
+              </select>
+            </div>
+ 
+            <div class="form-group col-md-6">
+             <label for="ejemplo_email_1">Descripcion</label>
+             <input type="text" class="form-control" id="txtDescipcion"
+                    placeholder="Descripcion de la Campaña Publicitaria" name="Desceripcion">
+            </div>
 
-                                                <div class="form-group col-md-6">
-                                                <label for="ejemplo_email_1">Descripcion</label>
-                                                <input type="text" class="form-control" id="txtDescipcion"
-                                                       placeholder="Descripcion de la Campaña Publicitaria" name="Desceripcion">
-                                              </div>
+           <div class="form-group col-md-6">
+            <label for="ejemplo_password_1">Edad Inicial</label>
+            <input type="number" class="form-control" id="txtEdadInicio" 
+                   placeholder="Edades Desde" name="EdadInicio">
+           </div>
+  
+           <div class="form-group col-md-6">
+             <label for="ejemplo_password_1">Edad Final</label>
+             <input type="number" class="form-control" id="txtEdadFinal" 
+                    placeholder="Edades Hasta" name="EdadFinal">
+           </div>
 
-                                              <div class="form-group col-md-6">
-                                                <label for="ejemplo_password_1">Edad Inicial</label>
-                                                <input type="number" class="form-control" id="txtEdadInicio" 
-                                                       placeholder="Edades Desde" name="EdadInicio">
-                                              </div>
+  
+           <div class="form-group col-md-6">
+             <label > Sexo</label>
+             <select id="cmbSexo" class="form-control" name="Sexo">
+               <option>Seleccione Un Sexo Al que va Dirigido</option>
+               <option>Masculino</option>
+               <option>Femenino</option>
+               <option>Otro</option>
+               <option>Ambos</option>
+             </select>
+           </div>
 
-                                                <div class="form-group col-md-6">
-                                                <label for="ejemplo_password_1">Edad Final</label>
-                                                <input type="number" class="form-control" id="txtEdadFinal" 
-                                                       placeholder="Edades Hasta" name="EdadFinal">
-                                              </div>
+           <div class="form-group col-md-6">
+             <label > Operador</label>
+             <select id="cmbOperador" class="form-control" name="Operador">
+               <option>Tipo de Operador</option>
+               <option>LUIS HEREDIA</option>
+               <option>ISABEL MOSQUERA</option>
+               <option>ORIANA ALVARADO</option>
+               <option>DELIA REYESZUMETA</option>
+             </select>
+          </div>
 
+          <div class="form-group col-md-6">
+          <label > Actividad</label>
+          <select id="cmbActividad" name="TipoActividad" class="form-control">
+           <option>Tipo de Actividad</option>
+          </select>
+          </div>
 
-                                              <div class="form-group col-md-6">
-                                               <label > Sexo</label>
-                                                 <select id="cmbSexo" class="form-control" name="Sexo">
-                                                     <option>Seleccione Un Sexo Al que va Dirigido</option>
-                                                     <option>Masculino</option>
-                                                     <option>Femenino</option>
-                                                    <option>Otro</option>
-                                                    <option>Ambos</option>
-                                                    
-                                                 </select>
-                                             </div>
-
-
-                                               <div class="form-group col-md-6">
-                                               <label > Operador</label>
-                                                 <select id="cmbOperador" class="form-control" name="Operador">
-                                                     <option>Tipo de Operador</option>
-                                                     <option>LUIS HEREDIA</option>
-                                                     <option>ISABEL MOSQUERA</option>
-                                                     <option>ORIANA ALVARADO</option>
-                                                     <option>DELIA REYESZUMETA</option>
-                                                 </select>
-                                             </div>
-
-                                             <div class="form-group col-md-6">
-                                               <label > Actividad</label>
-                                                 <select id="cmbActividad" name="TipoActividad" class="form-control">
-                                                     <option>Tipo de Actividad</option>
-                                                 </select>
-                                             </div>
-
-                                              <div class="form-group col-md-6">
-                                              <label > Flayer de la Campaña&nbsp;</label>
-                                              <input type="file" name="Flayer" id="txtFlayer">
-                                              </div>
+          <div class="form-group col-md-6">
+          <label > Flayer de la Campaña&nbsp;</label>
+          <input type="file" name="Flayer" id="txtFlayer">
+          </div>
 
             
-                                              <label for="ejemplo_text_1"></label>
-                                              <input class="form-control" type="text"  style="visibility:hidden" name="Id" id="txtId"/>
-                                              </div> 
-         </div>
+        <label for="ejemplo_text_1"></label>
+        <input class="form-control" type="text"  style="visibility:hidden" name="Id" id="txtId"/>
+     </div> <!-- === panel-body === -->  
+   </div> <!-- === "panel panel-primary" === -->  
 
         <div class="panel panel-primary" align="center">
          <div class="panel-body">
@@ -159,9 +115,9 @@
              <!-- === FIN BOTONES === -->  
         </div>
       </div>
+
+     </div>   <!-- === FIN MODAL === -->  
      </div>
-     </div>
-    </div>
     <!-- === FIN CONTENIDO DE LA VENTANA === -->
   </form>
   
@@ -169,33 +125,30 @@
         <div class="panel-body">
           <p>
                <!-- === BOTONES === -->  
-        <div class="form-group col-md-6" style="margin-top:10px" align="center">
+            <div class="form-group col-md-6" style="margin-top:10px" align="center">
                  <!-- === BOTONES DE ACCION === -->  
-          <button type="button" class="btn btn-lg btn-info" data-toggle="modal" 
-                  data-target="#ModalNewCampaing">Agregar Nueva Campaña</button>
-        <button type="button" class="btn btn-lg btn-info">Salir</button>
+              <button type="button" class="btn btn-lg btn-info" data-toggle="modal" 
+                      data-target="#ModalNewCampaing">Agregar Nueva Campaña</button>
+              <button type="button" class="btn btn-lg btn-info">Salir</button>
+          </div>
         </p>
         </div>
              <!-- === FIN BOTONES === -->  
       </div>
-      </div>
 
 
-<div class="panel panel-primary">
+  <div class="panel panel-primary">
     <div class="panel-heading">
       <h3 class="panel-title">Lista de Campañas</h3>
     </div>
     <div class="panel-body">
       Puede visualizar las Campañas actualmente almacenados en el sistema
 
-      <div id="TablaCampaing"></div>
-      
-     
+      <div id="TablaCampaing">
+      </div>     
     <!-- ====== FIN DATATABLE======= -->
+    </div>
   </div>
-</div>
-</div>
-
 
 <style type="text/css">
     .sui-button-cell
@@ -229,53 +182,34 @@
     }
 </style>
 
-
-<!-- Bootstrap Editable Grid - END -->
-
 </div>
-    <!-- ====== FIN DATATABLE======= -->
-  </div>
-
-
-
-
-
-  
+  </div> 
 </div>
-</div>
-<!-- === FIN CONTENIDO DE LA VENTANA === -->
 
-</div>
-<!-- /#wrapper -->
-</div>
-</div>
-<!-- Libreria Jquery de Bootstrap -->
+<%= javascript_include_tag "bootstrap.js" %>
+<%= javascript_include_tag "bootbox.js" %>
+<%= javascript_include_tag "jquery.js" %>
+<%= javascript_include_tag "http://www.prepbootstrap.com/Content/shieldui-lite/dist/js/shieldui-lite-all.min.js" %>
+<%= stylesheet_link_tag "http://www.prepbootstrap.com/Content/shieldui-lite/dist/css/light/all.min.css" %>
+
+<%= javascript_include_tag "jquery.validate.js" %>
+<%= javascript_include_tag "additional-methods.js" %>
+<%= javascript_include_tag "messages_es.js" %>
+
+<%= javascript_include_tag "jquery.dataTables.js" %>
+<%= javascript_include_tag "bootstrap-treeview.js" %>
+
+ 
+<%= javascript_include_tag "fnReloadAjax.js" %>
+
+<%= javascript_include_tag "NewCampaing.js" %>
 
   <script src="../js/bootstrap.js" type="text/javascript"></script>
   <script src="../js/bootbox.js"></script>
 
   
   <!-- jQuery -->
-  <!-- LIBRERIA PADRE -->
-  <script src="../js/jquery.js"></script>
-   <script type="text/javascript" src="http://www.prepbootstrap.com/Content/shieldui-lite/dist/js/shieldui-lite-all.min.js"></script>
-<link rel="stylesheet" type="text/css" href="http://www.prepbootstrap.com/Content/shieldui-lite/dist/css/light/all.min.css" />
-
- 
-<!--<script type="text/javascript" src="http://www.prepbootstrap.com/Content/data/shortGridData.js"></script>-->
-
-  <!-- LIBRERIA PADRE -->
-  <script src="../js/jquery.validate.js"></script>
-  <script src="../js/additional-methods.js"></script>
- 
- 
-
-  <!-- DATATABLE -->
-  <script src="../js/jquery.dataTables.js" type="text/javascript"></script>
-  <!-- Cargar menu de usuario desde JSON -->
-  <script src="../js/bootstrap-treeview.js"></script>
-  <!-- TOGGLE para que el menu superior sea responsivo -->
-     <script>
+  <script>
   $("#menu-toggle").click(function(e) {
       e.preventDefault();
       $("#wrapper").toggleClass("toggled");
@@ -283,14 +217,6 @@
   </script>
 
 
-  <!-- Script para activar las validaciones -->
-
-  <!-- Script para recargar el datatable automaticamente -->
-  <script src="../js/fnReloadAjax.js"></script>
-
-    <!-- Script para funciones del formulario -->
-  <script src="../js/FormsJS/newCampaing.js"></script>
- <!-- Menu Toggle Script -->
   
 
   <style>
@@ -301,5 +227,3 @@
     color:green;
 }
 </style>
-</body>
-</html>
