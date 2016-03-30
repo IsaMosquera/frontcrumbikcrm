@@ -1,0 +1,258 @@
+<head>
+  <!--  PARA MANEJAR Ñ y ACENTOS y RESPONSIVO -->
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!--  TITULO DEL SITIO -->
+  <title>Crümbik</title>
+  <script src="../js/jquery.js"></script>
+
+  <!--  INCLUSION DE HEADS CSS y JS -->
+  <script type="text/javascript">
+    function unWrapPlaceholder(){
+     $(this).contents().unwrap();
+   }  $(function(){
+    $("#Heads").load("Templates/Heads.html", unWrapPlaceholder); 
+    $("#BarraSuperior").load("Templates/BarraSuperior.html", unWrapPlaceholder); 
+    $("#BarraLateral").load("Templates/BarraLateral.html", unWrapPlaceholder);
+
+
+  });
+</script> 
+<div id="Heads"></div>
+
+</head>
+
+<body>
+  <!-- === BARRA SUPERIOR  === -->
+  <!-- === Inclusion de archivo  === -->
+  <div id="BarraSuperior"></div>
+  <!-- === FIN DE BARRA SUPERIOR  === -->
+</nav>
+
+
+<!-- === INICIO INCLUSION BARRA LATERAL === -->
+<div class="container-fluid">
+  <div id="wrapper">
+   <div id="BarraLateral"></div>  
+
+   <!-- === FIN  BARRA LATERAL === -->      
+   <br><!--Saltos de Linea-->
+   <br>
+   <br>
+   <!-- === INICIO CONTENIDO DE LA VENTANA === -->
+   <div id="page-content-wrapper">
+     <div class="container-fluid">
+      <div class="row">
+<form role="form" id="form" data-toggle="validator">
+        <!-- === INICIO PANEL DE EDICIÓN === -->   
+        <div class="panel panel-primary">
+          <div class="panel-heading">
+            <h3 class="panel-title">Datos de Contrato</h3>
+          </div>
+          <div class="panel-body">
+            En este panel podrá agregar datos del Contrato.
+
+
+    <!-- === INPUTS TXT === -->
+
+ <!--INFORMACIÓN DEL MODAL MOSTRAR Contrato -->
+     <div id="myModalServiceNew" class="modal fade" role="dialog">
+         <div class="modal-dialog">
+
+           <!-- CONTENIDO MODAL Contrato-->
+         <div class="row ">
+
+                <div class="col-md-12" >
+                    <!-- Advanced Tables -->
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                               <h2 class="text-center"> Datos del Contrato </h2>
+                        </div>
+
+                         <div class="panel-body">                           
+
+
+                              <div class="form-group col-md-12">
+                                <label for="ejemplo_email_1">NUMERO DE CONTRATO</label>
+                                <input type="text" class="form-control" id="txtNoContrato"
+                                       placeholder="CRUMBIK-00001">
+                              </div>
+
+                              <div class="form-group col-md-6">
+                                <label for="ejemplo_email_1">Fecha de Creacion</label>
+                                <input type="date" class="form-control" id="txtFecha"
+                                       placeholder="Fecha de Creacion">
+                              </div>
+
+                                    <div class="form-group col-md-6">
+                                <label for="ejemplo_email_1">Fecha de Finalizacion</label>
+                                <input type="date" class="form-control" id="txtVencimiento"
+                                       placeholder="Fecha de Finalizacion">
+                                </div>
+
+                               <div class="form-group col-md-12">
+                               <label > Organizacion</label>
+                                 <select id="cmbOrganizacion" class="form-control">
+                                     <option>Seleccione una Organizacion</option>
+                                     <option>Epa</option>
+                                     <option>Makro</option>
+                                     <option>Gobernacion de Lara</option>
+                                     <option>Alcaldia de Irribarren</option>
+                                     <option>Empresas Polar</option>
+                                     <option>Distribuidora de Alimentos La Nueva Cordillera</option>
+                                 </select>
+                             </div>
+
+                                     <div class="form-group col-md-12">
+                               <label > Plan de Servicio</label>
+                                 <select id="cmbPlanServicio" class="form-control">
+                                     <option>Seleccione un Plan</option>
+                                     <option>Ilimitado</option>
+                                     <option>Profecional</option>
+                                     <option>Gratuito</option>
+                                 </select>
+                             </div>
+
+
+                        </div>
+                          <div class="modal-footer">
+                            <button type="submit" id="Guardar" class="btn btn-lg btn-info">Guardar</button>
+                            <button type="button" class="btn btn-lg btn-info" data-dismiss="modal">Cerrar</button>
+                        </div>    
+                    </div>
+                </div>
+        </div>
+
+
+       </div>
+      </div> 
+
+   
+
+        </div>
+        <div class="panel panel-primary">
+         <div class="panel-body">
+           <p>
+          <!-- === BOTONES === -->  
+            <div class="form-group col-md-6" style="margin-top:10px" align="center">
+                 <!-- === BOTONES DE ACCION === -->  
+                 <button type="button" class="btn btn-lg btn-info" data-toggle="modal" data-target="#myModalServiceNew">Agregar Contrato</button>
+                 <button type="button" class="btn btn-lg btn-info">Salir</button>
+               </div>
+             <!-- === FIN BOTONES === -->  
+          </p>
+        </div>
+      </div>
+    </div>
+    <!-- === FIN CONTENIDO DE LA VENTANA === -->
+  </form>
+
+<div class="panel panel-primary">
+    <div class="panel-heading">
+      <h3 class="panel-title">Lista de Contratos</h3>
+    </div>
+    <div class="panel-body">
+      Puede visualizar los Contratos actualmente almacenados en el sistema
+
+      <div id="TablaNewContract"></div>
+     
+    <!-- ====== FIN DATATABLE======= -->
+  </div>
+</div>
+</div>
+
+
+
+<style type="text/css">
+    .sui-button-cell
+    {
+        text-align: center;
+    }
+
+    .sui-checkbox
+    {
+        font-size: 17px !important;
+        padding-bottom: 4px !important;
+    }
+
+    .deleteButton img
+    {
+        margin-right: 3px;
+        vertical-align: bottom;
+    }
+
+    .bigicon
+    {
+        color: #5CB85C;
+        font-size: 20px;
+    }
+</style>
+
+<!-- Bootstrap Editable Grid - END -->
+
+</div>
+    <!-- ====== FIN DATATABLE======= -->
+  </div>
+</div>
+</div>
+<!-- === FIN CONTENIDO DE LA VENTANA === -->
+
+</div>
+<!-- /#wrapper -->
+</div>
+
+<!-- Libreria Jquery de Bootstrap -->
+
+  <script src="../js/bootstrap.js" type="text/javascript"></script>
+  <script src="../js/bootbox.js"></script>
+
+  
+  <!-- jQuery -->
+  <!-- LIBRERIA PADRE -->
+  <script src="../js/jquery.js"></script>
+   <script type="text/javascript" src="http://www.prepbootstrap.com/Content/shieldui-lite/dist/js/shieldui-lite-all.min.js"></script>
+<link rel="stylesheet" type="text/css" href="http://www.prepbootstrap.com/Content/shieldui-lite/dist/css/light/all.min.css" />
+
+ 
+<!--<script type="text/javascript" src="http://www.prepbootstrap.com/Content/data/shortGridData.js"></script>-->
+
+  <!-- LIBRERIA PADRE -->
+  <script src="../js/jquery.validate.js"></script>
+  <script src="../js/additional-methods.js"></script>
+ 
+ 
+
+  <!-- DATATABLE -->
+  <script src="../js/jquery.dataTables.js" type="text/javascript"></script>
+  <!-- Cargar menu de usuario desde JSON -->
+  <script src="../js/bootstrap-treeview.js"></script>
+  <!-- TOGGLE para que el menu superior sea responsivo -->
+     <script>
+  $("#menu-toggle").click(function(e) {
+      e.preventDefault();
+      $("#wrapper").toggleClass("toggled");
+  });
+  </script>
+
+
+  <!-- Script para activar las validaciones -->
+
+  <!-- Script para recargar el datatable automaticamente -->
+  <script src="../js/fnReloadAjax.js"></script>
+    <!-- Script para funciones del formulario -->
+  <script src="../js/FormsJS/newContract.js"></script>
+ <!-- Menu Toggle Script -->
+  
+
+  <style>
+.error {
+    color:red;
+}
+.valid {
+    color:green;
+}
+</style>
+</body>
+</html>

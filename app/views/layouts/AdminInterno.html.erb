@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!--  PARA MANEJAR Ñ y ACENTOS y RESPONSIVO -->
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!--  TITULO DEL SITIO -->
+  <title>CRUMBIK CRM</title>
+ <%= javascript_include_tag "jquery.js" %>
+
+
+    <!--ARCHIVOS CSS PARA BOOSTRAP -->
+<!-- Latest compiled and minified CSS -->
+ <%= stylesheet_link_tag  "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" %>
+
+   <%= stylesheet_link_tag  "bootstrap.css" %>
+   <%= stylesheet_link_tag  "bootstrap-treeview.css" %>
+   <%= stylesheet_link_tag  "simple-sidebar.css" %>
+   <%= stylesheet_link_tag  "https://cdn.datatables.net/1.10.10/css/jquery.dataTables.min.css" %>
+    
+ 
+  
+
+
+
+
+</head>
+
+<body>
+  <!-- === BARRA SUPERIOR  === -->
+  <!-- === Inclusion de archivo  === -->
+ <body>
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Navegación</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    
+      <a id="menu-toggle" class="navbar-brand" href="#menu-toggle">CRUMBIK CRM</a>
+    </div>
+<!-- Collect the nav links, forms, and other content for toggling -->
+  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    <ul class="nav navbar-nav">
+          
+    </ul>
+    <form class="navbar-form navbar-left" role="search">
+      
+    </form>
+    <ul class="nav navbar-nav navbar-right" role="search">
+     <li><a href="#">Ayuda</a></li>
+    <li><a href="#">Mensajes</a></li>
+    <li><a href="#">Users Online</a></li>
+    
+       
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Juan Perez <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+         
+          <li><a href="#">Cuenta</a></li>
+          <li class="divider"></li>
+          <li><a href="#">Salir</a></li>
+          
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+    <script>
+    // Menu Toggle Script 
+      $("#menu-toggle").click(function(e) {
+          e.preventDefault();
+          $("#wrapper").toggleClass("toggled");
+      });
+    </script>
+  <!-- === FIN DE BARRA SUPERIOR  === -->
+</nav>
+
+
+<!-- === INICIO INCLUSION BARRA LATERAL === -->
+<div class="container-fluid">
+  <div id="wrapper">
+   <div class="container-fluid">
+      <div id="wrapper">
+
+
+
+
+        <!-- SIDERBAR CON ARBOL QUE SE CARGA POR JSON -->
+      <div id="sidebar-wrapper">
+         
+          <div id="treeview" style="width:250px;margin-top:30%;">
+          </div>
+    </div>
+ </div>
+ <!-- === FIN BARRA LATERAL === -->
+
+    
+   <%= javascript_include_tag "jquery.js" %>
+   <%= javascript_include_tag "bootstrap-treeview.js" %>
+
+    <script type="text/javascript">
+
+      function buildDomTree() {
+         
+       var data = [
+  {
+    text: "Gestión de Productor",
+    state: {
+    expanded: false,
+  },
+    nodes: [
+      {
+        text: "Registrar Póliza",
+        href: "Poliza.html"        
+      },
+      {
+        text: "Registrar Clientes",
+        href: "Cliente.html"
+      },
+      {
+        text: "Agregar Recibos",
+        href: "Recibo.html"
+      },
+      {
+        text: "Gestión Vehiculos",
+        href: "Vehiculo.html"
+      }
+    ]
+  },
+  {
+    text: "Solicitudes de Poliza",
+    href: "SolicitudPolizaVehiculo.html"
+  },
+  {
+    text: "Call Center"
+  },
+  {
+    text: "Datos Comisiones"
+  },
+  {
+    text: "Configuración de Maestros",
+     state: {
+    expanded: false,
+  },
+    nodes: [
+          {
+            text: "1.Datos para Vehiculos",
+             state: {
+    expanded: false,
+  },
+              nodes: [
+                    {
+                      text: "Marcas",
+                      href: "Marca.html"
+                      },
+                    {
+                       text: "Modelos",
+                       href: "Modelo.html"
+                       },
+                      {
+                       text: "Colores",
+                       href: "Color.html"
+                       },
+                       {
+                       text: "Accesorios",
+                       href: "Accesorio.html"
+                       },
+                       {
+                       text: "Tipos de Vehiculos",
+                       href: "TipoVehiculo.html"
+                       },
+                       {
+                       text: "Usos de Vehiculos",
+                       href: "UsoVehiculo.html"
+                       }
+                    ]
+             
+          },
+           {
+            text: "2.Datos de Acceso",
+              state: {
+              expanded: false,
+              },
+              nodes: [
+                    {
+                      text: "Pantallas",
+                      href: "Pantalla.html"
+                      },
+                    {
+                       text: "Roles",
+                       href: "Rol.html"
+                       },
+                      {
+                       text: "Acceso",
+                       href: "Acceso.html"
+                       },
+                       {
+                       text: "Usuarios",
+                       href: "Usuario.html"
+                       },
+                       {
+                       text: "Funcion",
+                       href: "Funcion.html"
+                       }
+                      
+                    ]
+             
+          },
+           {
+            text: "3.Datos de Ubicación",
+             state: {
+              expanded: false,
+              },
+              nodes: [
+                    {
+                      text: "Estados",
+                      href: "Estado.html"
+                      },
+                    {
+                       text: "Municipio",
+                       href: "Municipio.html"
+                       },
+                      {
+                       text: "Parroquia",
+                       href: "Parroquia.html"
+                       },
+                       {
+                       text: "Oficina",
+                       href: "Oficina.html"
+                       }
+                      
+                    ]
+             
+          },
+           {
+            text: "4.Datos de Incidencias",
+             state: {
+              expanded: false,
+              },
+              nodes: [
+                    {
+                      text: "Centro de Clínicas",
+                      href: "CentroClinica.html"
+                      },
+                    {
+                       text: "Causas Incidentes",
+                       href: "CausaIncidente.html"
+                       },
+                      {
+                       text: "Gruas",
+                       href: "Grua.html"
+                       },
+                       {
+                       text: "Talleres",
+                       href: "Taller.html"
+                       }
+                      
+                    ]
+             
+          },
+           {
+            text: "5.Datos de Personal",
+              state: {
+              expanded: false,
+              },
+              nodes: [
+                    {
+                      text: "Analistas",
+                      href: "Analista.html"
+                      },
+                    {
+                       text: "Productores",
+                       href: "Productor.html"
+                       },
+                      {
+                       text: "Ejecutivos",
+                       href: "Ejecutivo.html"
+                       },
+                       {
+                       text: "Tipo de Ejecutivos",
+                       href: "TipoEjecutivo.html"
+                       },
+                      {
+                       text: "Estatus Laborales",
+                       href: "EstatusLaboral.html"
+                       }
+                      
+                    ]
+             
+          },
+           {
+            text: "6.Datos de Cliente",
+              state: {
+              expanded: false,
+              },
+              nodes: [
+                    {
+                      text: "Actividades Económicas",
+                      href: "ActividadEconomica.html"
+                      },
+                    {
+                       text: "Profesion",
+                       href: "Profesion.html"
+                       },
+                      {
+                       text: "Clase Cliente",
+                       href: "ClaseCliente.html"
+                       },
+                       {
+                       text: "Estado Civil",
+                       href: "EstadoCivil.html"
+                       }
+                      
+                      
+                    ]
+             
+          },
+           {
+            text: "7.Datos Financiamiento",
+              state: {
+              expanded: false,
+              },
+              nodes: [
+                    {
+                      text: "Cuentas",
+                      href: "Cuenta.html"
+                      },
+                    {
+                       text: "Bancos",
+                       href: "Banco.html"
+                       },
+                      {
+                       text: "Financiadoras",
+                       href: "Financiadora.html"
+                       },
+                       {
+                       text: "Tipos de Pago en Poliza",
+                       href: "TipoPagoPoliza.html"
+                       }                 
+                  ]             
+          },
+           {
+            text: "8.Datos Aseguradoras",
+              state: {
+              expanded: false,
+              },
+              nodes: [
+                    {
+                      text: "Sucursales Aseguradora",
+                      href: "SucursalAseguradora.html"
+                      },
+                    {
+                       text: "Aseguradoras",
+                       href: "Aseguradora.html"
+                       }                                         
+                    ]             
+          },
+           {
+            text: "9.Datos de Poliza",
+              state: {
+              expanded: false,
+              },
+              nodes: [
+                    {
+                      text: "Tipo Poliza",
+                      href: "TipoPoliza.html"
+                      },
+                    {
+                       text: "Tipos Pagos",
+                       href: "TipoPago.html"
+                       },
+                      {
+                       text: "Monedas",
+                       href: "Moneda.html"
+                       },
+                       {
+                       text: "Ramos de Polizas",
+                       href: "Ramo.html"
+                       },
+                      {
+                       text: "Riesgos por Producto",
+                       href: "RiesgoProducto.html"
+                       },
+                       {
+                       text: "Tipos de Bonos",
+                       href: "TipoBono.html"
+                       },
+                        {
+                       text: "Productores",
+                       href: "Productor.html"
+                       }                      
+                    ]
+             
+          }
+
+          
+        ]
+  }
+];
+        function walk(nodes, data) {
+          if (!nodes) { return; }
+          $.each(nodes, function (id, node) {
+            var obj = {
+              id: id,
+              text: node.nodeName + " - " + (node.innerText ? node.innerText : ''),
+              tags: [node.childElementCount > 0 ? node.childElementCount + ' child elements' : '']
+            };
+            if (node.childElementCount > 0) {
+              obj.nodes = [];
+              walk(node.children, obj.nodes);
+            }
+           // data.push(obj);
+          });
+        }
+
+        walk($('html')[0].children, data);
+        return data;
+      }
+
+        $(function() {
+
+        var options = {
+          bootstrap2: true, 
+          showTags: true,
+          levels: 5,
+          data: buildDomTree()
+        };
+
+            $('#treeview').treeview(options);
+        });
+    </script>
+
+   <!-- === FIN  BARRA LATERAL === -->      
+   <br><!--Saltos de Linea-->
+   <br>
+   <br>
+
+
+<%= yield %>
+
+
+</div>
+<!-- /#wrapper -->
+</div>
+
+</body>
+</html>

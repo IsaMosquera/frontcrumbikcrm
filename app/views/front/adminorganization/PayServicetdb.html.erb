@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!--  PARA MANEJAR Ñ y ACENTOS y RESPONSIVO -->
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!--  TITULO DEL SITIO -->
+  <title>CRUMBIK - PAGO EN BANCO</title>
+  <script src="../js/jquery.js"></script>
+
+  <!--  INCLUSION DE HEADS CSS y JS -->
+  <script type="text/javascript">
+    function unWrapPlaceholder(){
+     $(this).contents().unwrap();
+   }  $(function(){
+    $("#Heads").load("Templates/Heads.html", unWrapPlaceholder); 
+    $("#BarraSuperior").load("Templates/BarraSuperior.html", unWrapPlaceholder); 
+    $("#BarraLateral").load("Templates/BarraLateral.html", unWrapPlaceholder);
+
+
+  });
+</script> 
+<div id="Heads"></div>
+
+</head>
+
+<body>
+  <!-- === BARRA SUPERIOR  === -->
+  <!-- === Inclusion de archivo  === -->
+  <div id="BarraSuperior"></div>
+  <!-- === FIN DE BARRA SUPERIOR  === -->
+</nav>
+
+
+<!-- === INICIO INCLUSION BARRA LATERAL === -->
+<div class="container-fluid">
+  <div id="wrapper">
+   <div id="BarraLateral"></div>  
+
+   <!-- === FIN  BARRA LATERAL === -->      
+   <br><!--Saltos de Linea-->
+   <br>
+   <br>
+   <!-- === INICIO CONTENIDO DE LA VENTANA === -->
+   <div id="page-content-wrapper">
+     <div class="container-fluid">
+      <div class="row">
+<form role="form" id="form" data-toggle="validator">
+        <!-- === INICIO PANEL DE EDICIÓN === -->   
+        <div class="panel panel-primary">
+          <div class="panel-heading">
+            <h3 class="panel-title">Pagar un nuevo servicio con Tarjeta de Debito</h3>
+          </div>
+          <div class="panel-body">
+            Por favor indica todos tus datos bancarios de tu tarjeta de debito para pagar por el servicio
+
+
+             <!-- === INPUTS TXT === -->  
+
+              <div class="form-group">
+              <label for="ejemplo_text_1">Seleccione el banco</label>
+              <select name="Bank" id="cmbBank" class="form-control" >
+                  
+              </select>
+            </div>
+             <div class="form-group">
+              <label for="ejemplo_text_1">Numero de Tarjeta</label>
+              <input class="form-control" type="text" name="codtdc" id="txtCodTDC"  placeholder="Numero impreso en la tarjeta"/>
+              <div id="id-error" style="color:red;">
+    <label for="name" class="error" generated="true" ></label>
+
+</div>
+              </div>
+             
+             <div class="form-group">
+              <label for="ejemplo_text_1">Clave de Cuenta</label>
+              <input type="password" class="form-control" name="Password" id="txtPassword" placeholder="Clave" />
+            </div>
+              <div class="form-group">
+              <label for="ejemplo_text_1">Cedula del Cliente</label>
+              <input type="text" class="form-control" name="codcustomer" id="txtCedula" placeholder="Cedula del Cliente" />
+               <div class="form-group">
+              <label for="ejemplo_text_1">Monto</label>
+              <input type="text" class="form-control" name="mount" id="txtMonto" placeholder="Monto de la Operación" />
+            </div>
+            <label for="ejemplo_text_1"></label>
+              <input class="form-control" type="text"  style="visibility:hidden" name="Idn" id="txtIdn"/>
+
+         </div>
+
+          <!-- === BOTONES === -->  
+            <button type="submit" id="Guardar" class="btn btn-lg btn-success">PAGAR</button>
+           
+             <!-- === FIN BOTONES === -->  
+          
+        </div>
+       
+    </div>
+    <!-- === FIN CONTENIDO DE LA VENTANA === -->
+  </form>
+
+  </div>
+</div>
+</div>
+<!-- === FIN CONTENIDO DE LA VENTANA === -->
+
+</div>
+<!-- /#wrapper -->
+</div>
+
+<script>
+
+
+
+
+</script>
+
+<!-- Libreria Jquery de Bootstrap -->
+
+  <script src="../js/bootstrap.js" type="text/javascript"></script>
+
+  <script src="../js/bootbox.js"></script>
+  <!-- jQuery -->
+  <!-- LIBRERIA PADRE -->
+  <script src="../js/jquery.js"></script>
+  <!-- LIBRERIA PADRE -->
+  <script src="../js/jquery.validate.js"></script>
+  <script src="../js/additional-methods.js"></script>
+  <script src="../js/messages_es.js"></script>
+ 
+
+  <!-- DATATABLE -->
+  <script src="../js/jquery.dataTables.js" type="text/javascript"></script>
+  <!-- Cargar menu de usuario desde JSON -->
+  <script src="../js/bootstrap-treeview.js"></script>
+  <!-- TOGGLE para que el menu superior sea responsivo -->
+     <script>
+  $("#menu-toggle").click(function(e) {
+      e.preventDefault();
+      $("#wrapper").toggleClass("toggled");
+  });
+  </script>
+
+
+  <!-- Script para activar las validaciones -->
+
+  <!-- Script para recargar el datatable automaticamente -->
+  <script src="../js/fnReloadAjax.js"></script>
+    <!-- Script para funciones del formulario -->
+  <script src="../js/FormsJS/PayServicestdb.js"></script>
+ <!-- Menu Toggle Script -->
+  
+
+  <style>
+.error {
+    color:red;
+}
+.valid {
+    color:green;
+}
+</style>
+</body>
+</html>
