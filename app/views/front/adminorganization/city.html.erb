@@ -7,8 +7,6 @@
         
         <form role="form" id="form" data-toggle="validator">
         <!-- === INICIO PANEL DE EDICIÓN === -->   
-         <div id="ModalNewCity" class="modal fade" role="dialog">
-         <div class="modal-dialog">
 
         <div class="panel panel-primary">
           <div class="panel-heading">
@@ -16,8 +14,15 @@
           </div>
           <div class="panel-body">
             En este panel podrá agregar, modificar o eliminar las ciudades del CRM.
+          <p></p>
+       
+         <div id="ModalNewCity" class="modal fade" role="dialog">
+         <div class="modal-dialog">
+           <div class="panel panel-primary" align="center">
+           <div class="panel-heading">
+                <h2 class="text-center"> Datos de la Ciudad </h2>
+            </div>
 
-              <p></p>
              <!-- === INPUTS TXT === -->  
              <div class="form-group required" align="center">
               <label for="ejemplo_text_1">País al que pertenece</label>
@@ -35,7 +40,7 @@
              <label for="name" class="error" generated="true" ></label>
               </div>
             </div>
-         </div>
+      
              
               <div class="form-group required" align="center">
                 <label>Selecione Un Estado</label>
@@ -76,9 +81,7 @@
              
             <label for="ejemplo_text_1"></label>
             <input class="form-control" type="text"  style="visibility:hidden" name="IdCiudad" id="txtIdCiudad"/>
-           </div>
-        <div class="panel panel-primary" align="center">
-         <div class="panel-body">
+        <div class="modal-footer">
           <!-- === BOTONES === -->  
           <button type="submit" id="Guardar" class="btn btn-lg btn-info">Guardar</button>
           <button type="submit" id="Modificar" class="btn btn-lg btn-info">Modificar</button>
@@ -86,7 +89,8 @@
           <button type="button" class="btn btn-lg btn-info" data-dismiss="modal">Cerrar</button>
              <!-- === FIN BOTONES === -->  
         </div>
-      </div>
+         </div>
+           </div>  <!-- === FIN MODAL === -->  
         </div>
 
     </div>
@@ -108,22 +112,19 @@
         </div>
       </div>
 
-
+</div>
   
   <!-- === PANEL DE TABLA === --> 
 
-<div class="panel panel-primary">
+    <div class="panel panel-primary">
     <div class="panel-heading">
       <h3 class="panel-title">Lista de Ciudades</h3>
     </div>
     <div class="panel-body">
       Puede visualizar las Ciudades actualmente almacenados en el sistema
-
-      <div id="TablaCiudad"></div>
-     
-    <!-- ====== FIN DATATABLE======= -->
-  </div>
-</div>
+    <div id="TablaCiudad"></div>
+        <!-- ====== FIN DATATABLE======= -->
+   </div>
            
     </div>
   </div>

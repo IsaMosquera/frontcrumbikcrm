@@ -5,18 +5,23 @@
       <div class="row">
     
        <form role="form" id="form" data-toggle="validator">
-        <div id="ModalNewCountry" class="modal fade" role="dialog">
-         <div class="modal-dialog">
-        <!-- === INICIO PANEL DE EDICIÓN === -->   
-          <div class="panel panel-primary">
-            <div class="panel-heading">
+         <div class="panel panel-primary">
+           <div class="panel-heading">
               <h3 class="panel-title">Gestión de Países</h3>
             </div>
           
             <div class="panel-body">
-            En este panel podrá agregar, modificar o eliminar los país del CRM.
+              En este panel podrá agregar, modificar o eliminar los país del CRM.
             <p></p>
             </div>
+
+        <div id="ModalNewCountry" class="modal fade" role="dialog">
+         <div class="modal-dialog">
+           <div class="panel panel-primary" align="center">
+             <div class="panel-heading">
+                <h2 class="text-center"> Datos del País </h2>
+             </div>   
+
              
             <div class="form-group" align="center">
               <label for="ejemplo_text_1">País</label>
@@ -29,32 +34,26 @@
             <div id="id-error" style="color:red;">
              <label for="name" class="error" generated="true" ></label>
             </div>
-          </div>
           
-          <div class="panel panel-primary" align="center">
-          <div class="panel-body">
-           <p>
+          <div class="modal-footer">
           <!-- === BOTONES === -->  
             <button type="submit" id="Guardar" class="btn btn-lg btn-info">Guardar</button>
             <button type="submit" id="Modificar" class="btn btn-lg btn-info">Modificar</button>
             <button type="submit" id="Eliminar" class="btn btn-lg btn-info">Eliminar</button>
             <button type="button" class="btn btn-lg btn-info" data-dismiss="modal">Cerrar</button>
              <!-- === FIN BOTONES === -->  
-          </p>
-         </div>
          </div>
         
         </div>
        </div>
         
       </div>
-     </div>
+   </form>
+  
     <!-- === FIN CONTENIDO DE LA VENTANA === -->
-    </form>
-
-    <div class="panel panel-primary">
-      <div class="panel-body">
-      <p>
+        <div class="panel panel-primary">
+          <div class="panel-body">
+            <p>
           <!-- === BOTONES === -->  
         <div class="form-group col-md-6" style="margin-top:10px" align="center">
               <!-- === BOTONES DE ACCION === -->  
@@ -63,10 +62,10 @@
           <button type="button" class="btn btn-lg btn-info">Salir</button>
         </div>
           <!-- === FIN BOTONES === -->  
-     </p>
-    </div>
-   </div>
-  
+          </p>
+        </div>
+      </div>
+</div>
 
     <div class="panel panel-primary">
       <div class="panel-heading">
@@ -78,7 +77,7 @@
       <!-- ====== FIN DATATABLE======= -->
      </div>
   </div>
-</div>
+
 </div>
 </div>
 
