@@ -235,7 +235,7 @@ var table = $("#TablaSocialMedia").shieldGrid({
 
 
       //Agregamos los datos capturados a un arreglo => arr
-      var arr = { IdRedSocial:IdRedSocial,RedSocial:RedSocial,Estatus:Estatus };
+      var arr = { Id:IdRedSocial,name:RedSocial,status:Estatus };
       //Evento ajax para enviar los datos
       $.ajax({
         //Ruta para enviar el servicio
@@ -275,7 +275,7 @@ var table = $("#TablaSocialMedia").shieldGrid({
 
 
       //Agregamos los datos capturados a un arreglo => arr
-      var arr = { IdRedSocial:IdRedSocial,RedSocial:RedSocial,Estatus:Estatus };
+      var arr = { Id:IdRedSocial,name:RedSocial,status:Estatus };
       
       //Evento ajax para enviar los datos
       $.ajax({
@@ -310,16 +310,15 @@ var table = $("#TablaSocialMedia").shieldGrid({
     function EliminarRedSocial() {        
 
       var IdRedSocial = document.getElementById("txtIdRedSocial").value;
-      var RedSocial =  document.getElementById("txtRedSocial").value;
       var Estatus = 0;
 
 
       //Agregamos los datos capturados a un arreglo => arr
-      var arr = { IdRedSocial:IdRedSocial,RedSocial:RedSocial,Estatus:Estatus };
+      var arr = { Id:IdRedSocial,status:Estatus };
       //Evento ajax para enviar los datos
       $.ajax({
         //Ruta para enviar el servicio
-        url: 'http://localhost:3000/api/v1/socialnetworks',
+        url: 'http://localhost:3000/api/v1/socialnetworks/+id',
         type: 'DELETE',
         //Enviamos el arreglo ar
         data: JSON.stringify(arr),

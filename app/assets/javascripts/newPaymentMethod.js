@@ -122,7 +122,7 @@ var table = $("#TablaMetodoPago").shieldGrid({
                 },
                 schema: {
                     fields: {
-                         id_method: { path: "id_method", type: Number },
+                         id: { path: "id", type: Number },
                         name: { path: "name", type: String },
                     }
                 }
@@ -130,7 +130,7 @@ var table = $("#TablaMetodoPago").shieldGrid({
             sorting: true,
             rowHover: false,
             columns: [
-                { field: "id_method", title: "Código", width: "80px" },
+                { field: "id", title: "Código", width: "80px" },
                 { field: "name", title: "Nombre", width: "120px" },
                 {
                     width: 140,
@@ -228,7 +228,7 @@ var table = $("#TablaMetodoPago").shieldGrid({
 
 
       //Agregamos los datos capturados a un arreglo => arr
-      var arr = { IdMetodo:IdMetodo,Meto:Meto,Estatus:Estatus };
+      var arr = { id:IdMetodo,name:Metodo,status:Estatus };
       //Evento ajax para enviar los datos
       $.ajax({
         //Ruta para enviar el servicio
@@ -266,8 +266,9 @@ var table = $("#TablaMetodoPago").shieldGrid({
       var Metodo =  document.getElementById("txtMetodo").value;
       var Estatus = 1;
 
+
       //Agregamos los datos capturados a un arreglo => arr
-      var arr = { IdMetodo:IdMetodo,Meto:Meto,Estatus:Estatus };
+      var arr = { id:IdMetodo,name:Metodo,status:Estatus };
       
       //Evento ajax para enviar los datos
       $.ajax({
@@ -302,18 +303,16 @@ var table = $("#TablaMetodoPago").shieldGrid({
     function EliminarPaymentMethod() {        
 
       var IdMetodo = document.getElementById("txtIdMetodo").value;
-      var Metodo =  document.getElementById("txtMetodo").value;
       var Estatus = 0;
 
 
-
       //Agregamos los datos capturados a un arreglo => arr
-      var arr = { IdMetodo:IdMetodo,Meto:Meto,Estatus:Estatus };
+      var arr = { id:IdMetodo,status:Estatus };
       
       //Evento ajax para enviar los datos
       $.ajax({
         //Ruta para enviar el servicio
-        url: 'http://localhost:3000/api/v1/paymentmethods',
+        url: 'http://localhost:3000/api/v1/paymentmethods/+id',
         type: 'DELETE',
         //Enviamos el arreglo ar
         data: JSON.stringify(arr),

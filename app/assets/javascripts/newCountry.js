@@ -78,7 +78,7 @@ var table = $("#TablaPais").shieldGrid({
                 remote: {
                     read: {
                         type: "GET",
-                        url: "http://localhost:3000/api/v1/countrys",
+                        url: "http://localhost:3000/api/v1/countries",
                         dataType: "json"
                     },
                     modify: {
@@ -86,7 +86,7 @@ var table = $("#TablaPais").shieldGrid({
                             var newItem = items[0];
                             $.ajax({
                                 type: "POST",
-                                url: "http://localhost:3000/api/v1/countrys",
+                                url: "http://localhost:3000/api/v1/countries",
                                 dataType: "json",
                                 data: newItem.data,
                                 complete: function (xhr) {
@@ -107,7 +107,7 @@ var table = $("#TablaPais").shieldGrid({
                         update: function (items, success, error) {
                             $.ajax({
                                 type: "PUT",
-                                url: "http://localhost:3000/api/v1/countrys" + items[0].data.Id,
+                                url: "http://localhost:3000/api/v1/countries" + items[0].data.Id,
                                 dataType: "json",
                                 contentType: "application/json",
                                 data: JSON.stringify(items[0].data)
@@ -116,7 +116,7 @@ var table = $("#TablaPais").shieldGrid({
                         remove: function (items, success, error) {
                             $.ajax({
                                 type: "DELETE",
-                                url: "http://localhost:3000/api/v1/countrys" + items[0].data.Id
+                                url: "http://localhost:3000/api/v1/countries" + items[0].data.Id
                             }).then(success, error);
                         }
                     }
@@ -158,7 +158,7 @@ var table = $("#TablaPais").shieldGrid({
                                 var grid = this;
                                 $.ajax({
                                     type: "PUT",
-                                    url: "http://localhost:3000/api/v1/countrys"
+                                    url: "http://localhost:3000/api/v1/countries"
                                 }).done(function () {
                                     grid.dataSource.read();
                                 });
@@ -198,7 +198,7 @@ var table = $("#TablaPais").shieldGrid({
     function GetElementos() {
       jQuery.support.cors = true;
       $.ajax({
-        url: 'http://localhost:3000/api/v1/countrys',
+        url: 'http://localhost:3000/api/v1/countries',
         type: 'GET',
         dataType: 'json',            
         success: function (data) {                
@@ -234,11 +234,11 @@ var table = $("#TablaPais").shieldGrid({
 
 
       //Agregamos los datos capturados a un arreglo => arr
-      var arr = { IdPais:IdPais,Pais:Pais,Estatus:Estatus };
+      var arr = { id:IdPais,description:Pais,status:Estatus };
       //Evento ajax para enviar los datos
       $.ajax({
         //Ruta para enviar el servicio
-        url: 'http://localhost:3000/api/v1/countrys',
+        url: 'http://localhost:3000/api/v1/countries',
         type: 'POST',
         //Enviamos el arreglo ar
         data: JSON.stringify(arr),
@@ -274,12 +274,12 @@ var table = $("#TablaPais").shieldGrid({
 
 
       //Agregamos los datos capturados a un arreglo => arr
-      var arr = { IdPais:IdPais,Pais:Pais,Estatus:Estatus };
+      var arr = { id:IdPais,description:Pais,status:Estatus };
       
       //Evento ajax para enviar los datos
       $.ajax({
         //Ruta para enviar el servicio
-        url: 'http://localhost:3000/api/v1/countrys',
+        url: 'http://localhost:3000/api/v1/countries',
         type: 'PUT',
         //Enviamos el arreglo ar
         data: JSON.stringify(arr),
@@ -309,17 +309,16 @@ var table = $("#TablaPais").shieldGrid({
     function EliminarCountry() {        
 
       var IdPais = document.getElementById("txtIdPais").value;
-      var Pais =  document.getElementById("txtPais").value;
-      var Estatus = 0;
+      var Estatus = 1;
 
 
       //Agregamos los datos capturados a un arreglo => arr
-      var arr = { IdPais:IdPais,Pais:Pais,Estatus:Estatus };
+      var arr = { id:IdPais,status:Estatus };
       
       //Evento ajax para enviar los datos
       $.ajax({
         //Ruta para enviar el servicio
-        url: 'http://localhost:3000/api/v1/countrys',
+        url: 'http://localhost:3000/api/v1/countries/+id',
         type: 'DELETE',
         //Enviamos el arreglo ar
         data: JSON.stringify(arr),

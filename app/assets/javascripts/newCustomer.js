@@ -268,13 +268,14 @@ var table = $("#TablaCliente").shieldGrid({
     //Guardar elementos en DataBase
      function GuardarCustomer() {        
       //Capturar datos del formulario
+      var idCustomer = document.getElementById("txtCedula").value;
       var Nombre = document.getElementById("txtNombre").value;
       var Apellido = document.getElementById("txtApellido").value;
+      var Direccion = document.getElementById("txtDireccion").value;
       var Cedula = document.getElementById("txtCedula").value;
-      var Pais = document.getElementById("cmbPais").value;
-      var Estado = document.getElementById("cmbEstado").value;
       var Ciudad = document.getElementById("cmbCiudad").value;
       var Email = document.getElementById("txtEmail").value;
+      var Sexo = document.getElementById("cmbSexo").value;
       var Telefono = document.getElementById("txtTelefono").value;
       var TelefonoCelular = document.getElementById("txtTelefonoCelular").value;
       var FechaNacimiento = document.getElementById("txtFechaNacimiento").value;
@@ -284,9 +285,9 @@ var table = $("#TablaCliente").shieldGrid({
       var Estatus = 1;
 
       //Agregamos los datos capturados a un arreglo => arr
-      var arr = { Nombre:Nombre,Apellido:Apellido,Cedula:Cedula,Pais:Pais,Estado:Estado,Ciudad:Ciudad,Email:Email,
-                  Telefono:Telefono, TelefonoCelular:TelefonoCelular, FechaNacimiento:FechaNacimiento, TipoCliente:TipoCliente,
-                  SitioWeb:SitioWeb, FotoPerfil:FotoPerfil, Estatus:Estatus};
+      var arr = { id:idCustomer,name:Nombre,last_name:Apellido, address:Direccion,city:Ciudad,email:Email,
+                  phone:Telefono, celular:TelefonoCelular,birthdate:FechaNacimiento,sex:Sexo,
+                  customertype:TipoCliente,website:SitioWeb, image:FotoPerfil, status:Estatus};
       //Evento ajax para enviar los datos
       $.ajax({
         //Ruta para enviar el servicio
@@ -320,13 +321,14 @@ var table = $("#TablaCliente").shieldGrid({
 
     function ModificarCustomer() {        
 
+      var idCustomer = document.getElementById("txtCedula").value;
       var Nombre = document.getElementById("txtNombre").value;
       var Apellido = document.getElementById("txtApellido").value;
+      var Direccion = document.getElementById("txtDireccion").value;
       var Cedula = document.getElementById("txtCedula").value;
-      var Pais = document.getElementById("cmbPais").value;
-      var Estado = document.getElementById("cmbEstado").value;
       var Ciudad = document.getElementById("cmbCiudad").value;
       var Email = document.getElementById("txtEmail").value;
+      var Sexo = document.getElementById("cmbSexo").value;
       var Telefono = document.getElementById("txtTelefono").value;
       var TelefonoCelular = document.getElementById("txtTelefonoCelular").value;
       var FechaNacimiento = document.getElementById("txtFechaNacimiento").value;
@@ -336,9 +338,9 @@ var table = $("#TablaCliente").shieldGrid({
       var Estatus = 1;
 
       //Agregamos los datos capturados a un arreglo => arr
-      var arr = { Nombre:Nombre,Apellido:Apellido,Cedula:Cedula,Pais:Pais,Estado:Estado,Ciudad:Ciudad,Email:Email,
-                  Telefono:Telefono, TelefonoCelular:TelefonoCelular, FechaNacimiento:FechaNacimiento, TipoCliente:TipoCliente,
-                  SitioWeb:SitioWeb, FotoPerfil:FotoPerfil, Estatus:Estatus};
+      var arr = { id:idCustomer,name:Nombre,last_name:Apellido, address:Direccion,city:Ciudad,email:Email,
+                  phone:Telefono, celular:TelefonoCelular,birthdate:FechaNacimiento,sex:Sexo,
+                  customertype:TipoCliente,website:SitioWeb, image:FotoPerfil, status:Estatus};
       //Evento ajax para enviar los datos
       $.ajax({
         //Ruta para enviar el servicio
@@ -371,30 +373,16 @@ var table = $("#TablaCliente").shieldGrid({
 
     function EliminarCustomer() {        
 
-      var Nombre = document.getElementById("txtNombre").value;
-      var Apellido = document.getElementById("txtApellido").value;
-      var Cedula = document.getElementById("txtCedula").value;
-      var Pais = document.getElementById("cmbPais").value;
-      var Estado = document.getElementById("cmbEstado").value;
-      var Ciudad = document.getElementById("cmbCiudad").value;
-      var Email = document.getElementById("txtEmail").value;
-      var Telefono = document.getElementById("txtTelefono").value;
-      var TelefonoCelular = document.getElementById("txtTelefonoCelular").value;
-      var FechaNacimiento = document.getElementById("txtFechaNacimiento").value;
-      var TipoCliente = document.getElementById("cmbTipoCliente").value;
-      var SitioWeb = document.getElementById("txtSitioWeb").value;
-      var FotoPerfil = document.getElementById("txtFotoPerfil").value;
+      var idCustomer = document.getElementById("txtCedula").value;
       var Estatus = 0;
 
       //Agregamos los datos capturados a un arreglo => arr
-      var arr = { Nombre:Nombre,Apellido:Apellido,Cedula:Cedula,Pais:Pais,Estado:Estado,Ciudad:Ciudad,Email:Email,
-                  Telefono:Telefono, TelefonoCelular:TelefonoCelular, FechaNacimiento:FechaNacimiento, TipoCliente:TipoCliente,
-                  SitioWeb:SitioWeb, FotoPerfil:FotoPerfil, Estatus:Estatus};
+      var arr = { id:idCustomer, status:Estatus};
       
       //Evento ajax para enviar los datos
       $.ajax({
         //Ruta para enviar el servicio
-        url: 'http://localhost:3000/api/v1/customers',
+        url: 'http://localhost:3000/api/v1/customers/+id',
         type: 'DELETE',
         //Enviamos el arreglo ar
         data: JSON.stringify(arr),

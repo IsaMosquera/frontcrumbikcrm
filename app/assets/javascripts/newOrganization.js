@@ -268,6 +268,7 @@ var table = $("#TablaNewOrganization").shieldGrid({
     //Guardar elementos en DataBase
      function GuardarFuncion() {        
       //Capturar datos del formulario
+      var IdOrganization = document.getElementById("txtIdOrganization").value;
       var Nombre = document.getElementById("txtNombre").value;
       var Correo = document.getElementById("txtCorreo").value;
       var Slogan = document.getElementById("txtSlogan").value;
@@ -283,7 +284,9 @@ var table = $("#TablaNewOrganization").shieldGrid({
 
 
       //Agregamos los datos capturados a un arreglo => arr
-      var arr = { Nombre:Nombre,Correo:Correo,Slogan:Slogan,Logo:Logo,Mision:Mision, Vision:Vision, Subdominio:Subdominio, Direccion:Direccion, Telefono1:Telefono1, Telefono2:Telefono2, Status:Status };
+      var arr = { id:IdOrganization, name:Nombre,email:Correo,slogan:Slogan,logo:Logo,
+                  mission:Mision, view:Vision, subdomain:Subdominio, address:Direccion, 
+                  phone_number:Telefono1, phone_number_two:Telefono2, status:Status };
       //Evento ajax para enviar los datos
       $.ajax({
         //Ruta para enviar el servicio
@@ -318,6 +321,7 @@ var table = $("#TablaNewOrganization").shieldGrid({
     function ModificarFuncion() {        
 
        //Capturar datos del formulario
+       var IdOrganization = document.getElementById("txtIdOrganization").value;
       var Nombre = document.getElementById("txtNombre").value;
       var Correo = document.getElementById("txtCorreo").value;
       var Slogan = document.getElementById("txtSlogan").value;
@@ -333,7 +337,9 @@ var table = $("#TablaNewOrganization").shieldGrid({
 
 
       //Agregamos los datos capturados a un arreglo => arr
-      var arr = { Nombre:Nombre,Correo:Correo,Slogan:Slogan,Logo:Logo,Mision:Mision, Vision:Vision, Subdominio:Subdominio, Direccion:Direccion, Telefono1:Telefono1, Telefono2:Telefono2, Status:Status };
+      var arr = { id:IdOrganization, name:Nombre,email:Correo,slogan:Slogan,logo:Logo,
+                  mission:Mision, view:Vision, subdomain:Subdominio, address:Direccion, 
+                  phone_number:Telefono1, phone_number_two:Telefono2, status:Status };
       //Evento ajax para enviar los datos
       $.ajax({
         //Ruta para enviar el servicio
@@ -367,27 +373,17 @@ var table = $("#TablaNewOrganization").shieldGrid({
     function EliminarFuncion() {        
 
       //Capturar datos del formulario
-      var Nombre = document.getElementById("txtNombre").value;
-      var Correo = document.getElementById("txtCorreo").value;
-      var Slogan = document.getElementById("txtSlogan").value;
-      var Logo = document.getElementById("txtFoto").value;
-      var Mision = document.getElementById("txtMision").value;
-      var Vision = document.getElementById("txtVision").value; 
-      var Subdominio= document.getElementById("txtSubdominio").value; 
-      var Direccion = document.getElementById("txtDireccion").value;    
-      var Telefono1 = document.getElementById("txtTelefono1").value;
-      var Telefono2 = document.getElementById("txtTelefono2").value;
-      var Status = 0;
+     var IdOrganization = document.getElementById("txtIdOrganization").value;
+     var Status = 0;
       
 
 
       //Agregamos los datos capturados a un arreglo => arr
-      var arr = { Nombre:Nombre,Correo:Correo,Slogan:Slogan,Logo:Logo,Mision:Mision, Vision:Vision, Subdominio:Subdominio, Direccion:Direccion, Telefono1:Telefono1, Telefono2:Telefono2, Status:Status };
-      
+      var arr = { id:IdOrganization, status:Status };     
       //Evento ajax para enviar los datos
       $.ajax({
         //Ruta para enviar el servicio
-        url: 'http://localhost:5414/api/v1/Funcion/10',
+        url: 'http://localhost:3000/api/v1/organizations/+id',
         type: 'DELETE',
         //Enviamos el arreglo ar
         data: JSON.stringify(arr),

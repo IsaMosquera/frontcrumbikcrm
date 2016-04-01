@@ -129,20 +129,20 @@ var table = $("#TablaCiudad").shieldGrid({
                 },
                 schema: {
                     fields: {
-                        id_city: { path: "id", type: Number },
+                        id: { path: "id", type: Number },
                         description: { path: "description", type: String },
-                        id_state: { path: "state.description", type: String },
-                        id_country: { path: "id_country", type: String},
+                        state: { path: "state", type: String },
+                        country: { path: "country", type: String},
                     }
                 }
             },
             sorting: true,
             rowHover: false,
             columns: [
-                { field: "id_city", title: "Código", width: "120px" },
+                { field: "id", title: "Código", width: "120px" },
                 { field: "description", title: "Ciudad", width: "80px" },
-                { field: "id_state", title: "Estado", width: "80px" },
-                { field: "id_country", title: "País", width: "80px" },
+                { field: "state", title: "Estado", width: "80px" },
+                { field: "country", title: "País", width: "80px" },
                 {
                     width: 140,
                     title: " ",
@@ -239,15 +239,15 @@ var table = $("#TablaCiudad").shieldGrid({
      function GuardarCity() {        
       //Capturar datos del formulario
 
+      var IdCiudad = document.getElementById("txtIdCiudad").value;
       var Pais = document.getElementById("cmbPais").value;
       var Estado =  document.getElementById("cmbEstado").value;
       var Ciudad =  document.getElementById("txtCiudad").value;
-      var IdCiudad = document.getElementById("txtIdCiudad").value;
       var Estatus = 1;
 
 
       //Agregamos los datos capturados a un arreglo => arr
-      var arr = { IdCiudad:IdCiudad,Pais:Pais,Estado:Estado,Ciudad:Ciudad,Estatus:Estatus };
+      var arr = { IdCiudad:id,country:Pais,state:Estado,description:Ciudad,status:Estatus };
       //Evento ajax para enviar los datos
       $.ajax({
         //Ruta para enviar el servicio
@@ -281,14 +281,15 @@ var table = $("#TablaCiudad").shieldGrid({
 
     function ModificarCity() {        
 
+      var IdCiudad = document.getElementById("txtIdCiudad").value;
       var Pais = document.getElementById("cmbPais").value;
       var Estado =  document.getElementById("cmbEstado").value;
       var Ciudad =  document.getElementById("txtCiudad").value;
-      var IdCiudad = document.getElementById("txtIdCiudad").value;
       var Estatus = 1;
 
+
       //Agregamos los datos capturados a un arreglo => arr
-      var arr = { IdCiudad:IdCiudad,Pais:Pais,Estado:Estado,Ciudad:Ciudad,Estatus:Estatus };
+      var arr = { IdCiudad:id,country:Pais,state:Estado,description:Ciudad,status:Estatus };
       
       //Evento ajax para enviar los datos
       $.ajax({
@@ -322,20 +323,17 @@ var table = $("#TablaCiudad").shieldGrid({
 
     function EliminarCity() {        
 
-      var Pais = document.getElementById("cmbPais").value;
-      var Estado =  document.getElementById("cmbEstado").value;
-      var Ciudad =  document.getElementById("txtCiudad").value;
       var IdCiudad = document.getElementById("txtIdCiudad").value;
       var Estatus = 0;
 
 
       //Agregamos los datos capturados a un arreglo => arr
-      var arr = { IdCiudad:IdCiudad,Pais:Pais,Estado:Estado,Ciudad:Ciudad,Estatus:Estatus };
+      var arr = { IdCiudad:id,status:Estatus };
       
       //Evento ajax para enviar los datos
       $.ajax({
         //Ruta para enviar el servicio
-        url: 'http://localhost:3000/api/v1/cities',
+        url: 'http://localhost:3000/api/v1/cities/+id',
         type: 'DELETE',
         //Enviamos el arreglo ar
         data: JSON.stringify(arr),

@@ -13,7 +13,8 @@ CargarTabla();
         Nombre: "required",
         Descripcion: "required",     
         Cantidad: "required",
-        Precio: "required",   
+        Precio: "required",  
+        FotoProducto: "required", 
  
 
         
@@ -25,6 +26,7 @@ CargarTabla();
         Descripcion: "Debes escribir una Descripcion",
         Cantidad: "Debes escribir una cantidad",
         Precio: "Debes escribir un precio",   
+        FotoProducto: "Debe seleccionar una imagen para el Producto",
  
         
 
@@ -137,9 +139,8 @@ var table = $("#TablaNewProduct").shieldGrid({
                         description: { path: "desccription", type: String },
                         image: { path: "image", type: String },
                         quantity: { path: "quantity", type: Number },
-                        organization: { path: "organization.name", type: Number },
+                        organization: { path: "organization.name", type: String},
                         price: { path: "price", type: Number },
-                        status: { path: "status", type: Number }
                     }
                 }
             },
@@ -233,29 +234,35 @@ var table = $("#TablaNewProduct").shieldGrid({
     function WriteResponse(data) {        
 
             $.each(data, function (index, data) {                        
-              alert(data.Idn),
+              alert(data.idProducto),
               alert(data.Nombre)
               alert(data.Descripcion)
               alert(data.Cantidad)
               alert(data.Precio)
+              alert(data.FotoProducto)
+              alert(data.Organizacion)
             });
     }
 
     //Guardar elementos en DataBase
      function GuardarFuncion() {        
       //Capturar datos del formulario
+      var idProducto = document.getElementById("txtIdProducto").value;
       var Nombre = document.getElementById("txtNombre").value;
       var Descripcion = document.getElementById("txtDescripcion").value;
       var Cantidad = document.getElementById("txtCantidad").value;
       var Precio = document.getElementById("txtPrecio").value;
+      var FotoProducto = document.getElementById("txtFotoProducto").value;
       var Organizacion = document.getElementById("cmbOrganizacion").value;
+      var Estatus = 1;
       
       //Agregamos los datos capturados a un arreglo => arr
-      var arr = { Nombre:Nombre,Descripcion:Descripcion,Cantidad:Cantidad,Precio:Precio,Organizacion:Organizacion};
+      var arr = { id:idProducto, name:Nombre,description:Descripcion, image:FotoProducto, quantity:Cantidad,
+                  organizacion:Organizacion, price:Precio, status:Estatus};
       //Evento ajax para enviar los datos
       $.ajax({
         //Ruta para enviar el servicio
-        url: 'http://localhost:5414/api/v1/Funcion',
+        url: 'http://localhost:3000/api/v1/products',
         type: 'POST',
         //Enviamos el arreglo ar
         data: JSON.stringify(arr),
@@ -285,21 +292,22 @@ var table = $("#TablaNewProduct").shieldGrid({
 
     function ModificarFuncion() {        
 
+      var idProducto = document.getElementById("txtIdProducto").value;
       var Nombre = document.getElementById("txtNombre").value;
       var Descripcion = document.getElementById("txtDescripcion").value;
       var Cantidad = document.getElementById("txtCantidad").value;
       var Precio = document.getElementById("txtPrecio").value;
+      var FotoProducto = document.getElementById("txtFotoProducto").value;
       var Organizacion = document.getElementById("cmbOrganizacion").value;
-      var Idn = document.getElementById("txtIdn").value;
+      var Estatus = 1;
       
-
       //Agregamos los datos capturados a un arreglo => arr
-      var arr = { Idn:Idn,Nombre:Nombre,Descripcion:Descripcion, Cantidad:Cantidad, Precio:Precio, Organizacion:Organizacion};
-      
+      var arr = { id:idProducto, name:Nombre,description:Descripcion, image:FotoProducto, quantity:Cantidad,
+                  organizacion:Organizacion, price:Precio, status:Estatus};
       //Evento ajax para enviar los datos
       $.ajax({
         //Ruta para enviar el servicio
-        url: 'http://localhost:5414/api/v1/Funcion/',
+        url: 'http://localhost:3000/api/v1/products',
         type: 'PUT',
         //Enviamos el arreglo ar
         data: JSON.stringify(arr),
@@ -328,21 +336,16 @@ var table = $("#TablaNewProduct").shieldGrid({
 
     function EliminarFuncion() {        
 
-      var Nombre = document.getElementById("txtNombre").value;
-      var Descripcion = document.getElementById("txtDescripcion").value;
-      var Cantidad = document.getElementById("txtCantidad").value;
-      var Precio = document.getElementById("txtPrecio").value;
-      var Organizacion = document.getElementById("cmbOrganizacion").value;
-      var Idn = document.getElementById("txtIdn").value;
+      var idProducto = document.getElementById("txtIdProducto").value;
+      var Estatus = 0;
       
-
       //Agregamos los datos capturados a un arreglo => arr
-      var arr = { Idn:Idn,Nombre:Nombre,Descripcion:Descripcion, Cantidad:Cantidad, Precio:Precio, Organizacion:Organizacion};
+      var arr = { id:idProducto, status:Estatus};
       
       //Evento ajax para enviar los datos
       $.ajax({
         //Ruta para enviar el servicio
-        url: 'http://localhost:5414/api/v1/Funcion/10',
+        url: 'http://localhost:3000/api/v1/products/+id',
         type: 'DELETE',
         //Enviamos el arreglo ar
         data: JSON.stringify(arr),

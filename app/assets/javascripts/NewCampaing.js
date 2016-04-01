@@ -140,17 +140,20 @@ var table = $("#TablaCampaing").shieldGrid({
                 },
                 schema: {
                     fields: {
+                        id : { path: "id", type: String },
                         name: { path: "name", type: String },
                         startdate: { path: "startdate", type: Date },
                         enddate: { path: "enddate", type: Date },
                         description: { path: "description", type: String },
-                        customertypes_id: { path: "customertypes_id", type: String },
+                        customertype: { path: "customertype", type: String },
                         startage: { path: "startage", type: Number },
                         endage: { path: "endage", type: Number },
                         sex: { path: "sex", type: String },
                         image: { path: "image", type: String },
-                        activitietypes_id: { path: "activitietypes_id", type: String },
-                        operators_id: { path: "operators_id", type: String },
+                        activitietype: { path: "activitietype", type: String },
+                        operator: { path: "operator", type: String },
+
+      //Evento ajax para enviar los datos
                         
                     }
                 }
@@ -158,16 +161,17 @@ var table = $("#TablaCampaing").shieldGrid({
             sorting: true,
             rowHover: false,
             columns: [
+                { field: "id", title: "Código" },
                 { field: "name", title: "Nombre de la campaña" },
                 { field: "startdate", title: "Fecha de Inicio"},
                 { field: "enddate", title:  "Fecha de finalizacion"},
                 { field: "description", title: "Tipo de Camapaña Publicitaria" },
-                { field: "customertypes_id", title: "Clientes Tipo" },
+                { field: "customertype", title: "Tipo de Cliente" },
                 { field: "startage", title: "Edad Inicial" },
                 { field: "endage", title: "Edad Final" },
                 { field: "sex", title: "Orientada al Sexo" },
                 { field: "image", title: "Imagen" },
-                { field: "activitietypes_id", title: "Actividad" },
+                { field: "activitietype", title: "Actividad" },
                 {
                     width: 140,
                     title: " ",
@@ -259,14 +263,13 @@ var table = $("#TablaCampaing").shieldGrid({
               alert(data.Operador)
               alert(data.Flayer)
               alert(data.TipoActividad)
-
             });
     }
 
     //Guardar elementos en DataBase
      function GuardarCampaing() {        
       //Capturar datos del formulario
-      var id = document.getElementById('txtId').value;
+      var idCampana = document.getElementById('txtId').value;
       var Nombre = document.getElementById("txtNombre").value;
       var FechaInicio = document.getElementById("txtFechaInicio").value;
       var FechaFinal = document.getElementById('txtFechaFinal').value;
@@ -277,12 +280,13 @@ var table = $("#TablaCampaing").shieldGrid({
       var Sexo= document.getElementById('cmbSexo').value;
       var Flayer= document.getElementById('txtFlayer').value;
       var TipoActividad= document.getElementById('cmbTipoActividad').value;
+      var Operador = document.getElementById("cmbOperador").value;
       var estatus= 1;
       
       //Agregamos los datos capturados a un arreglo => arr
-         var arr = { id:id, Nombre:Nombre,FechaInicio:FechaInicio,FechaFinal:FechaFinal,Descripcion:Descripcion, 
-                     TipoCliente:TipoCliente,EdadInicio:EdadInicio,EdadFinal:EdadFinal,Sexo:Sexo, Flayer:Flayer,
-                     TipoActividad:TipoActividad,Estatus:Estatus};
+         var arr = { idCampana:id,name:Nombre,startdate:FechaInicio,enddate:FechaFinal,description:Descripcion, 
+                     customertype:TipoCliente,startage:EdadInicio,endage:EdadFinal,sex:Sexo, image:Flayer,
+                     operator:Operador,activitietype:TipoActividad,status:Estatus};
       //Evento ajax para enviar los datos
       $.ajax({
         //Ruta para enviar el servicio
@@ -316,7 +320,7 @@ var table = $("#TablaCampaing").shieldGrid({
 
     function ModificarCampaingn() {   
 
-      var id = document.getElementById('txtId').value;
+     var idCampana = document.getElementById('txtId').value;
       var Nombre = document.getElementById("txtNombre").value;
       var FechaInicio = document.getElementById("txtFechaInicio").value;
       var FechaFinal = document.getElementById('txtFechaFinal').value;
@@ -327,12 +331,13 @@ var table = $("#TablaCampaing").shieldGrid({
       var Sexo= document.getElementById('cmbSexo').value;
       var Flayer= document.getElementById('txtFlayer').value;
       var TipoActividad= document.getElementById('cmbTipoActividad').value;
+      var Operador = document.getElementById("cmbOperador").value;
       var estatus= 1;
       
       //Agregamos los datos capturados a un arreglo => arr
-         var arr = { id:id, Nombre:Nombre,FechaInicio:FechaInicio,FechaFinal:FechaFinal,Descripcion:Descripcion, 
-                     TipoCliente:TipoCliente,EdadInicio:EdadInicio,EdadFinal:EdadFinal,Sexo:Sexo, Flayer:Flayer,
-                     TipoActividad:TipoActividad,Estatus:Estatus};
+         var arr = { idCampana:id,name:Nombre,startdate:FechaInicio,enddate:FechaFinal,description:Descripcion, 
+                     customertype:TipoCliente,startage:EdadInicio,endage:EdadFinal,sex:Sexo, image:Flayer,
+                     operator:Operador,activitietype:TipoActividad,status:Estatus};
       //Evento ajax para enviar los datos
       //Evento ajax para enviar los datos
       $.ajax({
@@ -366,29 +371,17 @@ var table = $("#TablaCampaing").shieldGrid({
 
     function EliminarCampaing() {      
       
-      var id = document.getElementById('txtId').value;
-      var Nombre = document.getElementById("txtNombre").value;
-      var FechaInicio = document.getElementById("txtFechaInicio").value;
-      var FechaFinal = document.getElementById('txtFechaFinal').value;
-      var Descripcion= document.getElementById('txtDescripcion').value;
-      var TipoCliente= document.getElementById('cmbTipoCliente').value;
-      var EdadInicio= document.getElementById('txtEdadIinicio').value;
-      var EdadFinal= document.getElementById('txtEdadFinal').value;
-      var Sexo= document.getElementById('cmbSexo').value;
-      var Flayer= document.getElementById('txtFlayer').value;
-      var TipoActividad= document.getElementById('cmbTipoActividad').value;
+      var idCampana = document.getElementById('txtId').value;
       var estatus= 0;
       
       //Agregamos los datos capturados a un arreglo => arr
-     var arr = { id:id, Nombre:Nombre,FechaInicio:FechaInicio,FechaFinal:FechaFinal,Descripcion:Descripcion, 
-                 TipoCliente:TipoCliente,EdadInicio:EdadInicio,EdadFinal:EdadFinal,Sexo:Sexo, Flayer:Flayer,
-                 TipoActividad:TipoActividad,Estatus:Estatus};
+         var arr = { idCampana:id,status:Estatus};
       //Evento ajax para enviar los datos
       
       //Evento ajax para enviar los datos
       $.ajax({
         //Ruta para enviar el servicio
-        url: 'http://localhost:5414/api/v1/campaings',
+        url: 'localhost:3000/api/v1/advertcampains/+id',
         type: 'DELETE',
         //Enviamos el arreglo ar
         data: JSON.stringify(arr),
@@ -514,7 +507,7 @@ function validarSalida(){
     {
        jQuery.support.cors = true;
         $.ajax({
-            url: 'http://localhost:5414/api/v1/Roles',
+            url: 'http://localhost:3000/api/v1/advertcampains',
             type: 'GET',
             dataType: 'json',            
             success: function (data) {                

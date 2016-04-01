@@ -229,13 +229,14 @@ var table = $("#TablaListadoRol").shieldGrid({
     //Guardar elementos en DataBase
      function GuardarFuncion() {        
       //Capturar datos del formulario
+      var idRol = document.getElementById("txtIdRol").value;
       var Nombre = document.getElementById("txtNombre").value;
       var Status = 1;
       
 
 
       //Agregamos los datos capturados a un arreglo => arr
-      var arr = { Nombre:Nombre,Status:Status };
+      var arr = { id:idRol,name:Nombre,status:Status };
       //Evento ajax para enviar los datos
       $.ajax({
         //Ruta para enviar el servicio
@@ -270,13 +271,14 @@ var table = $("#TablaListadoRol").shieldGrid({
     function ModificarFuncion() {        
 
        //Capturar datos del formulario
+      var idRol = document.getElementById("txtIdRol").value;
       var Nombre = document.getElementById("txtNombre").value;
       var Status = 1;
       
 
 
       //Agregamos los datos capturados a un arreglo => arr
-      var arr = { Nombre:Nombre, Status:Status };
+      var arr = { id:idRol,name:Nombre,status:Status };
       //Evento ajax para enviar los datos
       $.ajax({
         //Ruta para enviar el servicio
@@ -310,18 +312,18 @@ var table = $("#TablaListadoRol").shieldGrid({
     function EliminarFuncion() {        
 
       //Capturar datos del formulario
-      var Nombre = document.getElementById("txtNombre").value;
+      var idRol = document.getElementById("txtIdRol").value;
       var Status = 0;
       
 
 
       //Agregamos los datos capturados a un arreglo => arr
-      var arr = { Nombre:Nombre, Status:Status };
+      var arr = { id:idRol,status:Status };
       
       //Evento ajax para enviar los datos
       $.ajax({
         //Ruta para enviar el servicio
-        url: 'http://localhost:3000/api/v1/rols',
+        url: 'http://localhost:3000/api/v1/rols/+id',
         type: 'DELETE',
         //Enviamos el arreglo ar
         data: JSON.stringify(arr),

@@ -256,7 +256,8 @@ var table = $("#TablaListadoService").shieldGrid({
 
       
       //Agregamos los datos capturados a un arreglo => arr
-      var arr = { Nombre:Nombre,Descripcion:Descripcion,Cantidad:Cantidad,Precio:Precio};
+      var arr = { id:idServicio,name:Nombre,description:Descripcion,image:Foto,
+                  quantity:Cantidad,price:Precio, organization:Organizacion};
       //Evento ajax para enviar los datos
       $.ajax({
         //Ruta para enviar el servicio

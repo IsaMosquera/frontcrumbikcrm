@@ -140,10 +140,8 @@ var table = $("#TablaNewContract").shieldGrid({
                         id: { path: "id", type: Number },
                         creation_date: { path: "creation_date", type: Date },
                         due_date: { path: "due_date", type: Date },
-                        organization_id: { path: "organization.name", type: Number },
-                        serviceplans_id: { path: "serviceplans.name", type: Number },
-                        status: { path: "status", type: Number }
-
+                        organization: { path: "organizatio", type: String },
+                        serviceplans: { path: "serviceplan", type: String },
                     }
                 }
             },
@@ -153,8 +151,8 @@ var table = $("#TablaNewContract").shieldGrid({
                 { field: "id", title: "Id"},
                 { field: "creation_date", title: "Fecha"},
                 { field: "due_date", title: "Vencimiento"},
-                { field: "organization_id", title: "Organizacion"},
-                { field: "serviceplans_id", title: "Servicio Contratado"},
+                { field: "organization", title: "Organizacion"},
+                { field: "serviceplan", title: "Servicio Contratado"},
                 {
                     width: 140,
                     title: " ",
@@ -257,7 +255,8 @@ var table = $("#TablaNewContract").shieldGrid({
 
 
       //Agregamos los datos capturados a un arreglo => arr
-      var arr = { Numero:Numero,Fecha_Creacion:Fecha_Creacion,Vencimiento:Vencimiento,Organizacion:Organizacion,Plan_Servicio:Plan_Servicio, Status:Status };
+      var arr = { Numero:id,creation_date:Fecha_Creacion,due_dateo:Vencimiento,
+                  organization:Organizacion,serviceplan:Plan_Servicio, status:Status };
       //Evento ajax para enviar los datos
       $.ajax({
         //Ruta para enviar el servicio
@@ -290,10 +289,9 @@ var table = $("#TablaNewContract").shieldGrid({
     }
 
     function ModificarFuncion() {        
-
-  
+ 
       //Capturar datos del formulario
-      var Numero = document.getElementById("txtNoContrato").value;
+       var Numero = document.getElementById("txtNoContrato").value;
       var Fecha_Creacion = document.getElementById("txtFecha").value;
       var Vencimiento = document.getElementById("txtVencimiento").value;
       var Organizacion = document.getElementById("cmbOrganizacion").value;
@@ -303,7 +301,8 @@ var table = $("#TablaNewContract").shieldGrid({
 
 
       //Agregamos los datos capturados a un arreglo => arr
-      var arr = { Numero:Numero,Fecha_Creacion:Fecha_Creacion,Vencimiento:Vencimiento,Organizacion:Organizacion,Plan_Servicio:Plan_Servicio, Status:Status };
+      var arr = { Numero:id,creation_date:Fecha_Creacion,due_dateo:Vencimiento,
+                  organization:Organizacion,serviceplan:Plan_Servicio, status:Status };
       //Evento ajax para enviar los datos
       $.ajax({
         //Ruta para enviar el servicio
@@ -336,24 +335,19 @@ var table = $("#TablaNewContract").shieldGrid({
 
     function EliminarFuncion() {        
 
- 
       //Capturar datos del formulario
       var Numero = document.getElementById("txtNoContrato").value;
-      var Fecha_Creacion = document.getElementById("txtFecha").value;
-      var Vencimiento = document.getElementById("txtVencimiento").value;
-      var Organizacion = document.getElementById("cmbOrganizacion").value;
-      var Plan_Servicio = document.getElementById("cmbPlanServicio").value;
       var Status = 0;
       
 
 
       //Agregamos los datos capturados a un arreglo => arr
-      var arr = { Numero:Numero,Fecha_Creacion:Fecha_Creacion,Vencimiento:Vencimiento,Organizacion:Organizacion,Plan_Servicio:Plan_Servicio, Status:Status };
+      var arr = { id:Numero,status:Status };
       
       //Evento ajax para enviar los datos
       $.ajax({
         //Ruta para enviar el servicio
-        url: 'http://localhost:3000/api/v1/contracts/10',
+        url: 'http://localhost:3000/api/v1/contracts/+id',
         type: 'DELETE',
         //Enviamos el arreglo ar
         data: JSON.stringify(arr),

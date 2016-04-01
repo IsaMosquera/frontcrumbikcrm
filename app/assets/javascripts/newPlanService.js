@@ -238,12 +238,14 @@ var table = $("#TablaNewPlanService").shieldGrid({
     //Guardar elementos en DataBase
      function GuardarFuncion() {        
       //Capturar datos del formulario
+      var idServicio = document.getElementById("txtIdServicio").value;
       var Nombre = document.getElementById("txtNombre").value;
       var Descripcion = document.getElementById("txtDescripcion").value;
       var Precio = document.getElementById("txtPrecio").value;
+      var Estatus = 1;
 
       //Agregamos los datos capturados a un arreglo => arr
-      var arr = { Nombre:Nombre,Descripcion:Descripcion, Precio:Precio };
+      var arr = { id:idServicio, name:Nombre,description:Descripcion, cost:Precio, status:Estatus };
       //Evento ajax para enviar los datos
       $.ajax({
         //Ruta para enviar el servicio
@@ -277,13 +279,14 @@ var table = $("#TablaNewPlanService").shieldGrid({
 
     function ModificarFuncion() {        
 
+       var idServicio = document.getElementById("txtIdServicio").value;
       var Nombre = document.getElementById("txtNombre").value;
       var Descripcion = document.getElementById("txtDescripcion").value;
       var Precio = document.getElementById("txtPrecio").value;
-      var Idn = document.getElementById("txtIdn").value;
+      var Estatus = 1;
 
       //Agregamos los datos capturados a un arreglo => arr
-      var arr = { Idn:Idn,Nombre:Nombre,Descripcion:Descripcion, Precio:Precio };
+      var arr = { id:idServicio, name:Nombre,description:Descripcion, cost:Precio, status:Estatus };
       
       //Evento ajax para enviar los datos
       $.ajax({
@@ -317,19 +320,17 @@ var table = $("#TablaNewPlanService").shieldGrid({
 
     function EliminarFuncion() {        
 
-      var Nombre = document.getElementById("txtNombre").value;
-      var Descripcion = document.getElementById("txtDescripcion").value;
-      var Precio = document.getElementById("txtPrecio").value;
-      var Idn = document.getElementById("txtIdn").value;
+      var idServicio = document.getElementById("txtIdServicio").value;
+      var Estatus = 0;
 
       //Agregamos los datos capturados a un arreglo => arr
-      var arr = { Idn:Idn, Nombre:Nombre,Descripcion:Descripcion, Precio:Precio };
+      var arr = { id:idServicio, status:Estatus };
 
       
       //Evento ajax para enviar los datos
       $.ajax({
         //Ruta para enviar el servicio
-        url: 'http://localhost:3000/api/v1/serviceplans/10',
+        url: 'http://localhost:3000/api/v1/serviceplans/+id',
         type: 'DELETE',
         //Enviamos el arreglo ar
         data: JSON.stringify(arr),
