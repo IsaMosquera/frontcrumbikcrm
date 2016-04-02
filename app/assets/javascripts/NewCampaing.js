@@ -309,9 +309,9 @@ var table = $("#TablaCampaing").shieldGrid({
           });
            // e.preventDefault();
           //Actualiza la datatable automáticamente
-          var table = $('#TablaCampaing').dataTable();
+         // var table = $('#TablaCampaing').dataTable();
                       // Example call to reload from original file
-                      table.fnReloadAjax();
+                    //  table.fnReloadAjax();
                     },
         //Si algo falla en el API indica
         error: function() {
@@ -605,7 +605,7 @@ function validarSalida(){
                   listItems+="<option value='" + data[i].id+"'>" + data[i].descripcion + "</option>";
 
                 }
-                $("#cmbActividad").html(listItems);
+                $("#cmbTipoActividad").html(listItems);
             },
             error: function (x, y, z) {
                 alert(x + '\n' + y + '\n' + z);

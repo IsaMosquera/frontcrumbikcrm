@@ -186,12 +186,6 @@
 </div>
 
 
-<script>
-  $("#menu-toggle").click(function(e) {
-      e.preventDefault();
-      $("#wrapper").toggleClass("toggled");
-  });
-  </script>
 
  
 <%= javascript_include_tag "bootstrap.js" %>
@@ -219,3 +213,10 @@
     color:green;
 }
 </style>
+
+<script>
+  $("#menu-toggle").click(function(e) {
+      e.preventDefault();
+      $("#wrapper").toggleClass("toggled");
+  });
+  </script>

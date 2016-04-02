@@ -101,12 +101,12 @@ var table = $("#TablaNewContract").shieldGrid({
                     },
                     modify: {
                         create: function (items, success, error) {
-                            var newItem = items[0];
+
                             $.ajax({
                                 type: "POST",
                                 url: "http://localhost:3000/api/v1/contracts",
                                 dataType: "json",
-                                data: newItem.data,
+                                data: rol.data,
                                 complete: function (xhr) {
                                     if (xhr.readyState == 4) {
                                         if (xhr.status == 201) {
@@ -249,6 +249,7 @@ var table = $("#TablaNewContract").shieldGrid({
      function GuardarFuncion() {     
    
       //Capturar datos del formulario
+
       var Fecha_Creacion = document.getElementById("txtFecha").value;
       var Vencimiento = document.getElementById("txtVencimiento").value;
       var Organizacion = document.getElementById("cmbOrganizacion").value;
@@ -258,7 +259,7 @@ var table = $("#TablaNewContract").shieldGrid({
 
 
       //Agregamos los datos capturados a un arreglo => arr
-      var contract = {creation_date:Fecha_Creacion,due_dateo:Vencimiento,
+      var contract = {creation_date:Fecha_Creacion,due_date:Vencimiento,
                   organization:Organizacion,serviceplan:Plan_Servicio, status:Status };
       //Evento ajax para enviar los datos
       $.ajax({
@@ -304,7 +305,7 @@ var table = $("#TablaNewContract").shieldGrid({
 
 
       //Agregamos los datos capturados a un arreglo => arr
-      var arr = { Numero:id,creation_date:Fecha_Creacion,due_dateo:Vencimiento,
+      var arr = { Numero:id,creation_date:Fecha_Creacion,due_date:Vencimiento,
                   organization:Organizacion,serviceplan:Plan_Servicio, status:Status };
       //Evento ajax para enviar los datos
       $.ajax({

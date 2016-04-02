@@ -90,12 +90,15 @@ var table = $("#TablaListadoRol").shieldGrid({
                     },
                     modify: {
                         create: function (items, success, error) {
-                            var newItem = items[0];
+                            var newItem = {rol:items[0].data};
+                           
+
                             $.ajax({
                                 type: "POST",
                                 url: "http://localhost:3000/api/v1/rols",
+                               
                                 dataType: "json",
-                                data: newItem.data,
+                                data: newItem,
                                 complete: function (xhr) {
                                     if (xhr.readyState == 4) {
                                         if (xhr.status == 201) {
@@ -112,18 +115,21 @@ var table = $("#TablaListadoRol").shieldGrid({
                             });
                         },
                         update: function (items, success, error) {
+                           var newItem = {rol:items[0].data};
+
                             $.ajax({
                                 type: "PUT",
-                                url: "http://localhost:3000/api/v1/rols/1" ,
+                                url: "http://localhost:3000/api/v1/rols/" + newItem.rol.id ,
                                 dataType: "json",
                                 contentType: "application/json",
                                 data: JSON.stringify(items[0].data)
                             }).then(success, error);
                         },
                         remove: function (items, success, error) {
+                          var newItem = {rol:items[0].data};
                             $.ajax({
                                 type: "DELETE",
-                                url: "http://localhost:3000/api/v1/rol" + items[0].data.Id
+                                url: "http://localhost:3000/api/v1/rols/"  + newItem.rol.id
                             }).then(success, error);
                         }
                     }
@@ -133,6 +139,7 @@ var table = $("#TablaListadoRol").shieldGrid({
                         id: { path: "id", type: Number },
                         name: { path: "name", type: String },
                         status: { path: "status", type: Number }
+                        
 
                     }
                 }
@@ -142,12 +149,13 @@ var table = $("#TablaListadoRol").shieldGrid({
             columns: [
                 { field: "id", title: "Id"},
                 { field: "name", title: "Nombre del Rol"},
+                  { field: "status", title: "Status"},
                 {
                     width: 140,
                     title: " ",
                     buttons: [
-                        { commandName: "edit", caption: "Edit" },
-                        { commandName: "delete", caption: "Delete" }
+                        { commandName: "edit", caption: "Editar" },
+                        { commandName: "delete", caption: "Eliminar" }
                     ]
                 }
             ],
@@ -161,7 +169,7 @@ var table = $("#TablaListadoRol").shieldGrid({
                 {
                     buttons: [
                         {
-                            caption: "Reset Book List",
+                            caption: "Resetear Lista",
                             click: function (e) {
                                 var grid = this;
                                 $.ajax({
@@ -252,9 +260,9 @@ var table = $("#TablaListadoRol").shieldGrid({
           });
            // e.preventDefault();
           //Actualiza la datatable automáticamente
-          var table = $('#TablaListadoRol').dataTable();
+          //var table = $('#TablaListadoRol').dataTable();
                       // Example call to reload from original file
-                      table.fnReloadAjax();
+            //          table.fnReloadAjax();
                     },
         //Si algo falla en el API indica
         error: function() {
