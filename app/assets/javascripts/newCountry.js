@@ -77,7 +77,7 @@ var table = $("#TablaPais").shieldGrid({
                 remote: {
                     read: {
                         type: "GET",
-                        url: "http://localhost:3000/api/v1/countries",
+                        url: "http://localhost:3000/api/v1/countrys",
                         dataType: "json"
                     },
                     modify: {
@@ -85,7 +85,7 @@ var table = $("#TablaPais").shieldGrid({
                             var newItem = items[0];
                             $.ajax({
                                 type: "POST",
-                                url: "http://localhost:3000/api/v1/countries",
+                                url: "http://localhost:3000/api/v1/countrys",
                                 dataType: "json",
                                 data: newItem.data,
                                 complete: function (xhr) {
@@ -106,7 +106,7 @@ var table = $("#TablaPais").shieldGrid({
                         update: function (items, success, error) {
                             $.ajax({
                                 type: "PUT",
-                                url: "http://localhost:3000/api/v1/countries" + items[0].data.Id,
+                                url: "http://localhost:3000/api/v1/countrys" + items[0].data.Id,
                                 dataType: "json",
                                 contentType: "application/json",
                                 data: JSON.stringify(items[0].data)
@@ -115,7 +115,7 @@ var table = $("#TablaPais").shieldGrid({
                         remove: function (items, success, error) {
                             $.ajax({
                                 type: "DELETE",
-                                url: "http://localhost:3000/api/v1/countries" + items[0].data.Id
+                                url: "http://localhost:3000/api/v1/countrys" + items[0].data.Id
                             }).then(success, error);
                         }
                     }
@@ -197,7 +197,7 @@ var table = $("#TablaPais").shieldGrid({
     function GetElementos() {
       jQuery.support.cors = true;
       $.ajax({
-        url: 'http://localhost:3000/api/v1/countries',
+        url: 'http://localhost:3000/api/v1/countrys',
         type: 'GET',
         dataType: 'json',            
         success: function (data) {                
@@ -227,20 +227,20 @@ var table = $("#TablaPais").shieldGrid({
      function GuardarCountry() {        
       //Capturar datos del formulario
 
-      var IdPais = document.getElementById("txtIdPais").value;
+
       var Pais =  document.getElementById("txtPais").value;
       var Estatus = 1;
 
 
-      //Agregamos los datos capturados a un arreglo => arr
-      var arr = { id:IdPais,description:Pais,status:Estatus };
+      //Agregamos los datos capturados a un arreglo => country
+      var country = { description:Pais,status:Estatus };
       //Evento ajax para enviar los datos
       $.ajax({
         //Ruta para enviar el servicio
-        url: 'http://localhost:3000/api/v1/countries',
+        url: 'http://localhost:3000/api/v1/countrys',
         type: 'POST',
         //Enviamos el arreglo ar
-        data: JSON.stringify(arr),
+        data: JSON.stringify(country),
         contentType: 'application/json; charset=utf-8',
         async: false,
         //Si todo funciona bien entra al sucess
@@ -273,7 +273,7 @@ var table = $("#TablaPais").shieldGrid({
 
 
       //Agregamos los datos capturados a un arreglo => arr
-      var arr = { id:IdPais,description:Pais,status:Estatus };
+      var country = { id:IdPais,description:Pais,status:Estatus };
       
       //Evento ajax para enviar los datos
       $.ajax({
@@ -281,7 +281,7 @@ var table = $("#TablaPais").shieldGrid({
         url: 'http://localhost:3000/api/v1/countries',
         type: 'PUT',
         //Enviamos el arreglo ar
-        data: JSON.stringify(arr),
+        data: JSON.stringify(country),
         contentType: 'application/json; charset=utf-8',
         async: false,
         //Si todo funciona bien entra al sucess
@@ -312,7 +312,7 @@ var table = $("#TablaPais").shieldGrid({
 
 
       //Agregamos los datos capturados a un arreglo => arr
-      var arr = { id:IdPais,status:Estatus };
+      var country = { id:IdPais,status:Estatus };
       
       //Evento ajax para enviar los datos
       $.ajax({
@@ -320,7 +320,7 @@ var table = $("#TablaPais").shieldGrid({
         url: 'http://localhost:3000/api/v1/countries/+id',
         type: 'DELETE',
         //Enviamos el arreglo ar
-        data: JSON.stringify(arr),
+        data: JSON.stringify(country),
         contentType: 'application/json; charset=utf-8',
         async: false,
         //Si todo funciona bien entra al sucess

@@ -261,14 +261,14 @@ var table = $("#TablaOperadores").shieldGrid({
       var Status = 1;
 
       //Agregamos los datos capturados a un arreglo => arr
-      var arr = { Tipo_Rol:Tipo_Rol,Nombre:Nombre,Apellido:Apellido,Sexo:Sexo,Fecha_Nac:Fecha_Nac,Ciudad:Ciudad,Organizacion:Organizacion,Username:Username };
+      var operator = { Tipo_Rol:Tipo_Rol,Nombre:Nombre,Apellido:Apellido,Sexo:Sexo,Fecha_Nac:Fecha_Nac,Ciudad:Ciudad,Organizacion:Organizacion,Username:Username };
       //Evento ajax para enviar los datos
       $.ajax({
         //Ruta para enviar el servicio
         url: 'http://localhost:3000/api/v1/operators',
         type: 'POST',
         //Enviamos el arreglo ar
-        data: JSON.stringify(arr),
+        data: JSON.stringify(operator),
         contentType: 'application/json; charset=utf-8',
         async: false,
         //Si todo funciona bien entra al sucess
@@ -307,11 +307,11 @@ var table = $("#TablaOperadores").shieldGrid({
       var Status = 1;
 
       //Agregamos los datos capturados a un arreglo => arr
-      var arr = { Tipo_Rol:Tipo_Rol,Nombre:Nombre,Apellido:Apellido,Sexo:Sexo,Fecha_Nac:Fecha_Nac,Ciudad:Ciudad,Organizacion:Organizacion,Username:Username };
+      var operator = { Tipo_Rol:Tipo_Rol,Nombre:Nombre,Apellido:Apellido,Sexo:Sexo,Fecha_Nac:Fecha_Nac,Ciudad:Ciudad,Organizacion:Organizacion,Username:Username };
       //Evento ajax para enviar los datos
       $.ajax({
         //Ruta para enviar el servicio
-        url: 'http://localhost:3000/api/v1/operators',
+        url: 'http://localhost:3000/api/v1/operator',
         type: 'PUT',
         //Enviamos el arreglo ar
         data: JSON.stringify(arr),

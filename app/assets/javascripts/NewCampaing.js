@@ -275,7 +275,7 @@ var table = $("#TablaCampaing").shieldGrid({
     //Guardar elementos en DataBase
      function GuardarCampaing() {        
       //Capturar datos del formulario
-      var idCampana = document.getElementById('txtId').value;
+
       var Nombre = document.getElementById("txtNombre").value;
       var FechaInicio = document.getElementById("txtFechaInicio").value;
       var FechaFinal = document.getElementById('txtFechaFinal').value;
@@ -290,7 +290,7 @@ var table = $("#TablaCampaing").shieldGrid({
       var estatus= 1;
       
       //Agregamos los datos capturados a un arreglo => arr
-         var arr = { idCampana:id,name:Nombre,startdate:FechaInicio,enddate:FechaFinal,description:Descripcion, 
+         var advertcampain = { name:Nombre,startdate:FechaInicio,enddate:FechaFinal,description:Descripcion, 
                      customertype:TipoCliente,startage:EdadInicio,endage:EdadFinal,sex:Sexo, image:Flayer,
                      operator:Operador,activitietype:TipoActividad,status:Estatus};
       //Evento ajax para enviar los datos
@@ -299,7 +299,7 @@ var table = $("#TablaCampaing").shieldGrid({
         url: 'http://localhost:3000/api/v1/advertcampains',
         type: 'POST',
         //Enviamos el arreglo ar
-        data: JSON.stringify(arr),
+        data: JSON.stringify(advertcampain),
         contentType: 'application/json; charset=utf-8',
         async: false,
         //Si todo funciona bien entra al sucess

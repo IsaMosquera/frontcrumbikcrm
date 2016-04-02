@@ -229,21 +229,20 @@ var table = $("#TablaListadoRol").shieldGrid({
     //Guardar elementos en DataBase
      function GuardarFuncion() {        
       //Capturar datos del formulario
-      var idRol = document.getElementById("txtIdRol").value;
       var Nombre = document.getElementById("txtNombre").value;
       var Status = 1;
       
 
 
       //Agregamos los datos capturados a un arreglo => arr
-      var arr = { id:idRol,name:Nombre,status:Status };
+      var rol = { name:Nombre,status:Status };
       //Evento ajax para enviar los datos
       $.ajax({
         //Ruta para enviar el servicio
         url: 'http://localhost:3000/api/v1/rols',
         type: 'POST',
         //Enviamos el arreglo ar
-        data: JSON.stringify(arr),
+        data: JSON.stringify(rol),
         contentType: 'application/json; charset=utf-8',
         async: false,
         //Si todo funciona bien entra al sucess

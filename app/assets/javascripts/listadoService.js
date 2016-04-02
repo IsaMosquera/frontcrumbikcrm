@@ -258,7 +258,7 @@ var table = $("#TablaListadoService").shieldGrid({
 
       
       //Agregamos los datos capturados a un arreglo => arr
-      var arr = { id:idServicio,name:Nombre,description:Descripcion,image:Foto,
+      var service = {name:Nombre,description:Descripcion,image:Foto,
                   quantity:Cantidad,price:Precio, organization:Organizacion};
       //Evento ajax para enviar los datos
       $.ajax({
@@ -266,7 +266,7 @@ var table = $("#TablaListadoService").shieldGrid({
         url: 'http://localhost:3000/api/v1/services',
         type: 'POST',
         //Enviamos el arreglo ar
-        data: JSON.stringify(arr),
+        data: JSON.stringify(service),
         contentType: 'application/json; charset=utf-8',
         async: false,
         //Si todo funciona bien entra al sucess
