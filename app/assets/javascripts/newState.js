@@ -6,6 +6,12 @@
 
 //Cargar DataTable
 CargarTabla();
+
+
+//Cargar Combobox
+cargarcomboPais();
+
+
 //Validar documento, configurar
  $("#form").validate({
   
@@ -439,4 +445,33 @@ function validarSalida(){
 
      
     }
+
+
+    // ===========C A R F G A R  C O M B O X ======================
+
+ function cargarcomboPais()
+    {
+       jQuery.support.cors = true;
+        $.ajax({
+            url: 'http://localhost:3000/api/v1/countrys',
+            type: 'GET',
+            dataType: 'json',            
+            success: function (data) {                
+
+
+               var listItems="";
+
+                for (var i=0; i< data.length; i++)
+                {
+                  listItems+="<option value='" + data[i].country_id+"'>" + data[i].description + "</option>";
+
+                }
+                $("#cmbPais").html(listItems);
+            },
+            error: function (x, y, z) {
+                alert(x + '\n' + y + '\n' + z);
+            }
+        }); 
+      } 
+
 //============FIN DE LAS FUNCIONES============

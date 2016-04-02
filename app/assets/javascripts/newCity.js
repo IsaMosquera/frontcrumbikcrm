@@ -5,6 +5,9 @@
    $(document).ready(function() {
 //Cargar DataTable
 CargarTabla();
+//Cargar Combobox
+cargarcomboPais();
+cargarcomboEstado();
 
 //Validar documento, configurar
  $("#form").validate({
@@ -89,7 +92,14 @@ var table = $("#TablaCiudad").shieldGrid({
                     },
                     modify: {
                         create: function (items, success, error) {
-                            var newItem = items[0];
+                                  var IdCiudad = document.getElementById("txtIdCiudad").value;
+                                  var Pais = document.getElementById("cmbPais").value;
+                                  var Estado =  document.getElementById("cmbEstado").value;
+                                  var Ciudad =  document.getElementById("txtCiudad").value;
+                                  var Estatus = 1;
+                        
+
+                            var newItem = [id+1, description, state, country];
                             $.ajax({
                                 type: "POST",
                                 url: "http://localhost:3000/api/v1/cities",
@@ -453,4 +463,57 @@ function validarSalida(){
 });
      
     }
+
+
+    // ===========C A R F G A R  C O M B O X ======================
+
+ function cargarcomboPais()
+    {
+       jQuery.support.cors = true;
+        $.ajax({
+            url: 'http://localhost:3000/api/v1/countrys',
+            type: 'GET',
+            dataType: 'json',            
+            success: function (data) {                
+
+
+               var listItems="";
+
+                for (var i=0; i< data.length; i++)
+                {
+                  listItems+="<option value='" + data[i].country_id+"'>" + data[i].description + "</option>";
+
+                }
+                $("#cmbPais").html(listItems);
+            },
+            error: function (x, y, z) {
+                alert(x + '\n' + y + '\n' + z);
+            }
+        }); 
+      } 
+
+   function cargarcomboEstado()
+    {
+       jQuery.support.cors = true;
+        $.ajax({
+            url: 'http://localhost:3000/api/v1/states',
+            type: 'GET',
+            dataType: 'json',            
+            success: function (data) {                
+
+
+               var listItems="";
+
+                for (var i=0; i< data.length; i++)
+                {
+                  listItems+="<option value='" + data[i].id+"'>" + data[i].description + "</option>";
+
+                }
+                $("#cmbEstado").html(listItems);
+            },
+            error: function (x, y, z) {
+                alert(x + '\n' + y + '\n' + z);
+            }
+        }); 
+      }
 //============FIN DE LAS FUNCIONES============

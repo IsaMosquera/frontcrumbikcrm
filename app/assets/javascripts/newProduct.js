@@ -4,6 +4,8 @@
    $(document).ready(function() {
 alert('Entrando');
 CargarTabla();
+//cARGAR COMBOBOX
+cargarComboOrganizacion();
 
 //Validar documento, configurar
  $("#form").validate({
@@ -465,4 +467,33 @@ function validarSalida(){
 });
      
     }
+
+    
+//CARGAR COMBOBOX
+
+
+ function cargarComboOrganizacion()
+    {
+       jQuery.support.cors = true;
+        $.ajax({
+            url: 'http://localhost:3000/api/v1/organizations',
+            type: 'GET',
+            dataType: 'json',            
+            success: function (data) {                
+
+
+               var listItems="";
+
+                for (var i=0; i< data.length; i++)
+                {
+                  listItems+="<option value='" + data[i].id+"'>" + data[i].name + "</option>";
+
+                }
+                $("#cmbOrganizacion").html(listItems);
+            },
+            error: function (x, y, z) {
+                alert(x + '\n' + y + '\n' + z);
+            }
+        }); 
+      } 
 //============FIN DE LAS FUNCIONES============

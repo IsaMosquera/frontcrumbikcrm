@@ -1,10 +1,10 @@
 
-
-
 //=======INICIO DE DOCUMENT READY==============
  //EVENTO CUANDO CARGA TODO EL DOCUMENTO
    $(document).ready(function() {
 
+//Cargar DataTable
+CargarTabla();
 
 //Validar documento, configurar
  $("#form").validate({
@@ -43,8 +43,7 @@ $('#Eliminar').on("click",function(e) {
 }); 
 
 
-//Cargar DataTable
-CargarTabla();
+
 
    
   });

@@ -6,6 +6,11 @@
 //Cargar DataTable
 CargarTabla();
 
+//Cargar combobox
+cargarComboPais();
+cargarComboEstado();
+cargarComboCiudad();
+cargarComboTipoCliente();
 //Validar documento, configurar
  $("#form").validate({
   
@@ -527,4 +532,108 @@ function validarSalida(){
 
     
     }
+
+    //CARGAR COMBOS
+
+function cargarComboPais()
+    {
+       jQuery.support.cors = true;
+        $.ajax({
+            url: 'http://localhost:3000/api/v1/countrys',
+            type: 'GET',
+            dataType: 'json',            
+            success: function (data) {                
+
+
+               var listItems="";
+
+                for (var i=0; i< data.length; i++)
+                {
+                  listItems+="<option value='" + data[i].country_id+"'>" + data[i].description + "</option>";
+
+                }
+                $("#cmbPais").html(listItems);
+            },
+            error: function (x, y, z) {
+                alert(x + '\n' + y + '\n' + z);
+            }
+        }); 
+      } 
+
+   function cargarComboEstado()
+    {
+       jQuery.support.cors = true;
+        $.ajax({
+            url: 'http://localhost:3000/api/v1/states',
+            type: 'GET',
+            dataType: 'json',            
+            success: function (data) {                
+
+
+               var listItems="";
+
+                for (var i=0; i< data.length; i++)
+                {
+                  listItems+="<option value='" + data[i].id+"'>" + data[i].description + "</option>";
+
+                }
+                $("#cmbEstado").html(listItems);
+            },
+            error: function (x, y, z) {
+                alert(x + '\n' + y + '\n' + z);
+            }
+        }); 
+      }
+
+function cargarComboCiudad()
+    {
+       jQuery.support.cors = true;
+        $.ajax({
+            url: 'http://localhost:3000/api/v1/cities',
+            type: 'GET',
+            dataType: 'json',            
+            success: function (data) {                
+
+
+               var listItems="";
+
+                for (var i=0; i< data.length; i++)
+                {
+                  listItems+="<option value='" + data[i].id+"'>" + data[i].description + "</option>";
+
+                }
+                $("#cmbCiudad").html(listItems);
+            },
+            error: function (x, y, z) {
+                alert(x + '\n' + y + '\n' + z);
+            }
+        }); 
+      } 
+
+
+
+function cargarComboTipoCliente()
+    {
+       jQuery.support.cors = true;
+        $.ajax({
+            url: 'http://localhost:3000/api/v1/customertypes',
+            type: 'GET',
+            dataType: 'json',            
+            success: function (data) {                
+
+
+               var listItems="";
+
+                for (var i=0; i< data.length; i++)
+                {
+                  listItems+="<option value='" + data[i].id+"'>" + data[i].description + "</option>";
+
+                }
+                $("#cmbTipoCliente").html(listItems);
+            },
+            error: function (x, y, z) {
+                alert(x + '\n' + y + '\n' + z);
+            }
+        }); 
+      } 
 //============FIN DE LAS FUNCIONES============
