@@ -92,7 +92,6 @@ var table = $("#TablaCiudad").shieldGrid({
                     },
                     modify: {
                         create: function (items, success, error) {
-                                  var IdCiudad = document.getElementById("txtIdCiudad").value;
                                   var Pais = document.getElementById("cmbPais").value;
                                   var Estado =  document.getElementById("cmbEstado").value;
                                   var Ciudad =  document.getElementById("txtCiudad").value;
@@ -249,7 +248,6 @@ var table = $("#TablaCiudad").shieldGrid({
      function GuardarCity() {        
       //Capturar datos del formulario
 
-      var IdCiudad = document.getElementById("txtIdCiudad").value;
       var Pais = document.getElementById("cmbPais").value;
       var Estado =  document.getElementById("cmbEstado").value;
       var Ciudad =  document.getElementById("txtCiudad").value;
@@ -257,14 +255,17 @@ var table = $("#TablaCiudad").shieldGrid({
 
 
       //Agregamos los datos capturados a un arreglo => arr
-      var arr = { IdCiudad:id,country:Pais,state:Estado,description:Ciudad,status:Estatus };
+      var arr = { country:Pais,state:Estado,description:Ciudad,status:Estatus };
+
+      //Agregamos los datos capturados de arr a un arreglo llamado city
+      var city = arr;
       //Evento ajax para enviar los datos
       $.ajax({
         //Ruta para enviar el servicio
         url: 'http://localhost:3000/api/v1/cities',
         type: 'POST',
         //Enviamos el arreglo ar
-        data: JSON.stringify(arr),
+        data: JSON.stringify(city),
         contentType: 'application/json; charset=utf-8',
         async: false,
         //Si todo funciona bien entra al sucess
@@ -299,7 +300,7 @@ var table = $("#TablaCiudad").shieldGrid({
 
 
       //Agregamos los datos capturados a un arreglo => arr
-      var arr = { IdCiudad:id,country:Pais,state:Estado,description:Ciudad,status:Estatus };
+      var city = { IdCiudad:id,country:Pais,state:Estado,description:Ciudad,status:Estatus };
       
       //Evento ajax para enviar los datos
       $.ajax({
@@ -307,12 +308,12 @@ var table = $("#TablaCiudad").shieldGrid({
         url: 'http://localhost:3000/api/v1/cities',
         type: 'PUT',
         //Enviamos el arreglo ar
-        data: JSON.stringify(arr),
+        data: JSON.stringify(city),
         contentType: 'application/json; charset=utf-8',
         async: false,
         //Si todo funciona bien entra al sucess
         success: function(msg) {
-          bootbox.alert("Datos Almacenados", function() {
+          bootbox.alert("Datos Modificados", function() {
           
           });
            // e.preventDefault();
@@ -481,7 +482,7 @@ function validarSalida(){
 
                 for (var i=0; i< data.length; i++)
                 {
-                  listItems+="<option value='" + data[i].country_id+"'>" + data[i].description + "</option>";
+                  listItems+="<option value='" + data[i].id+"'>" + data[i].description + "</option>";
 
                 }
                 $("#cmbPais").html(listItems);

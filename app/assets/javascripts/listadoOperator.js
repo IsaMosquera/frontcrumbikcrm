@@ -3,6 +3,12 @@
  //EVENTO CUANDO CARGA TODO EL DOCUMENTO
    $(document).ready(function() {
 
+//Cargar DataTable
+CargarTabla();
+//Cargar Combos
+cargarComboTipoRol();
+cargarComboCiudad();
+cargarComboOrganizacion();
 
 //Validar documento, configurar
  $("#form").validate({
@@ -51,84 +57,151 @@ $('#Eliminar').on("click",function(e) {
 }); 
 
 
-//Cargar DataTable
-CargarTabla();
 
    
   });
     //=========== FIN DEL DOCUMENT READY================
-
-    //======INICIO DE FUNCIONES ============
-
- function CargarTabla()
+function CargarTabla()
     {
 
+var gridData = GetElementos();
 //you need to include the shieldui css and js assets in order for the grids to work //
-var table = $("#grid").shieldGrid({
+var table = $("#TablaOperadores").shieldGrid({
             dataSource: {
-                url: 'http://www.prepbootstrap.com/Content/data/shortGridData.js',
-                data: gridData,
+                events: {
+                    error: function (event) {
+                        if (event.errorType == "transport") {
+                            // transport error is an ajax error; event holds the xhr object
+                            alert("transport error: " + event.error.statusText);
+                            // reload the data source if the operation that failed was save
+                            if (event.operation == "save") {
+                                this.read();
+                            }
+                        }
+                        else {
+                            // other data source error - validation, etc
+                            alert(event.errorType + " error: " + event.error);
+                        }
+                    }
+                },
+                remote: {
+                    read: {
+                        type: "GET",
+                        url: "http://localhost:3000/api/v1/operators",
+                        dataType: "json"
+                    },
+                    modify: {
+                        create: function (items, success, error) {
+                            var newItem = items[0];
+                            $.ajax({
+                                type: "POST",
+                                url: "http://localhost:3000/api/v1/operators",
+                                dataType: "json",
+                                data: newItem.data,
+                                complete: function (xhr) {
+                                    if (xhr.readyState == 4) {
+                                        if (xhr.status == 201) {
+                                            // update the id of the newly-created item with the 
+                                            // one returned from the server in the Location hader url
+                                            var location = xhr.getResponseHeader("Location");
+                                            newItem.data.Id = +location.replace(/^.*?\/([\d]+)$/, "$1");
+                                            success();
+                                            return;
+                                        }
+                                    }
+                                    error(xhr);
+                                }
+                            });
+                        },
+                        update: function (items, success, error) {
+                            $.ajax({
+                                type: "PUT",
+                                url: "http://localhost:3000/api/v1/operators/1" ,
+                                dataType: "json",
+                                contentType: "application/json",
+                                data: JSON.stringify(items[0].data)
+                            }).then(success, error);
+                        },
+                        remove: function (items, success, error) {
+                            $.ajax({
+                                type: "DELETE",
+                                url: "http://localhost:3000/api/v1/operators" + items[0].data.Id
+                            }).then(success, error);
+                        }
+                    }
+                },
                 schema: {
                     fields: {
                         id: { path: "id", type: Number },
-                        age: { path: "age", type: Number },
                         name: { path: "name", type: String },
-                        company: { path: "company", type: String },
-                        month: { path: "month", type: Date },
-                        isActive: { path: "isActive", type: Boolean },
-                        email: { path: "email", type: String },
-                        transport: { path: "transport", type: String }
+                        last_name: { path: "last_name", type: String },
+                        birthdate: { path: "birthdate", type: String },
+                        sex: { path: "sex", type: String },                        
+                        rol_id: { path: "rol.description", type: String },
+                        city_id: { path: "city.description", type: String },
+                        organization_id: { path: "organization.name", type: String },
+                        user_id: { path: "user_id", type: String },
+                        status: { path: "status", type: Number }
+
                     }
                 }
             },
-            sorting: {
-                multiple: true
-            },
+            sorting: true,
             rowHover: false,
             columns: [
-                { field: "name", title: "Person Name", width: "120px" },
-                { field: "age", title: "Age", width: "80px" },
-                { field: "company", title: "Company Name" },
-                { field: "month", title: "Date of Birth", format: "{0:MM/dd/yyyy}", width: "120px" },
-                { field: "isActive", title: "Active" },
-                { field: "email", title: "Email Address", width: "250px" },
-                { field: "transport", title: "Custom Editor", width: "120px", editor: myCustomEditor },
+                { field: "id", title: "Id"},
+                { field: "name", title: "Nombre del Servicio"},
+                { field: "last_name", title: "Apellido"},
+                { field: "birthdate", title: "Fecha de Nacimiento"},
+                { field: "sex", title: "Sexo"},
+                { field: "rol_id", title: "Rol"},
+                { field: "city_id", title: "Ciudad"},
+                { field: "organization_id", title: "Organizacion"},
+                { field: "user_id", title: "Username"},
                 {
-                    width: "104px",
-                    title: "",
+                    width: 100,
+                    title: " ",
                     buttons: [
-                        { cls: "deleteButton", commandName: "delete", caption: "<img src='http://www.prepbootstrap.com/Content/images/template/BootstrapEditableGrid/delete.png' /><span></span>" }
+                        { commandName: "edit", caption: "Edit" },
+                        { commandName: "delete", caption: "Delete" }
                     ]
                 }
             ],
+            toolbar: [
+                {
+                    buttons: [
+                        { commandName: "insert", caption: "Agregar" }
+                    ],
+                    position: "top"
+                },
+                {
+                    buttons: [
+                        {
+                            caption: "Reset",
+                            click: function (e) {
+                                var grid = this;
+                                $.ajax({
+                                    type: "PUT",
+                                    url: "http://localhost:3000/api/v1/operators"
+                                }).done(function () {
+                                    grid.dataSource.read();
+                                });
+                            }
+                        }
+                    ],
+                    position: "bottom"
+                }
+            ],
+            paging: {
+                pageSize: 5
+            },
             editing: {
                 enabled: true,
-                event: "click",
-                type: "cell",
-                confirmation: {
-                    "delete": {
-                        enabled: true,
-                        template: function (item) {
-                            alert("I am an alert box!");
-                            return "Delete row with ID = " + item.id
-                            alert("2");
-                        }
-                    }
-                }
-            },
-            events:
-            {
-                getCustomEditorValue: function (e) {
-                    e.value = $("#dropdown").swidget().value();
-                    $("#dropdown").swidget().destroy();
-                }
+                type: "row"
             }
-        });
-
-
     
 
-    
+    });
 
 
     }
@@ -146,10 +219,11 @@ var table = $("#grid").shieldGrid({
 
     //FUNCION PARA OBTENER ELEMENTOS PARTICULARES DEL SERVICIO
 
+
     function GetElementos() {
       jQuery.support.cors = true;
       $.ajax({
-        url: 'http://localhost:5414/api/v1/Funciones',
+        url: 'http://localhost:3000/api/v1/operators',
         type: 'GET',
         dataType: 'json',            
         success: function (data) {                
@@ -169,7 +243,7 @@ var table = $("#grid").shieldGrid({
               alert(data.Nombre)
               alert(data.Apellido)
               alert(data.Fecha_Nac)
-              alert(data.Correo)
+              alert(data.Username)
             });
     }
 
@@ -182,14 +256,16 @@ var table = $("#grid").shieldGrid({
       var Sexo = document.getElementById('cmbSexo').value;
       var Fecha_Nac= document.getElementById('txtFechaNacimiento').value;
       var Ciudad = document.getElementById('cmbCiudad').value;
-      var Correo = document.getElementById('txtCorreo').value;
+      var Organizacion = document.getElementById('cmbOrganizacion').value;
+      var Username = document.getElementById('txtUserName').value;
+      var Status = 1;
 
       //Agregamos los datos capturados a un arreglo => arr
-      var arr = { Tipo_Rol:Tipo_Rol,Nombre:Nombre,Apellido:Apellido,Sexo:Sexo,Fecha_Nac:Fecha_Nac,Ciudad:Ciudad,Correo:Correo };
+      var arr = { Tipo_Rol:Tipo_Rol,Nombre:Nombre,Apellido:Apellido,Sexo:Sexo,Fecha_Nac:Fecha_Nac,Ciudad:Ciudad,Organizacion:Organizacion,Username:Username };
       //Evento ajax para enviar los datos
       $.ajax({
         //Ruta para enviar el servicio
-        url: 'http://localhost:5414/api/v1/Funcion',
+        url: 'http://localhost:3000/api/v1/operators',
         type: 'POST',
         //Enviamos el arreglo ar
         data: JSON.stringify(arr),
@@ -202,7 +278,7 @@ var table = $("#grid").shieldGrid({
           });
            // e.preventDefault();
           //Actualiza la datatable automáticamente
-          var table = $('#TablaOperator').dataTable();
+          var table = $('#TablaOperadores').dataTable();
                       // Example call to reload from original file
                       table.fnReloadAjax();
                     },
@@ -219,20 +295,23 @@ var table = $("#grid").shieldGrid({
 
     function ModificarFuncion() {        
 
+       //Capturar datos del formulario
       var Tipo_Rol = document.getElementById('cmbTipoRol').value;
       var Nombre = document.getElementById("txtNombre").value;
       var Apellido = document.getElementById("txtApellido").value;
       var Sexo = document.getElementById('cmbSexo').value;
       var Fecha_Nac= document.getElementById('txtFechaNacimiento').value;
       var Ciudad = document.getElementById('cmbCiudad').value;
-      var Correo = document.getElementById('txtCorreo').value;
+      var Organizacion = document.getElementById('cmbOrganizacion').value;
+      var Username = document.getElementById('txtUserName').value;
+      var Status = 1;
 
       //Agregamos los datos capturados a un arreglo => arr
-      var arr = { Tipo_Rol:Tipo_Rol,Nombre:Nombre,Apellido:Apellido,Sexo:Sexo,Fecha_Nac:Fecha_Nac,Ciudad:Ciudad,Correo:Correo };
+      var arr = { Tipo_Rol:Tipo_Rol,Nombre:Nombre,Apellido:Apellido,Sexo:Sexo,Fecha_Nac:Fecha_Nac,Ciudad:Ciudad,Organizacion:Organizacion,Username:Username };
       //Evento ajax para enviar los datos
       $.ajax({
         //Ruta para enviar el servicio
-        url: 'http://localhost:5414/api/v1/Funcion/',
+        url: 'http://localhost:3000/api/v1/operators',
         type: 'PUT',
         //Enviamos el arreglo ar
         data: JSON.stringify(arr),
@@ -245,7 +324,7 @@ var table = $("#grid").shieldGrid({
           });
            // e.preventDefault();
           //Actualiza la datatable automáticamente
-          var table = $('#TablaOperator').dataTable();
+          var table = $('#TablaOperadores').dataTable();
                       // Example call to reload from original file
                       table.fnReloadAjax();
                     },
@@ -261,21 +340,24 @@ var table = $("#grid").shieldGrid({
 
     function EliminarFuncion() {        
 
+      //Capturar datos del formulario
       var Tipo_Rol = document.getElementById('cmbTipoRol').value;
       var Nombre = document.getElementById("txtNombre").value;
       var Apellido = document.getElementById("txtApellido").value;
       var Sexo = document.getElementById('cmbSexo').value;
       var Fecha_Nac= document.getElementById('txtFechaNacimiento').value;
       var Ciudad = document.getElementById('cmbCiudad').value;
-      var Correo = document.getElementById('txtCorreo').value;
+      var Organizacion = document.getElementById('cmbOrganizacion').value;
+      var Username = document.getElementById('txtUserName').value;
+      var Status = 0;
 
       //Agregamos los datos capturados a un arreglo => arr
-      var arr = { Tipo_Rol:Tipo_Rol,Nombre:Nombre,Apellido:Apellido,Sexo:Sexo,Fecha_Nac:Fecha_Nac,Ciudad:Ciudad,Correo:Correo };
+      var arr = { Tipo_Rol:Tipo_Rol,Nombre:Nombre,Apellido:Apellido,Sexo:Sexo,Fecha_Nac:Fecha_Nac,Ciudad:Ciudad,Organizacion:Organizacion,Username:Username };
       
       //Evento ajax para enviar los datos
       $.ajax({
         //Ruta para enviar el servicio
-        url: 'http://localhost:5414/api/v1/Funcion/10',
+        url: 'http://localhost:3000/api/v1/operators/10',
         type: 'DELETE',
         //Enviamos el arreglo ar
         data: JSON.stringify(arr),
@@ -288,7 +370,7 @@ var table = $("#grid").shieldGrid({
           });
            // e.preventDefault();
           //Actualiza la datatable automáticamente
-          var table = $('#TablaOperator').dataTable();
+          var table = $('#TablaOperadores').dataTable();
                       // Example call to reload from original file
                       table.fnReloadAjax();
                     },
@@ -395,4 +477,87 @@ function validarSalida(){
 });
      
     }
+
+
+
+
+
+//===================Cargar Combobox
+
+ function cargarComboCiudad()
+    {
+       jQuery.support.cors = true;
+        $.ajax({
+            url: 'http://localhost:3000/api/v1/cities',
+            type: 'GET',
+            dataType: 'json',            
+            success: function (data) {                
+
+
+               var listItems="";
+
+                for (var i=0; i< data.length; i++)
+                {
+                  listItems+="<option value='" + data[i].id+"'>" + data[i].description + "</option>";
+
+                }
+                $("#cmbCiudad").html(listItems);
+            },
+            error: function (x, y, z) {
+                alert(x + '\n' + y + '\n' + z);
+            }
+        }); 
+      } 
+
+
+ function cargarComboTipoRol()
+    {
+       jQuery.support.cors = true;
+        $.ajax({
+            url: 'http://localhost:3000/api/v1/rols',
+            type: 'GET',
+            dataType: 'json',            
+            success: function (data) {                
+
+
+               var listItems="";
+
+                for (var i=0; i< data.length; i++)
+                {
+                  listItems+="<option value='" + data[i].id+"'>" + data[i].name + "</option>";
+
+                }
+                $("#cmbTipoRol").html(listItems);
+            },
+            error: function (x, y, z) {
+                alert(x + '\n' + y + '\n' + z);
+            }
+        }); 
+      } 
+
+ function cargarComboOrganizacion()
+    {
+       jQuery.support.cors = true;
+        $.ajax({
+            url: 'http://localhost:3000/api/v1/organizations',
+            type: 'GET',
+            dataType: 'json',            
+            success: function (data) {                
+
+
+               var listItems="";
+
+                for (var i=0; i< data.length; i++)
+                {
+                  listItems+="<option value='" + data[i].id+"'>" + data[i].name + "</option>";
+
+                }
+                $("#cmbOrganizacion").html(listItems);
+            },
+            error: function (x, y, z) {
+                alert(x + '\n' + y + '\n' + z);
+            }
+        }); 
+      } 
+
 //============FIN DE LAS FUNCIONES============
