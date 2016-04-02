@@ -14,6 +14,8 @@
     <!--ARCHIVOS CSS PARA BOOSTRAP -->
 <!-- Latest compiled and minified CSS -->
  <%= stylesheet_link_tag  "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" %>
+    <!--ESTILOS PARA EL ARBOL -->
+    <%= stylesheet_link_tag    "extjs/arbolextjs.css" %>
 
    <%= stylesheet_link_tag  "bootstrap.css" %>
    <%= stylesheet_link_tag  "bootstrap-treeview.css" %>
@@ -93,347 +95,38 @@
         <!-- SIDERBAR CON ARBOL QUE SE CARGA POR JSON -->
       <div id="sidebar-wrapper">
          
-          <div id="treeview" style="width:250px;margin-top:30%;">
-          </div>
+         <div id="tree_el" class="arbol collapsed" style="margin-top:50px;"></div>
+       <% content_for :javascript_personalizado do %>
+         <!-- Incluya los javascripts: Extjs 5.1 -->
+
+          <%= javascript_include_tag 'ext-all.js' %>
+          
+          <script> 
+           //Escoger el idioma para los mensajes emergentes
+           var s = document.createElement("script");
+           s.type = 'text/javascript';
+           s.src = <%= javascript_include_tag 'tree/ext-locale-es.js' %>;
+           
+           s.charset = 'ascii';
+           document.getElementsByTagName("head")[0].appendChild(s);
+          </script>
+
+          <%= javascript_include_tag 'arbolOrganization.js' %>
+         
+    
+       <% end%>
+       </div>
     </div>
  </div>
  <!-- === FIN BARRA LATERAL === -->
 
     
    <%= javascript_include_tag "jquery.js" %>
-   <%= javascript_include_tag "bootstrap-treeview.js" %>
+   
+  <%= javascript_include_tag 'jquery.js' %>
 
-    <script type="text/javascript">
-
-      function buildDomTree() {
-         
-       var data = [
-  {
-    text: "Gestión de Productor",
-    state: {
-    expanded: false,
-  },
-    nodes: [
-      {
-        text: "Registrar Póliza",
-        href: "Poliza.html"        
-      },
-      {
-        text: "Registrar Clientes",
-        href: "Cliente.html"
-      },
-      {
-        text: "Agregar Recibos",
-        href: "Recibo.html"
-      },
-      {
-        text: "Gestión Vehiculos",
-        href: "Vehiculo.html"
-      }
-    ]
-  },
-  {
-    text: "Solicitudes de Poliza",
-    href: "SolicitudPolizaVehiculo.html"
-  },
-  {
-    text: "Call Center"
-  },
-  {
-    text: "Datos Comisiones"
-  },
-  {
-    text: "Configuración de Maestros",
-     state: {
-    expanded: false,
-  },
-    nodes: [
-          {
-            text: "1.Datos para Vehiculos",
-             state: {
-    expanded: false,
-  },
-              nodes: [
-                    {
-                      text: "Marcas",
-                      href: "Marca.html"
-                      },
-                    {
-                       text: "Modelos",
-                       href: "Modelo.html"
-                       },
-                      {
-                       text: "Colores",
-                       href: "Color.html"
-                       },
-                       {
-                       text: "Accesorios",
-                       href: "Accesorio.html"
-                       },
-                       {
-                       text: "Tipos de Vehiculos",
-                       href: "TipoVehiculo.html"
-                       },
-                       {
-                       text: "Usos de Vehiculos",
-                       href: "UsoVehiculo.html"
-                       }
-                    ]
-             
-          },
-           {
-            text: "2.Datos de Acceso",
-              state: {
-              expanded: false,
-              },
-              nodes: [
-                    {
-                      text: "Pantallas",
-                      href: "Pantalla.html"
-                      },
-                    {
-                       text: "Roles",
-                       href: "Rol.html"
-                       },
-                      {
-                       text: "Acceso",
-                       href: "Acceso.html"
-                       },
-                       {
-                       text: "Usuarios",
-                       href: "Usuario.html"
-                       },
-                       {
-                       text: "Funcion",
-                       href: "Funcion.html"
-                       }
-                      
-                    ]
-             
-          },
-           {
-            text: "3.Datos de Ubicación",
-             state: {
-              expanded: false,
-              },
-              nodes: [
-                    {
-                      text: "Estados",
-                      href: "Estado.html"
-                      },
-                    {
-                       text: "Municipio",
-                       href: "Municipio.html"
-                       },
-                      {
-                       text: "Parroquia",
-                       href: "Parroquia.html"
-                       },
-                       {
-                       text: "Oficina",
-                       href: "Oficina.html"
-                       }
-                      
-                    ]
-             
-          },
-           {
-            text: "4.Datos de Incidencias",
-             state: {
-              expanded: false,
-              },
-              nodes: [
-                    {
-                      text: "Centro de Clínicas",
-                      href: "CentroClinica.html"
-                      },
-                    {
-                       text: "Causas Incidentes",
-                       href: "CausaIncidente.html"
-                       },
-                      {
-                       text: "Gruas",
-                       href: "Grua.html"
-                       },
-                       {
-                       text: "Talleres",
-                       href: "Taller.html"
-                       }
-                      
-                    ]
-             
-          },
-           {
-            text: "5.Datos de Personal",
-              state: {
-              expanded: false,
-              },
-              nodes: [
-                    {
-                      text: "Analistas",
-                      href: "Analista.html"
-                      },
-                    {
-                       text: "Productores",
-                       href: "Productor.html"
-                       },
-                      {
-                       text: "Ejecutivos",
-                       href: "Ejecutivo.html"
-                       },
-                       {
-                       text: "Tipo de Ejecutivos",
-                       href: "TipoEjecutivo.html"
-                       },
-                      {
-                       text: "Estatus Laborales",
-                       href: "EstatusLaboral.html"
-                       }
-                      
-                    ]
-             
-          },
-           {
-            text: "6.Datos de Cliente",
-              state: {
-              expanded: false,
-              },
-              nodes: [
-                    {
-                      text: "Actividades Económicas",
-                      href: "ActividadEconomica.html"
-                      },
-                    {
-                       text: "Profesion",
-                       href: "Profesion.html"
-                       },
-                      {
-                       text: "Clase Cliente",
-                       href: "ClaseCliente.html"
-                       },
-                       {
-                       text: "Estado Civil",
-                       href: "EstadoCivil.html"
-                       }
-                      
-                      
-                    ]
-             
-          },
-           {
-            text: "7.Datos Financiamiento",
-              state: {
-              expanded: false,
-              },
-              nodes: [
-                    {
-                      text: "Cuentas",
-                      href: "Cuenta.html"
-                      },
-                    {
-                       text: "Bancos",
-                       href: "Banco.html"
-                       },
-                      {
-                       text: "Financiadoras",
-                       href: "Financiadora.html"
-                       },
-                       {
-                       text: "Tipos de Pago en Poliza",
-                       href: "TipoPagoPoliza.html"
-                       }                 
-                  ]             
-          },
-           {
-            text: "8.Datos Aseguradoras",
-              state: {
-              expanded: false,
-              },
-              nodes: [
-                    {
-                      text: "Sucursales Aseguradora",
-                      href: "SucursalAseguradora.html"
-                      },
-                    {
-                       text: "Aseguradoras",
-                       href: "Aseguradora.html"
-                       }                                         
-                    ]             
-          },
-           {
-            text: "9.Datos de Poliza",
-              state: {
-              expanded: false,
-              },
-              nodes: [
-                    {
-                      text: "Tipo Poliza",
-                      href: "TipoPoliza.html"
-                      },
-                    {
-                       text: "Tipos Pagos",
-                       href: "TipoPago.html"
-                       },
-                      {
-                       text: "Monedas",
-                       href: "Moneda.html"
-                       },
-                       {
-                       text: "Ramos de Polizas",
-                       href: "Ramo.html"
-                       },
-                      {
-                       text: "Riesgos por Producto",
-                       href: "RiesgoProducto.html"
-                       },
-                       {
-                       text: "Tipos de Bonos",
-                       href: "TipoBono.html"
-                       },
-                        {
-                       text: "Productores",
-                       href: "Productor.html"
-                       }                      
-                    ]
-             
-          }
-
-          
-        ]
-  }
-];
-        function walk(nodes, data) {
-          if (!nodes) { return; }
-          $.each(nodes, function (id, node) {
-            var obj = {
-              id: id,
-              text: node.nodeName + " - " + (node.innerText ? node.innerText : ''),
-              tags: [node.childElementCount > 0 ? node.childElementCount + ' child elements' : '']
-            };
-            if (node.childElementCount > 0) {
-              obj.nodes = [];
-              walk(node.children, obj.nodes);
-            }
-           // data.push(obj);
-          });
-        }
-
-        walk($('html')[0].children, data);
-        return data;
-      }
-
-        $(function() {
-
-        var options = {
-          bootstrap2: true, 
-          showTags: true,
-          levels: 5,
-          data: buildDomTree()
-        };
-
-            $('#treeview').treeview(options);
-        });
-    </script>
+    <%= yield :javascript_personalizado %>
+    <%= javascript_include_tag 'jQuery_Main.js' %>
 
    <!-- === FIN  BARRA LATERAL === -->      
    <br><!--Saltos de Linea-->
