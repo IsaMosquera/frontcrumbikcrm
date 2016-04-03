@@ -221,7 +221,7 @@ var table = $("#TablaCiudad").shieldGrid({
 
 
       //Agregamos los datos capturados a un arreglo => arr
-      var arr = { email:email,password:contrasena};
+      var arr = {email:email,password:contrasena};
 
       //Agregamos los datos capturados de arr a un arreglo llamado city
       var user = arr;
@@ -237,7 +237,11 @@ var table = $("#TablaCiudad").shieldGrid({
         //Si todo funciona bien entra al sucess
         success: function(data) {
           alert(data.email);
+<<<<<<< HEAD
            // e.preventDefault();
+=======
+         
+>>>>>>> cae8c23cd55bbecdfe540e41a30c9841d5cbd4d5
           //Actualiza la datatable automáticamente
           //var table = $('#TablaCiudad').dataTable();
                       // Example call to reload from original file
