@@ -236,7 +236,7 @@ var table = $("#TablaCiudad").shieldGrid({
         async: false,
         //Si todo funciona bien entra al sucess
         success: function(data) {
-          alert(data);
+          alert(data.email);
            // e.preventDefault();
           //Actualiza la datatable automáticamente
           //var table = $('#TablaCiudad').dataTable();
