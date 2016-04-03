@@ -28,7 +28,7 @@ namespace :front do
 
  get 'payservice' => 'adminorganization#payservice'
 
- get 'payservicetdc' => 'adminorganization#payservicetdc'
+ get 'payservicestdc' => 'adminorganization#payservicestdc'
 
  get 'payservicetdb' => 'adminorganization#payservicetdb'
 

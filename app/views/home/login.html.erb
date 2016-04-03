@@ -108,7 +108,8 @@
           <input id="txtpassword" name="password" class="w-input" type="password"  placeholder="Contraseña" name="cf_name">
           
           <div class="btn-ex-two">
-                  <a class="ex-btn-two"  href="#">Entrar</a>
+              <button type="submit" id="Enviar" class="ex-btn-two">Entrar</button>
+             
               </br> </br>  <%= link_to "Accede con Twitter", "http://127.0.0.1:3000/auth/twitter", :class => "ex-btn-two" %>
                  
           </div>
@@ -212,6 +213,10 @@
   <%= javascript_include_tag "home/toucheffects.js" %>
   <%= javascript_include_tag "home/modernizr.js" %>
   <%= javascript_include_tag "home/animation.js" %>
+
+  <%= javascript_include_tag "login.js" %>
+
+
   <!--
   <script type="text/javascript" src="js/jquery.js"></script>
   <script type="text/javascript" src="js/normal.js"></script>

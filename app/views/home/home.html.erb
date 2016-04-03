@@ -60,8 +60,8 @@
                 <a class="w-nav-link menu-li"  href="#slider">INICIO</a>
                 <a class="w-nav-link menu-li" href="#about">NOSOTROS</a>
                 <a class="w-nav-link menu-li" href="#plan">PLANES</a>
-                <!-- <a class="w-nav-link menu-li" href="#portfolio">PORTFOL</a>
-               <!-- <a class="w-nav-link menu-li"href="#team">TEAM</a>-->
+                <a class="w-nav-link menu-li" href="#portfolio">CLIENTES</a>
+               <a class="w-nav-link menu-li"href="#service">SERVICIOS</a>
                 <a class="w-nav-link menu-li" href="#contact">CONTÁCTANOS</a>
                   <%= link_to 'REGISTRATE', register_path, :class => 'w-nav-link menu-li' %>
               <!--  <a class="w-nav-link menu-li" href="registrarse.html">REGISTRARSE</a>-->
@@ -321,7 +321,8 @@
                   <br>
                   <br>Chat y Redes Sociales de la Empresa
                   <br></p>
-                  <a class="plan-1-butn plan-1-butn3" href="ingresar.html">Comprar!</a>
+                  <%= link_to 'PROBAR!', register_path, :class => 'plan-1-butn plan-1-butn3' %>
+                  <!--<a class="plan-1-butn plan-1-butn3" href="ingresar.html">Comprar!</a>-->
                 </div>
             </div>
             <div class="w-col w-col-3">
@@ -340,6 +341,7 @@
                   <br>Chat y Redes Sociales de la Empresa
                   <br>
                   <br>Campañas Publicitarias</p>
+                  <%= link_to 'Comprar!', register_path, :class => 'plan-1-butn plan-1-butn3' %>
                   <a class="plan-1-butn2 plan-1-butn" href="ingresar.html">Comprar!</a>
               </div>
             </div>

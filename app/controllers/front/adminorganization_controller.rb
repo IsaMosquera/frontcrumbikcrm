@@ -37,7 +37,7 @@ class Front::AdminorganizationController < ApplicationController
 	def payservice
 	end
 	
-	def payservicetdc
+	def payservicestdc
 	end
 	
 	def payservicetdb

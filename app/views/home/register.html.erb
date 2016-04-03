@@ -101,15 +101,16 @@
           <div class="w-row">
           <!-- Username -->
           <label for="name">Nombre:</label>
-          <input class="w-input" type="text" placeholder="Ingresa tu nombre" name="cf_name">
+          <input class="w-input" type="text" placeholder="Ingresa tu nombre" name="cf_name" id="txtNombre">
           <label for="name">Correo Electrónico:</label>
-          <input class="w-input" type="text" placeholder="Dirección de correo electrónico" name="cf_name">
+          <input class="w-input" type="text" placeholder="Dirección de correo electrónico" name="cf_name"  id="txtEmail">
           <label for="name">Contraseña:</label>
-          <input class="w-input" type="password" placeholder="Contraseña" name="cf_name">
+          <input class="w-input" type="password" placeholder="Contraseña" name="cf_name"  id="txtPassword">
           <label for="name">Confirmar contraseña:</label>
-          <input class="w-input" type="password"type="password" placeholder="Confirmar contraseña" name="cf_name">
+          <input class="w-input" type="password"type="password" placeholder="Confirmar contraseña" name="cf_name"  id="txtPassword1">
           <div class="btn-ex-two">
-                  <a class="ex-btn-two"  href="#">Registrarse</a>
+                <button type="submit" id="Enviar" class="ex-btn-two">Registrarse</button>
+                 <!-- <a class="ex-btn-two"  href="#">Registrarse</a>-->
                  </br> </br>  <%= link_to "Accede con Twitter", "http://127.0.0.1:3000/auth/twitter", :class => "ex-btn-two" %>
                 </div>
           </div>
@@ -193,8 +194,25 @@
 
        <!--///////////////////////////////////////////////////////
        // End Footer section 
+  
+
+
        //////////////////////////////////////////////////////////-->
 
+
+
+       <%= javascript_include_tag "home/jquery.js" %>
+  <%= javascript_include_tag "home/normal.js" %>
+  <%= javascript_include_tag "home/jquery-1.10.2.min.js" %>
+  <%= javascript_include_tag "home/carousels.js" %>
+  <%= javascript_include_tag "home/slider-modernizr.js" %>
+  <%= javascript_include_tag "home/classie.js" %>
+  <%= javascript_include_tag "home/portfolio-effects.js" %>
+  <%= javascript_include_tag "home/toucheffects.js" %>
+  <%= javascript_include_tag "home/modernizr.js" %>
+  <%= javascript_include_tag "home/animation.js" %>
+  <%= javascript_include_tag "register.js" %>
+<!--
   <script type="text/javascript" src="js/jquery.js"></script>
   <script type="text/javascript" src="js/normal.js"></script>
   <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
@@ -204,7 +222,8 @@
   <script src="js/portfolio-effects.js"></script>
   <script src="js/toucheffects.js"></script>
   <script src="js/modernizr.js"></script>
-  <script src="js/animation.js"></script>
+  <script src="js/animation.js"></script> -->
+  
 
 </body>
 </html>
