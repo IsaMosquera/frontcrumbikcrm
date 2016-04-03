@@ -101,12 +101,15 @@ var table = $("#TablaNewContract").shieldGrid({
                     },
                     modify: {
                         create: function (items, success, error) {
+                            var newItem = {contract:items[0].data};
+                           
 
                             $.ajax({
                                 type: "POST",
                                 url: "http://localhost:3000/api/v1/contracts",
+                               
                                 dataType: "json",
-                                data: rol.data,
+                                data: newItem,
                                 complete: function (xhr) {
                                     if (xhr.readyState == 4) {
                                         if (xhr.status == 201) {
@@ -123,18 +126,21 @@ var table = $("#TablaNewContract").shieldGrid({
                             });
                         },
                         update: function (items, success, error) {
+                           var newItem = {contract:items[0].data};
+
                             $.ajax({
                                 type: "PUT",
-                                url: "http://localhost:3000/api/v1/contracts" + items[0].data.Id,
+                                url: "http://localhost:3000/api/v1/contracts/" + newItem.contract.id ,
                                 dataType: "json",
                                 contentType: "application/json",
                                 data: JSON.stringify(items[0].data)
                             }).then(success, error);
                         },
                         remove: function (items, success, error) {
+                          var newItem = {rol:items[0].data};
                             $.ajax({
                                 type: "DELETE",
-                                url: "http://localhost:3000/api/v1/contracts" + items[0].data.Id
+                                url: "http://localhost:3000/api/v1/contracts/"  + newItem.contract.id
                             }).then(success, error);
                         }
                     }
@@ -144,8 +150,8 @@ var table = $("#TablaNewContract").shieldGrid({
                         id: { path: "id", type: Number },
                         creation_date: { path: "creation_date", type: Date },
                         due_date: { path: "due_date", type: Date },
-                        organization: { path: "organizatio", type: String },
-                        serviceplans: { path: "serviceplan", type: String },
+                        organization_id: { path: "organization.name", type: String },
+                        serviceplan_id: { path: "serviceplan.name", type: String },
                     }
                 }
             },
@@ -155,14 +161,14 @@ var table = $("#TablaNewContract").shieldGrid({
                 { field: "id", title: "Id"},
                 { field: "creation_date", title: "Fecha"},
                 { field: "due_date", title: "Vencimiento"},
-                { field: "organization", title: "Organizacion"},
-                { field: "serviceplan", title: "Servicio Contratado"},
+                { field: "organization_id", title: "Organizacion"},
+                { field: "serviceplan_id", title: "Servicio Contratado"},
                 {
                     width: 140,
                     title: " ",
                     buttons: [
-                        { commandName: "edit", caption: "Edit" },
-                        { commandName: "delete", caption: "Delete" }
+                        { commandName: "edit", caption: "Editar" },
+                        { commandName: "delete", caption: "Eliminar" }
                     ]
                 }
             ],
@@ -176,7 +182,7 @@ var table = $("#TablaNewContract").shieldGrid({
                 {
                     buttons: [
                         {
-                            caption: "Reset Book List",
+                            caption: "Resetear Lista",
                             click: function (e) {
                                 var grid = this;
                                 $.ajax({
@@ -254,13 +260,12 @@ var table = $("#TablaNewContract").shieldGrid({
       var Vencimiento = document.getElementById("txtVencimiento").value;
       var Organizacion = document.getElementById("cmbOrganizacion").value;
       var Plan_Servicio = document.getElementById("cmbPlanServicio").value;
-      var Status = 1;
       
 
 
       //Agregamos los datos capturados a un arreglo => arr
       var contract = {creation_date:Fecha_Creacion,due_date:Vencimiento,
-                  organization:Organizacion,serviceplan:Plan_Servicio, status:Status };
+                  organization:Organizacion,serviceplan:Plan_Servicio };
       //Evento ajax para enviar los datos
       $.ajax({
         //Ruta para enviar el servicio

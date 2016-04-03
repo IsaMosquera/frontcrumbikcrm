@@ -98,12 +98,15 @@ var table = $("#TablaListadoService").shieldGrid({
                     },
                     modify: {
                         create: function (items, success, error) {
-                            var newItem = items[0];
+                            var newItem = {service:items[0].data};
+                           
+
                             $.ajax({
                                 type: "POST",
                                 url: "http://localhost:3000/api/v1/services",
+                               
                                 dataType: "json",
-                                data: newItem.data,
+                                data: newItem,
                                 complete: function (xhr) {
                                     if (xhr.readyState == 4) {
                                         if (xhr.status == 201) {
@@ -120,18 +123,21 @@ var table = $("#TablaListadoService").shieldGrid({
                             });
                         },
                         update: function (items, success, error) {
+                           var newItem = {service:items[0].data};
+
                             $.ajax({
                                 type: "PUT",
-                                url: "http://localhost:3000/api/v1/services/1" ,
+                                url: "http://localhost:3000/api/v1/services/" + newItem.service.id ,
                                 dataType: "json",
                                 contentType: "application/json",
                                 data: JSON.stringify(items[0].data)
                             }).then(success, error);
                         },
                         remove: function (items, success, error) {
+                          var newItem = {service:items[0].data};
                             $.ajax({
                                 type: "DELETE",
-                                url: "http://localhost:3000/api/v1/services" + items[0].data.Id
+                                url: "http://localhost:3000/api/v1/services/"  + newItem.service.id
                             }).then(success, error);
                         }
                     }
@@ -145,7 +151,6 @@ var table = $("#TablaListadoService").shieldGrid({
                         quantity: { path: "quantity", type: Number },                        
                         price: { path: "price", type: Number },
                         organization_id: { path: "organization.name", type: String },
-                        status: { path: "status", type: Number }
 
                     }
                 }
@@ -164,8 +169,8 @@ var table = $("#TablaListadoService").shieldGrid({
                     width: 100,
                     title: " ",
                     buttons: [
-                        { commandName: "edit", caption: "Edit" },
-                        { commandName: "delete", caption: "Delete" }
+                        { commandName: "edit", caption: "Editar" },
+                        { commandName: "delete", caption: "Eliminar" }
                     ]
                 }
             ],
@@ -255,11 +260,13 @@ var table = $("#TablaListadoService").shieldGrid({
       var Descripcion = document.getElementById("txtDescripcion").value;
       var Cantidad = document.getElementById("txtCantidad").value;
       var Precio = document.getElementById("txtPrecio").value;
+      var Foto = document.getElementById("txtFoto").value;
+      var Organizacion = document.getElementById("cmbOrganizacion").value;
 
       
       //Agregamos los datos capturados a un arreglo => arr
       var service = {name:Nombre,description:Descripcion,image:Foto,
-                  quantity:Cantidad,price:Precio, organization:Organizacion};
+                  quantity:Cantidad,price:Precio, organization_id:Organizacion};
       //Evento ajax para enviar los datos
       $.ajax({
         //Ruta para enviar el servicio

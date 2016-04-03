@@ -104,12 +104,15 @@ var table = $("#TablaNewOrganization").shieldGrid({
                     },
                     modify: {
                         create: function (items, success, error) {
-                            var newItem = items[0];
+                            var newItem = {organization:items[0].data};
+                           
+
                             $.ajax({
                                 type: "POST",
-                                url: "http://localhost:3000/api/v1/organization",
+                                url: "http://localhost:3000/api/v1/organizations",
+                               
                                 dataType: "json",
-                                data: newItem.data,
+                                data: newItem,
                                 complete: function (xhr) {
                                     if (xhr.readyState == 4) {
                                         if (xhr.status == 201) {
@@ -126,18 +129,21 @@ var table = $("#TablaNewOrganization").shieldGrid({
                             });
                         },
                         update: function (items, success, error) {
+                           var newItem = {organization:items[0].data};
+
                             $.ajax({
                                 type: "PUT",
-                                url: "http://localhost:3000/api/v1/organizations" + items[0].data.Id,
+                                url: "http://localhost:3000/api/v1/organizations/" + newItem.organization.id ,
                                 dataType: "json",
                                 contentType: "application/json",
                                 data: JSON.stringify(items[0].data)
                             }).then(success, error);
                         },
                         remove: function (items, success, error) {
+                          var newItem = {organization:items[0].data};
                             $.ajax({
                                 type: "DELETE",
-                                url: "http://localhost:3000/api/v1/organizations" + items[0].data.Id
+                                url: "http://localhost:3000/api/v1/rols/"  + newItem.organization.id
                             }).then(success, error);
                         }
                     }
@@ -152,10 +158,9 @@ var table = $("#TablaNewOrganization").shieldGrid({
                         mission: { path: "mission", type: String },
                         view: { path: "view", type: String },
                         subdomain: { path: "subdomain", type: String },
-                        address: { path: "address", type: Number },
+                        address: { path: "address", type: String },
                         phone_number: { path: "phone_number", type: String },
                         phone_number_two: { path: "phone_number_two", type: String },
-                        status: { path: "status", type: Number }
 
                     }
                 }
@@ -178,8 +183,8 @@ var table = $("#TablaNewOrganization").shieldGrid({
                     width: 140,
                     title: " ",
                     buttons: [
-                        { commandName: "edit", caption: "Edit" },
-                        { commandName: "delete", caption: "Delete" }
+                        { commandName: "edit", caption: "Editar" },
+                        { commandName: "delete", caption: "Eliminar" }
                     ]
                 }
             ],
@@ -268,7 +273,6 @@ var table = $("#TablaNewOrganization").shieldGrid({
     //Guardar elementos en DataBase
      function GuardarFuncion() {        
       //Capturar datos del formulario
-      var IdOrganization = document.getElementById("txtIdOrganization").value;
       var Nombre = document.getElementById("txtNombre").value;
       var Correo = document.getElementById("txtCorreo").value;
       var Slogan = document.getElementById("txtSlogan").value;
@@ -279,18 +283,17 @@ var table = $("#TablaNewOrganization").shieldGrid({
       var Direccion = document.getElementById("txtDireccion").value;    
       var Telefono1 = document.getElementById("txtTelefono1").value;
       var Telefono2 = document.getElementById("txtTelefono2").value;
-      var Status = 1;
       
 
 
       //Agregamos los datos capturados a un arreglo => arr
-      var arr = { id:IdOrganization, name:Nombre,email:Correo,slogan:Slogan,logo:Logo,
+      var arr = {name:Nombre,email:Correo,slogan:Slogan,logo:Logo,
                   mission:Mision, view:Vision, subdomain:Subdominio, address:Direccion, 
-                  phone_number:Telefono1, phone_number_two:Telefono2, status:Status };
+                  phone_number:Telefono1, phone_number_two:Telefono2};
       //Evento ajax para enviar los datos
       $.ajax({
         //Ruta para enviar el servicio
-        url: 'http://localhost:5414/api/v1/Funcion',
+        url: 'http://localhost:3000/api/v1/organizations',
         type: 'POST',
         //Enviamos el arreglo ar
         data: JSON.stringify(arr),
@@ -343,7 +346,7 @@ var table = $("#TablaNewOrganization").shieldGrid({
       //Evento ajax para enviar los datos
       $.ajax({
         //Ruta para enviar el servicio
-        url: 'http://localhost:5414/api/v1/Funcion/',
+        url: 'http://localhost:3000/api/v1/organizations',
         type: 'PUT',
         //Enviamos el arreglo ar
         data: JSON.stringify(arr),

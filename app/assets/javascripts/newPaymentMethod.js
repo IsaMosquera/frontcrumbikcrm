@@ -82,12 +82,15 @@ var table = $("#TablaMetodoPago").shieldGrid({
                     },
                     modify: {
                         create: function (items, success, error) {
-                            var newItem = items[0];
+                            var newItem = {paymentmethod:items[0].data};
+                           
+
                             $.ajax({
                                 type: "POST",
                                 url: "http://localhost:3000/api/v1/paymentmethods",
+                               
                                 dataType: "json",
-                                data: newItem.data,
+                                data: newItem,
                                 complete: function (xhr) {
                                     if (xhr.readyState == 4) {
                                         if (xhr.status == 201) {
@@ -104,18 +107,21 @@ var table = $("#TablaMetodoPago").shieldGrid({
                             });
                         },
                         update: function (items, success, error) {
+                           var newItem = {paymentmethod:items[0].data};
+
                             $.ajax({
                                 type: "PUT",
-                                url: "http://localhost:3000/api/v1/paymentmethods" + items[0].data.Id,
+                                url: "http://localhost:3000/api/v1/paymentmethods/" + newItem.paymentmethod.id ,
                                 dataType: "json",
                                 contentType: "application/json",
                                 data: JSON.stringify(items[0].data)
                             }).then(success, error);
                         },
                         remove: function (items, success, error) {
+                          var newItem = {paymentmethod:items[0].data};
                             $.ajax({
                                 type: "DELETE",
-                                url: "http://localhost:3000/api/v1/paymentmethods" + items[0].data.Id
+                                url: "http://localhost:3000/api/v1/paymentmethods/"  + newItem.paymentmethod.id
                             }).then(success, error);
                         }
                     }
@@ -136,8 +142,8 @@ var table = $("#TablaMetodoPago").shieldGrid({
                     width: 140,
                     title: " ",
                     buttons: [
-                        { commandName: "edit", caption: "Edit" },
-                        { commandName: "delete", caption: "Delete" }
+                        { commandName: "edit", caption: "Editar" },
+                        { commandName: "delete", caption: "Eliminar" }
                     ]
                 }
             ],
@@ -151,7 +157,7 @@ var table = $("#TablaMetodoPago").shieldGrid({
                 {
                     buttons: [
                         {
-                            caption: "Reset Book List",
+                            caption: "Resetear Lista",
                             click: function (e) {
                                 var grid = this;
                                 $.ajax({
@@ -222,20 +228,18 @@ var table = $("#TablaMetodoPago").shieldGrid({
     //Guardar elementos en DataBase
      function GuardarPaymentMethod() {        
       //Capturar datos del formulario
-      var IdMetodo = document.getElementById("txtIdMetodo").value;
-      var Metodo =  document.getElementById("txtMetodo").value;
-      var Estatus = 1;
+        var Metodo =  document.getElementById("txtMetodo").value;
 
 
       //Agregamos los datos capturados a un arreglo => arr
-      var arr = { id:IdMetodo,name:Metodo,status:Estatus };
+      var paymentmethod = { name:Metodo};
       //Evento ajax para enviar los datos
       $.ajax({
         //Ruta para enviar el servicio
         url: 'http://localhost:3000/api/v1/paymentmethods',
         type: 'POST',
         //Enviamos el arreglo ar
-        data: JSON.stringify(arr),
+        data: JSON.stringify(paymentmethod),
         contentType: 'application/json; charset=utf-8',
         async: false,
         //Si todo funciona bien entra al sucess

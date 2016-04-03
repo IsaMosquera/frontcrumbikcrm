@@ -138,7 +138,7 @@ var table = $("#TablaListadoRol").shieldGrid({
                     fields: {
                         id: { path: "id", type: Number },
                         name: { path: "name", type: String },
-                        status: { path: "status", type: Number }
+                      
                         
 
                     }
@@ -149,7 +149,7 @@ var table = $("#TablaListadoRol").shieldGrid({
             columns: [
                 { field: "id", title: "Id"},
                 { field: "name", title: "Nombre del Rol"},
-                  { field: "status", title: "Status"},
+                 
                 {
                     width: 140,
                     title: " ",
@@ -238,12 +238,12 @@ var table = $("#TablaListadoRol").shieldGrid({
      function GuardarFuncion() {        
       //Capturar datos del formulario
       var Nombre = document.getElementById("txtNombre").value;
-      var Status = 1;
+
       
 
 
       //Agregamos los datos capturados a un arreglo => arr
-      var rol = { name:Nombre,status:Status };
+      var rol = { name:Nombre };
       //Evento ajax para enviar los datos
       $.ajax({
         //Ruta para enviar el servicio
@@ -280,12 +280,12 @@ var table = $("#TablaListadoRol").shieldGrid({
        //Capturar datos del formulario
       var idRol = document.getElementById("txtIdRol").value;
       var Nombre = document.getElementById("txtNombre").value;
-      var Status = 1;
+
       
 
 
       //Agregamos los datos capturados a un arreglo => arr
-      var arr = { id:idRol,name:Nombre,status:Status };
+      var arr = { id:idRol,name:Nombre};
       //Evento ajax para enviar los datos
       $.ajax({
         //Ruta para enviar el servicio
@@ -320,12 +320,12 @@ var table = $("#TablaListadoRol").shieldGrid({
 
       //Capturar datos del formulario
       var idRol = document.getElementById("txtIdRol").value;
-      var Status = 0;
+    
       
 
 
       //Agregamos los datos capturados a un arreglo => arr
-      var arr = { id:idRol,status:Status };
+      var arr = { id:idRol };
       
       //Evento ajax para enviar los datos
       $.ajax({

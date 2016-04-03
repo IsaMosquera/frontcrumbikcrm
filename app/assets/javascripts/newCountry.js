@@ -82,12 +82,15 @@ var table = $("#TablaPais").shieldGrid({
                     },
                     modify: {
                         create: function (items, success, error) {
-                            var newItem = items[0];
+                            var newItem = {country:items[0].data};
+                           
+
                             $.ajax({
                                 type: "POST",
                                 url: "http://localhost:3000/api/v1/countrys",
+                               
                                 dataType: "json",
-                                data: newItem.data,
+                                data: newItem,
                                 complete: function (xhr) {
                                     if (xhr.readyState == 4) {
                                         if (xhr.status == 201) {
@@ -104,18 +107,21 @@ var table = $("#TablaPais").shieldGrid({
                             });
                         },
                         update: function (items, success, error) {
+                           var newItem = {country:items[0].data};
+
                             $.ajax({
                                 type: "PUT",
-                                url: "http://localhost:3000/api/v1/countrys" + items[0].data.Id,
+                                url: "http://localhost:3000/api/v1/countrys/" + newItem.country.id ,
                                 dataType: "json",
                                 contentType: "application/json",
                                 data: JSON.stringify(items[0].data)
                             }).then(success, error);
                         },
                         remove: function (items, success, error) {
+                          var newItem = {country:items[0].data};
                             $.ajax({
                                 type: "DELETE",
-                                url: "http://localhost:3000/api/v1/countrys" + items[0].data.Id
+                                url: "http://localhost:3000/api/v1/countrys/"  + newItem.country.id
                             }).then(success, error);
                         }
                     }

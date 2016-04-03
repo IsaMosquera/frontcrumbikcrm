@@ -92,18 +92,15 @@ var table = $("#TablaCiudad").shieldGrid({
                     },
                     modify: {
                         create: function (items, success, error) {
-                                  var Pais = document.getElementById("cmbPais").value;
-                                  var Estado =  document.getElementById("cmbEstado").value;
-                                  var Ciudad =  document.getElementById("txtCiudad").value;
-                                  var Estatus = 1;
-                        
+                            var newItem = {city:items[0].data};
+                           
 
-                            var newItem = [id+1, description, state, country];
                             $.ajax({
                                 type: "POST",
                                 url: "http://localhost:3000/api/v1/cities",
+                               
                                 dataType: "json",
-                                data: newItem.data,
+                                data: newItem,
                                 complete: function (xhr) {
                                     if (xhr.readyState == 4) {
                                         if (xhr.status == 201) {
@@ -120,18 +117,21 @@ var table = $("#TablaCiudad").shieldGrid({
                             });
                         },
                         update: function (items, success, error) {
+                           var newItem = {city:items[0].data};
+
                             $.ajax({
                                 type: "PUT",
-                                url: "http://localhost:3000/api/v1/cities" + items[0].data.Id,
+                                url: "http://localhost:3000/api/v1/cities/" + newItem.city.id ,
                                 dataType: "json",
                                 contentType: "application/json",
                                 data: JSON.stringify(items[0].data)
                             }).then(success, error);
                         },
                         remove: function (items, success, error) {
+                          var newItem = {city:items[0].data};
                             $.ajax({
                                 type: "DELETE",
-                                url: "http://localhost:3000/api/v1/cities" + items[0].data.Id
+                                url: "hhttp://localhost:3000/api/v1/cities/"  + newItem.city.id
                             }).then(success, error);
                         }
                     }
@@ -140,8 +140,7 @@ var table = $("#TablaCiudad").shieldGrid({
                     fields: {
                         id: { path: "id", type: Number },
                         description: { path: "description", type: String },
-                        state: { path: "state", type: String },
-                        country: { path: "country", type: String},
+                        state_id: { path: "state.description", type: String },
                     }
                 }
             },
@@ -150,14 +149,13 @@ var table = $("#TablaCiudad").shieldGrid({
             columns: [
                 { field: "id", title: "Código", width: "120px" },
                 { field: "description", title: "Ciudad", width: "80px" },
-                { field: "state", title: "Estado", width: "80px" },
-                { field: "country", title: "País", width: "80px" },
+                { field: "state_id", title: "Estado", width: "80px" },
                 {
                     width: 140,
                     title: " ",
                     buttons: [
-                        { commandName: "edit", caption: "Edit" },
-                        { commandName: "delete", caption: "Delete" }
+                        { commandName: "edit", caption: "Editar" },
+                        { commandName: "delete", caption: "Eliminar" }
                     ]
                 }
             ],
@@ -171,7 +169,7 @@ var table = $("#TablaCiudad").shieldGrid({
                 {
                     buttons: [
                         {
-                            caption: "Reset Book List",
+                            caption: "Resetear Lista",
                             click: function (e) {
                                 var grid = this;
                                 $.ajax({
@@ -248,14 +246,13 @@ var table = $("#TablaCiudad").shieldGrid({
      function GuardarCity() {        
       //Capturar datos del formulario
 
-      var Pais = document.getElementById("cmbPais").value;
       var Estado =  document.getElementById("cmbEstado").value;
       var Ciudad =  document.getElementById("txtCiudad").value;
-      var Estatus = 1;
+      //var Estatus = 1;
 
 
       //Agregamos los datos capturados a un arreglo => arr
-      var arr = { country:Pais,state:Estado,description:Ciudad,status:Estatus };
+      var arr = { state_id:Estado,description:Ciudad};
 
       //Agregamos los datos capturados de arr a un arreglo llamado city
       var city = arr;

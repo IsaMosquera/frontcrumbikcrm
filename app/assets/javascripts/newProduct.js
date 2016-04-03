@@ -96,12 +96,15 @@ var table = $("#TablaNewProduct").shieldGrid({
                     },
                     modify: {
                         create: function (items, success, error) {
-                            var newItem = items[0];
+                            var newItem = {product:items[0].data};
+                           
+
                             $.ajax({
                                 type: "POST",
                                 url: "http://localhost:3000/api/v1/products",
+                               
                                 dataType: "json",
-                                data: newItem.data,
+                                data: newItem,
                                 complete: function (xhr) {
                                     if (xhr.readyState == 4) {
                                         if (xhr.status == 201) {
@@ -118,18 +121,21 @@ var table = $("#TablaNewProduct").shieldGrid({
                             });
                         },
                         update: function (items, success, error) {
+                           var newItem = {product:items[0].data};
+
                             $.ajax({
                                 type: "PUT",
-                                url: "http://localhost:3000/api/v1/products" + items[0].data.Id,
+                                url: "http://localhost:3000/api/v1/products/" + newItem.product.id ,
                                 dataType: "json",
                                 contentType: "application/json",
                                 data: JSON.stringify(items[0].data)
                             }).then(success, error);
                         },
                         remove: function (items, success, error) {
+                          var newItem = {product:items[0].data};
                             $.ajax({
                                 type: "DELETE",
-                                url: "http://localhost:3000/api/v1/products" + items[0].data.Id
+                                url: "http://localhost:3000/api/v1/products/"  + newItem.product.id
                             }).then(success, error);
                         }
                     }
@@ -141,7 +147,7 @@ var table = $("#TablaNewProduct").shieldGrid({
                         description: { path: "desccription", type: String },
                         image: { path: "image", type: String },
                         quantity: { path: "quantity", type: Number },
-                        organization: { path: "organization.name", type: String},
+                        organization_id: { path: "organization.name", type: String},
                         price: { path: "price", type: Number },
                     }
                 }
@@ -154,14 +160,14 @@ var table = $("#TablaNewProduct").shieldGrid({
                 { field: "description", title: "Descripcion" },
                 { field: "image", title: "Imagen del Producto" },                
                 { field: "quantity", title: "Cantidad" },                
-                { field: "organization", title: "Organizacion" },                
+                { field: "organization_id", title: "Organizacion" },                
                 { field: "price", title: "Precio" },
                 {
                     width: 140,
                     title: " ",
                     buttons: [
-                        { commandName: "edit", caption: "Edit" },
-                        { commandName: "delete", caption: "Delete" }
+                        { commandName: "edit", caption: "Editar" },
+                        { commandName: "delete", caption: "Eliminar" }
                     ]
                 }
             ],
@@ -249,25 +255,24 @@ var table = $("#TablaNewProduct").shieldGrid({
     //Guardar elementos en DataBase
      function GuardarFuncion() {        
       //Capturar datos del formulario
-      var idProducto = document.getElementById("txtIdProducto").value;
       var Nombre = document.getElementById("txtNombre").value;
       var Descripcion = document.getElementById("txtDescripcion").value;
       var Cantidad = document.getElementById("txtCantidad").value;
       var Precio = document.getElementById("txtPrecio").value;
       var FotoProducto = document.getElementById("txtFotoProducto").value;
       var Organizacion = document.getElementById("cmbOrganizacion").value;
-      var Estatus = 1;
+
       
       //Agregamos los datos capturados a un arreglo => arr
-      var arr = { id:idProducto, name:Nombre,description:Descripcion, image:FotoProducto, quantity:Cantidad,
-                  organizacion:Organizacion, price:Precio, status:Estatus};
+      var product = {name:Nombre,description:Descripcion, image:FotoProducto, quantity:Cantidad,
+                  organizacion:Organizacion, price:Precio};
       //Evento ajax para enviar los datos
       $.ajax({
         //Ruta para enviar el servicio
         url: 'http://localhost:3000/api/v1/products',
         type: 'POST',
         //Enviamos el arreglo ar
-        data: JSON.stringify(arr),
+        data: JSON.stringify(product),
         contentType: 'application/json; charset=utf-8',
         async: false,
         //Si todo funciona bien entra al sucess

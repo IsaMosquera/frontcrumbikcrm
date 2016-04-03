@@ -109,12 +109,15 @@ var table = $("#TablaCliente").shieldGrid({
                     },
                     modify: {
                         create: function (items, success, error) {
-                            var newItem = items[0];
+                            var newItem = {customer:items[0].data};
+                           
+
                             $.ajax({
                                 type: "POST",
                                 url: "http://localhost:3000/api/v1/customers",
+                               
                                 dataType: "json",
-                                data: newItem.data,
+                                data: newItem,
                                 complete: function (xhr) {
                                     if (xhr.readyState == 4) {
                                         if (xhr.status == 201) {
@@ -131,18 +134,21 @@ var table = $("#TablaCliente").shieldGrid({
                             });
                         },
                         update: function (items, success, error) {
+                           var newItem = {customer:items[0].data};
+
                             $.ajax({
                                 type: "PUT",
-                                url: "http://localhost:3000/api/v1/customers" + items[0].data.Id,
+                                url: "http://localhost:3000/api/v1/customers/" + newItem.customer.id ,
                                 dataType: "json",
                                 contentType: "application/json",
                                 data: JSON.stringify(items[0].data)
                             }).then(success, error);
                         },
                         remove: function (items, success, error) {
+                          var newItem = {customer:items[0].data};
                             $.ajax({
                                 type: "DELETE",
-                                url: "http://localhost:3000/api/v1/customers" + items[0].data.Id
+                                url: "http://localhost:3000/api/v1/customers/"  + newItem.customer.id
                             }).then(success, error);
                         }
                     }
@@ -154,6 +160,7 @@ var table = $("#TablaCliente").shieldGrid({
                         last_name: { path: "last_name", type: String },
                         address: { path: "address", type: String},
                         email: { path: "email", type: String},
+                        website:{ path: "website", type: String},
                         phone: { path: "phone", type: String},
                         celular: { path: "celular", type: String},
                         sex: { path: "sex", type: String},
@@ -168,6 +175,7 @@ var table = $("#TablaCliente").shieldGrid({
                 { field: "last_name", title: "Apellido", width: "80px" },
                 { field: "address", title: "Dirección", width: "80px" },
                 { field: "email", title: "E-mail", width: "80px" },
+                { field: "website", title: "Website", width: "80px" },
                 { field: "phone", title: "Teléfono", width: "80px" },
                 { field: "celular", title: "Celular", width: "80px" },
                 { field: "sex", title: "Sexo", width: "80px" },
@@ -273,11 +281,9 @@ var table = $("#TablaCliente").shieldGrid({
     //Guardar elementos en DataBase
      function GuardarCustomer() {        
       //Capturar datos del formulario
-      var idCustomer = document.getElementById("txtCedula").value;
       var Nombre = document.getElementById("txtNombre").value;
       var Apellido = document.getElementById("txtApellido").value;
       var Direccion = document.getElementById("txtDireccion").value;
-      var Cedula = document.getElementById("txtCedula").value;
       var Ciudad = document.getElementById("cmbCiudad").value;
       var Email = document.getElementById("txtEmail").value;
       var Sexo = document.getElementById("cmbSexo").value;
@@ -286,20 +292,19 @@ var table = $("#TablaCliente").shieldGrid({
       var FechaNacimiento = document.getElementById("txtFechaNacimiento").value;
       var TipoCliente = document.getElementById("cmbTipoCliente").value;
       var SitioWeb = document.getElementById("txtSitioWeb").value;
-      var FotoPerfil = document.getElementById("txtFotoPerfil").value;
-      var Estatus = 1;
+
 
       //Agregamos los datos capturados a un arreglo => arr
-      var arr = { id:idCustomer,name:Nombre,last_name:Apellido, address:Direccion,city:Ciudad,email:Email,
+      var customer = {name:Nombre,last_name:Apellido, address:Direccion,city:Ciudad,email:Email,website:SitioWeb,
                   phone:Telefono, celular:TelefonoCelular,birthdate:FechaNacimiento,sex:Sexo,
-                  customertype:TipoCliente,website:SitioWeb, image:FotoPerfil, status:Estatus};
+                  customertype:TipoCliente};
       //Evento ajax para enviar los datos
       $.ajax({
         //Ruta para enviar el servicio
         url: 'http://localhost:3000/api/v1/customers',
         type: 'POST',
         //Enviamos el arreglo ar
-        data: JSON.stringify(arr),
+        data: JSON.stringify(customer),
         contentType: 'application/json; charset=utf-8',
         async: false,
         //Si todo funciona bien entra al sucess

@@ -38,8 +38,6 @@
            
                       <div class="modal-footer">
                           <button type="submit" id="Guardar" class="btn btn-lg btn-info">Guardar</button>
-                          <button type="submit" id="Modificar" class="btn btn-lg btn-info">Modificar</button>
-                          <button type="submit" id="Eliminar" class="btn btn-lg btn-info">Eliminar</button>
                           <button type="button" class="btn btn-lg btn-info" data-dismiss="modal">Cerrar</button>
                     </div>
                </div>
@@ -66,31 +64,16 @@
 
 
   
- <!-- === PANEL DE TABLA === --> 
   <div class="panel panel-primary">
     <div class="panel-heading">
-      <h3 class="panel-title">Listado de los Métodos de Pago</h3>
+      <h3 class="panel-title">Lista de Metodos de Pago</h3>
     </div>
     <div class="panel-body">
-      Puede Visualizar los Métodos de Pago Almacenados en el Sistema
-
-      <!-- ====== DATATABLE ======= -->
-  <div class="col-md-12">
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            <h4 class="text-center">Métodos de Pago 
-            <span class="fa fa-edit pull-right bigicon"></span></h4>
-            <h4 class="text-center">para modificar dale doble click en el campo 
-            <span class="fa fa-edit pull-right bigicon">
-            </span></h4>
-        </div>
-        <div class="panel-body text-center">
-         <div id="grid"></div>
-          <!-- ====== DATATABLE ======= -->
-          <table id="TablaMetodoPago" class="display" cellspacing="0" width="100%">
-          </table>
-        </div>
+      Puede visualizar los Metodos de pago  actualmente almacenados en el sistema
+    <div id="TablaMetodoPago"></div>   
+    <!-- ====== FIN DATATABLE======= -->
     </div>
+  </div>
   </div>
 
 <!-- you need to include the shieldui css and js assets in order for the grids to work -->

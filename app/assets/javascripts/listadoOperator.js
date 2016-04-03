@@ -92,12 +92,15 @@ var table = $("#TablaOperadores").shieldGrid({
                     },
                     modify: {
                         create: function (items, success, error) {
-                            var newItem = items[0];
+                            var newItem = {operator:items[0].data};
+                           
+
                             $.ajax({
                                 type: "POST",
                                 url: "http://localhost:3000/api/v1/operators",
+                               
                                 dataType: "json",
-                                data: newItem.data,
+                                data: newItem,
                                 complete: function (xhr) {
                                     if (xhr.readyState == 4) {
                                         if (xhr.status == 201) {
@@ -114,18 +117,21 @@ var table = $("#TablaOperadores").shieldGrid({
                             });
                         },
                         update: function (items, success, error) {
+                           var newItem = {operator:items[0].data};
+
                             $.ajax({
                                 type: "PUT",
-                                url: "http://localhost:3000/api/v1/operators/1" ,
+                                url: "http://localhost:3000/api/v1/operators/" + newItem.operator.id ,
                                 dataType: "json",
                                 contentType: "application/json",
                                 data: JSON.stringify(items[0].data)
                             }).then(success, error);
                         },
                         remove: function (items, success, error) {
+                          var newItem = {operator:items[0].data};
                             $.ajax({
                                 type: "DELETE",
-                                url: "http://localhost:3000/api/v1/operators" + items[0].data.Id
+                                url: "http://localhost:3000/api/v1/operators/"  + newItem.operator.id
                             }).then(success, error);
                         }
                     }
@@ -135,13 +141,12 @@ var table = $("#TablaOperadores").shieldGrid({
                         id: { path: "id", type: Number },
                         name: { path: "name", type: String },
                         last_name: { path: "last_name", type: String },
-                        birthdate: { path: "birthdate", type: String },
+                        birthdate: { path: "birthdate", type: Date },
                         sex: { path: "sex", type: String },                        
-                        rol_id: { path: "rol.description", type: String },
+                        rol_id: { path: "rol.name", type: String },
                         city_id: { path: "city.description", type: String },
                         organization_id: { path: "organization.name", type: String },
                         user_id: { path: "user_id", type: String },
-                        status: { path: "status", type: Number }
 
                     }
                 }
@@ -150,7 +155,7 @@ var table = $("#TablaOperadores").shieldGrid({
             rowHover: false,
             columns: [
                 { field: "id", title: "Id"},
-                { field: "name", title: "Nombre del Servicio"},
+                { field: "name", title: "Nombre"},
                 { field: "last_name", title: "Apellido"},
                 { field: "birthdate", title: "Fecha de Nacimiento"},
                 { field: "sex", title: "Sexo"},
@@ -162,8 +167,8 @@ var table = $("#TablaOperadores").shieldGrid({
                     width: 100,
                     title: " ",
                     buttons: [
-                        { commandName: "edit", caption: "Edit" },
-                        { commandName: "delete", caption: "Delete" }
+                        { commandName: "edit", caption: "Editar" },
+                        { commandName: "delete", caption: "Eliminar" }
                     ]
                 }
             ],
@@ -258,7 +263,6 @@ var table = $("#TablaOperadores").shieldGrid({
       var Ciudad = document.getElementById('cmbCiudad').value;
       var Organizacion = document.getElementById('cmbOrganizacion').value;
       var Username = document.getElementById('txtUserName').value;
-      var Status = 1;
 
       //Agregamos los datos capturados a un arreglo => arr
       var operator = { Tipo_Rol:Tipo_Rol,Nombre:Nombre,Apellido:Apellido,Sexo:Sexo,Fecha_Nac:Fecha_Nac,Ciudad:Ciudad,Organizacion:Organizacion,Username:Username };

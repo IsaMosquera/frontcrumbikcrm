@@ -83,12 +83,15 @@ var table = $("#TablaSocialMedia").shieldGrid({
                     },
                     modify: {
                         create: function (items, success, error) {
-                            var newItem = items[0];
+                            var newItem = {socialnetwork:items[0].data};
+                           
+
                             $.ajax({
                                 type: "POST",
                                 url: "http://localhost:3000/api/v1/socialnetworks",
+                               
                                 dataType: "json",
-                                data: newItem.data,
+                                data: newItem,
                                 complete: function (xhr) {
                                     if (xhr.readyState == 4) {
                                         if (xhr.status == 201) {
@@ -105,18 +108,21 @@ var table = $("#TablaSocialMedia").shieldGrid({
                             });
                         },
                         update: function (items, success, error) {
+                           var newItem = {socialnetwork:items[0].data};
+
                             $.ajax({
                                 type: "PUT",
-                                url: "http://localhost:3000/api/v1/socialnetworks" + items[0].data.Id,
+                                url: "http://localhost:3000/api/v1/socialnetworks/" + newItem.socialnetwork.id ,
                                 dataType: "json",
                                 contentType: "application/json",
                                 data: JSON.stringify(items[0].data)
                             }).then(success, error);
                         },
                         remove: function (items, success, error) {
+                          var newItem = {rol:items[0].data};
                             $.ajax({
                                 type: "DELETE",
-                                url: "http://localhost:3000/api/v1/socialnetworks" + items[0].data.Id
+                                url: "http://localhost:3000/api/v1/socialnetworks/"  + newItem.socialnetwork.id
                             }).then(success, error);
                         }
                     }
@@ -125,7 +131,7 @@ var table = $("#TablaSocialMedia").shieldGrid({
                     fields: {
                          id: { path: "id", type: Number },
                         name: { path: "name", type: String },
-                        status: { path: "status", type: Number},
+
 
                     }
                 }
@@ -139,8 +145,8 @@ var table = $("#TablaSocialMedia").shieldGrid({
                     width: 140,
                     title: " ",
                     buttons: [
-                        { commandName: "edit", caption: "Edit" },
-                        { commandName: "delete", caption: "Delete" }
+                        { commandName: "edit", caption: "Editar" },
+                        { commandName: "delete", caption: "Eliminar" }
                     ]
                 }
             ],
@@ -229,20 +235,20 @@ var table = $("#TablaSocialMedia").shieldGrid({
      function GuardarRedSocial() {        
       //Capturar datos del formulario
 
-      var IdRedSocial = document.getElementById("txtIdRedSocial").value;
+
       var RedSocial =  document.getElementById("txtRedSocial").value;
-      var Estatus = 1;
+
 
 
       //Agregamos los datos capturados a un arreglo => arr
-      var arr = { Id:IdRedSocial,name:RedSocial,status:Estatus };
+      var socialnetwork = { name:RedSocial};
       //Evento ajax para enviar los datos
       $.ajax({
         //Ruta para enviar el servicio
         url: 'http://localhost:3000/api/v1/socialnetworks',
         type: 'POST',
         //Enviamos el arreglo ar
-        data: JSON.stringify(arr),
+        data: JSON.stringify(socialnetwork),
         contentType: 'application/json; charset=utf-8',
         async: false,
         //Si todo funciona bien entra al sucess

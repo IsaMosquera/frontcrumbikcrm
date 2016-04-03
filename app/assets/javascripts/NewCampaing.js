@@ -106,12 +106,15 @@ var table = $("#TablaCampaing").shieldGrid({
                     },
                     modify: {
                         create: function (items, success, error) {
-                            var newItem = items[0];
+                            var newItem = {advertcampain:items[0].data};
+                           
+
                             $.ajax({
                                 type: "POST",
                                 url: "http://localhost:3000/api/v1/advertcampains",
+                               
                                 dataType: "json",
-                                data: newItem.data,
+                                data: newItem,
                                 complete: function (xhr) {
                                     if (xhr.readyState == 4) {
                                         if (xhr.status == 201) {
@@ -128,18 +131,21 @@ var table = $("#TablaCampaing").shieldGrid({
                             });
                         },
                         update: function (items, success, error) {
+                           var newItem = {advertcampain:items[0].data};
+
                             $.ajax({
                                 type: "PUT",
-                                url: "http://localhost:3000/api/v1/advertcampains" + items[0].data.Id,
+                                url: "http://localhost:3000/api/v1/advertcampains/" + newItem.advertcampain.id ,
                                 dataType: "json",
                                 contentType: "application/json",
                                 data: JSON.stringify(items[0].data)
                             }).then(success, error);
                         },
                         remove: function (items, success, error) {
+                          var newItem = {advertcampain:items[0].data};
                             $.ajax({
                                 type: "DELETE",
-                                url: "http://localhost:3000/api/v1/advertcampains" + items[0].data.Id
+                                url: "http://localhost:3000/api/v1/advertcampains/"  + newItem.advertcampain.id
                             }).then(success, error);
                         }
                     }
@@ -151,12 +157,12 @@ var table = $("#TablaCampaing").shieldGrid({
                         startdate: { path: "startdate", type: Date },
                         enddate: { path: "enddate", type: Date },
                         description: { path: "description", type: String },
-                        customertype: { path: "customertype", type: String },
+                        customertype_id: { path: "customertype.description", type: String },
                         startage: { path: "startage", type: Number },
                         endage: { path: "endage", type: Number },
                         sex: { path: "sex", type: String },
                         image: { path: "image", type: String },
-                        activitietype: { path: "activitietype", type: String },
+                        activitietype_id: { path: "activitietype.name", type: String },
                         operator: { path: "operator", type: String },
 
       //Evento ajax para enviar los datos
@@ -172,18 +178,18 @@ var table = $("#TablaCampaing").shieldGrid({
                 { field: "startdate", title: "Fecha de Inicio"},
                 { field: "enddate", title:  "Fecha de finalizacion"},
                 { field: "description", title: "Tipo de Camapaña Publicitaria" },
-                { field: "customertype", title: "Tipo de Cliente" },
+                { field: "customertype_id", title: "Tipo de Cliente" },
                 { field: "startage", title: "Edad Inicial" },
                 { field: "endage", title: "Edad Final" },
                 { field: "sex", title: "Orientada al Sexo" },
                 { field: "image", title: "Imagen" },
-                { field: "activitietype", title: "Actividad" },
+                { field: "activitietype_id", title: "Tipo de Actividad" },
                 {
                     width: 140,
                     title: " ",
                     buttons: [
-                        { commandName: "edit", caption: "Edit" },
-                        { commandName: "delete", caption: "Delete" }
+                        { commandName: "edit", caption: "Editar" },
+                        { commandName: "delete", caption: "Eliminar" }
                     ]
                 }
             ],
@@ -197,7 +203,7 @@ var table = $("#TablaCampaing").shieldGrid({
                 {
                     buttons: [
                         {
-                            caption: "Reset Book List",
+                            caption: "Resetear Lista",
                             click: function (e) {
                                 var grid = this;
                                 $.ajax({
@@ -281,18 +287,17 @@ var table = $("#TablaCampaing").shieldGrid({
       var FechaFinal = document.getElementById('txtFechaFinal').value;
       var Descripcion= document.getElementById('txtDescripcion').value;
       var TipoCliente= document.getElementById('cmbTipoCliente').value;
-      var EdadInicio= document.getElementById('txtEdadIinicio').value;
+      var EdadInicio= document.getElementById('txtEdadInicio').value;
       var EdadFinal= document.getElementById('txtEdadFinal').value;
       var Sexo= document.getElementById('cmbSexo').value;
       var Flayer= document.getElementById('txtFlayer').value;
-      var TipoActividad= document.getElementById('cmbTipoActividad').value;
+      var TipoActividad= document.getElementById('cmbActividad').value;
       var Operador = document.getElementById("cmbOperador").value;
-      var estatus= 1;
       
       //Agregamos los datos capturados a un arreglo => arr
          var advertcampain = { name:Nombre,startdate:FechaInicio,enddate:FechaFinal,description:Descripcion, 
                      customertype:TipoCliente,startage:EdadInicio,endage:EdadFinal,sex:Sexo, image:Flayer,
-                     operator:Operador,activitietype:TipoActividad,status:Estatus};
+                     operator:Operador,activitietype:TipoActividad};
       //Evento ajax para enviar los datos
       $.ajax({
         //Ruta para enviar el servicio
@@ -338,12 +343,12 @@ var table = $("#TablaCampaing").shieldGrid({
       var Flayer= document.getElementById('txtFlayer').value;
       var TipoActividad= document.getElementById('cmbTipoActividad').value;
       var Operador = document.getElementById("cmbOperador").value;
-      var estatus= 1;
+ 
       
       //Agregamos los datos capturados a un arreglo => arr
          var arr = { idCampana:id,name:Nombre,startdate:FechaInicio,enddate:FechaFinal,description:Descripcion, 
                      customertype:TipoCliente,startage:EdadInicio,endage:EdadFinal,sex:Sexo, image:Flayer,
-                     operator:Operador,activitietype:TipoActividad,status:Estatus};
+                     operator:Operador,activitietype:TipoActividad};
       //Evento ajax para enviar los datos
       //Evento ajax para enviar los datos
       $.ajax({
@@ -442,7 +447,7 @@ function validarSalida(){
       callback: function() {
         
         bootbox.hideAll();
-        GuardarFuncion();
+        GuardarCampaing();
       }
           }
       
@@ -592,7 +597,7 @@ function validarSalida(){
     {
        jQuery.support.cors = true;
         $.ajax({
-            url: 'http://localhost:3000/api/v1/activities',
+            url: 'http://localhost:3000/api/v1/activitietypes',
             type: 'GET',
             dataType: 'json',            
             success: function (data) {                
@@ -602,10 +607,10 @@ function validarSalida(){
 
                 for (var i=0; i< data.length; i++)
                 {
-                  listItems+="<option value='" + data[i].id+"'>" + data[i].descripcion + "</option>";
+                  listItems+="<option value='" + data[i].id+"'>" + data[i].name + "</option>";
 
                 }
-                $("#cmbTipoActividad").html(listItems);
+                $("#cmbActividad").html(listItems);
             },
             error: function (x, y, z) {
                 alert(x + '\n' + y + '\n' + z);

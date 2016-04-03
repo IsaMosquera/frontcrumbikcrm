@@ -92,12 +92,15 @@ var table = $("#TablaEstado").shieldGrid({
                     },
                     modify: {
                         create: function (items, success, error) {
-                            var newItem = items[0];
+                            var newItem = {state:items[0].data};
+                           
+
                             $.ajax({
                                 type: "POST",
                                 url: "http://localhost:3000/api/v1/states",
+                               
                                 dataType: "json",
-                                data: newItem.data,
+                                data: newItem,
                                 complete: function (xhr) {
                                     if (xhr.readyState == 4) {
                                         if (xhr.status == 201) {
@@ -114,18 +117,21 @@ var table = $("#TablaEstado").shieldGrid({
                             });
                         },
                         update: function (items, success, error) {
+                           var newItem = {state:items[0].data};
+
                             $.ajax({
                                 type: "PUT",
-                                url: "http://localhost:3000/api/v1/states/1" ,
+                                url: "http://localhost:3000/api/v1/states/" + newItem.state.id ,
                                 dataType: "json",
                                 contentType: "application/json",
                                 data: JSON.stringify(items[0].data)
                             }).then(success, error);
                         },
                         remove: function (items, success, error) {
+                          var newItem = {state:items[0].data};
                             $.ajax({
                                 type: "DELETE",
-                                url: "http://localhost:3000/api/v1/states" + items[0].data.Id
+                                url: "http://localhost:3000/api/v1/states/"  + newItem.state.id
                             }).then(success, error);
                         }
                     }
@@ -149,8 +155,8 @@ var table = $("#TablaEstado").shieldGrid({
                     width: 140,
                     title: " ",
                     buttons: [
-                        { commandName: "edit", caption: "Edit" },
-                        { commandName: "delete", caption: "Delete" }
+                        { commandName: "edit", caption: "Editar" },
+                        { commandName: "delete", caption: "Eliminar" }
                     ]
                 }
             ],
@@ -164,7 +170,7 @@ var table = $("#TablaEstado").shieldGrid({
                 {
                     buttons: [
                         {
-                            caption: "Reset Book List",
+                            caption: "Resetear Lista",
                             click: function (e) {
                                 var grid = this;
                                 $.ajax({
@@ -237,17 +243,16 @@ var table = $("#TablaEstado").shieldGrid({
       //Capturar datos del formulario
       var Estado = document.getElementById("txtEstado").value;
       var Pais = document.getElementById("cmbPais").value;
-      var idEstado = document.getElementById("txtIdEstado").value;
-      var Estatus = document.getElementById("txtEstatus").value;
+
       //Agregamos los datos capturados a un arreglo => arr
-      var arr = { Estado:Estado,Pais:Pis,idEstado:idEstado,Estatus:Estatus };
+      var state = { description:Estado,country_id:Pais };
       //Evento ajax para enviar los datos
       $.ajax({
         //Ruta para enviar el servicio
         url: 'http://localhost:3000/api/v1/states',
         type: 'POST',
         //Enviamos el arreglo ar
-        data: JSON.stringify(arr),
+        data: JSON.stringify(state),
         contentType: 'application/json; charset=utf-8',
         async: false,
         //Si todo funciona bien entra al sucess
@@ -378,7 +383,7 @@ function validarSalida(){
       callback: function() {
         
         bootbox.hideAll();
-        GuardarFuncion();
+        GuardarState();
       }
           }
       
