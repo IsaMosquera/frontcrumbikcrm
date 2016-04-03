@@ -143,7 +143,7 @@ var table = $("#TablaNewOrganization").shieldGrid({
                           var newItem = {organization:items[0].data};
                             $.ajax({
                                 type: "DELETE",
-                                url: "http://localhost:3000/api/v1/rols/"  + newItem.organization.id
+                                url: "http://localhost:3000/api/v1/organizations/"  + newItem.organization.id
                             }).then(success, error);
                         }
                     }
