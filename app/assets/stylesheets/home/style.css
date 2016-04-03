@@ -243,7 +243,7 @@ a:active {
   height: 76px;
   margin: 0px auto;
   padding-left: 10px;
-  background-image: url('../images/logo.png');
+  background-image: url('<%= asset_path 'logo.png' %>');
   background-position: 100% 45%;
   background-repeat: no-repeat;
   -webkit-transition: all 500ms linear;
@@ -277,7 +277,7 @@ a:active {
 }
 
 .sp-content {
-    background: url(../images/slider/back.png) no-repeat scroll 0 0;
+    background: url("<%= asset_path 'slider/back.png' %>") no-repeat scroll 0 0;
     
     position: relative;
     width: 100%;
@@ -289,7 +289,7 @@ a:active {
 }
 
 .sp-parallax-bg {
-    background: url(../images/slider/cloud.png) repeat-x scroll 0 0;
+    background: url(image_path('cloud.png')) repeat-x scroll 0 0;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;
@@ -1146,12 +1146,12 @@ box-shadow: 5px 5px 0px #20AE61;
   text-align: center;
 }
 .experience {
-  background-image: url('../images/example-bg.png');
+  background-image: url('<%= asset_path 'example-bg.png' %>');
   background-size: 125px;
 }
 .exp {
   background-color: transparent;
-  background-image: url('../images/example-bg.png');
+  background-image: url('<%= asset_path 'example-bg.png' %>');
   background-position: 0% 0%;
   background-size: 125px;
   background-repeat: repeat;
@@ -1189,7 +1189,7 @@ box-shadow: 5px 5px 0px #20AE61;
   
 }
 .team-parlex {
-  background-image: url('../images/team.png');
+  background-image: url('<%= asset_path 'team.png' %>');
   background-size: 350px;
   background-attachment: fixed;
 }
@@ -1309,7 +1309,7 @@ margin-left: 260px;
 
 
 .footer {
-  background-image: url("../images/backgroundfooter.png");
+  background-image: url('<%= asset_path 'backgroundfooter.png' %>');
   /* Set the fixed height of the footer here */
   height: initial;
   margin-top: 1px;
@@ -1326,7 +1326,7 @@ i{
 
 
 .footer-parlex {
-  background-image: url('../images/fotterback.png');
+  background-image: url('<%= asset_path 'fotterback.png' %>');
   background-attachment: fixed;
   background-size: cover;
   background-position: center bottom;
@@ -1381,21 +1381,21 @@ font-size: 18px;
 
 .service-parlex {
   padding-top: 0px;
-  background-image: url('../images/fotterback.png');
+  background-image: url('<%= asset_path 'fotterback.png' %>');
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
 }
 .contacto-parlex {
   padding-top: 0px;
-  background-image: url('../images/email.jpg');
+  background-image: url('<%= asset_path 'email.jpg' %>');
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
 }
 .registro-parlex {
   padding-top: 0px;
-  background-image: url('../images/registro.png');
+  background-image: url('<%= asset_path 'registro.png' %>');
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;

@@ -244,14 +244,14 @@ margin-top: 20px;
 /* Footer  */
 
 .footer {
-  background-image: url("../images/backgroundfooter.png");
+  background-image: url('<%= asset_path 'backgroundfooter' %>');
   /* Set the fixed height of the footer here */
   height: initial;
   margin-top: 0px;
 }
 .footer-content{
   margin-top: 0px;
-  background-image: url("/images/backgroundfooter.png");
+  background-image: url('<%= asset_path 'backgroundfooter' %>');
   
 }
 
