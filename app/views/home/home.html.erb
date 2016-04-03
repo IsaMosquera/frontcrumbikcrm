@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>CRÜMBIK</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+ <%= stylesheet_link_tag  "home/normal.css" %>
+  <%= stylesheet_link_tag  "style.css" %>
+   <%= stylesheet_link_tag  "style2.css" %>
+    <%= stylesheet_link_tag  "animation.css" %>
+    
+
+<!--
+  <link rel="stylesheet" type="text/css" href="css/normal.css">
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <link rel="stylesheet" type="text/css" href="css/style2.css">
+  <link rel="stylesheet" href="css/animation.css">-->
+<%= javascript_include_tag "https://ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js" %>
+ <!-- <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js"></script>-->
+  <script>
+    if (/mobile/i.test(navigator.userAgent)) document.documentElement.className += ' w-mobile';
+  </script>
+  <link rel="shortcut icon" type="image/x-icon" href="<%=asset_path 'logo.ico' %>">
+  <!--[if lt IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
+</head>
+<body>
+  <div class="fix-header" id="home">
+    <div class="w-container">
+      <div class="w-nav" data-collapse="medium" data-animation="default" data-duration="400"></div>
+    </div>
+  </div>
+  <div class="fixed-header">
+    <div class="w-container container">
+      <div class="w-row">
+
+       <!--///////////////////////////////////////////////////////
+       // Logo section 
+       //////////////////////////////////////////////////////////-->
+
+
+        <div class="w-col w-col-3 logo">
+          <a href="#"><span class="morado"><img class="navbar-brand" src="<%=asset_path 'logo.png' %>">CRUMBIK</span></a>      
+        </div>
+
+        <!--///////////////////////////////////////////////////////
+       // End Logo section 
+       //////////////////////////////////////////////////////////-->
+
+        <div class="w-col w-col-9" >
+
+       <!--///////////////////////////////////////////////////////
+       // Menu section 
+       //////////////////////////////////////////////////////////-->
+
+
+          <div class="w-nav navbar" data-collapse="medium" data-animation="default" data-duration="400" data-contain="1">
+            <div class="w-container nav">
+              <nav class="w-nav-menu nav-menu" role="navigation">
+
+                <a class="w-nav-link menu-li"  href="#slider">INICIO</a>
+                <a class="w-nav-link menu-li" href="#about">NOSOTROS</a>
+                <a class="w-nav-link menu-li" href="#plan">PLANES</a>
+                <!-- <a class="w-nav-link menu-li" href="#portfolio">PORTFOL</a>
+               <!-- <a class="w-nav-link menu-li"href="#team">TEAM</a>-->
+                <a class="w-nav-link menu-li" href="#contact">CONTÁCTANOS</a>
+                  <%= link_to 'REGISTRATE', register_path, :class => 'w-nav-link menu-li' %>
+              <!--  <a class="w-nav-link menu-li" href="registrarse.html">REGISTRARSE</a>-->
+               <%= link_to 'INGRESA', login_path, :class => 'w-nav-link menu-li' %>
+               <!-- <a class="w-nav-link menu-li" href="ingresar.html">INGRESAR</a>-->
+                                
+              </nav>
+              <div class="w-nav-button">
+                <div class="w-icon-nav-menu"></div>
+              </div>
+            </div>
+          </div>
+
+
+          <!--///////////////////////////////////////////////////////
+       // End Menu section 
+       //////////////////////////////////////////////////////////-->
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--///////////////////////////////////////////////////////
+       //  Slider section 
+       //////////////////////////////////////////////////////////-->
+
+
+  <div class="slidersection" id="slider">
+    <div class="sp-slideshow">
+      
+        <input id="button-1" type="radio" name="radio-set" class="sp-selector-1" checked="checked" />
+        <label for="button-1" class="button-label-1"></label>
+        
+        <input id="button-2" type="radio" name="radio-set" class="sp-selector-2" />
+        <label for="button-2" class="button-label-2"></label>
+        
+        <input id="button-3" type="radio" name="radio-set" class="sp-selector-3" />
+        <label for="button-3" class="button-label-3"></label>
+        
+        <input id="button-4" type="radio" name="radio-set" class="sp-selector-4" />
+        <label for="button-4" class="button-label-4"></label>
+        
+        <input id="button-5" type="radio" name="radio-set" class="sp-selector-5" />
+        <label for="button-5" class="button-label-5"></label>
+        
+        <label for="button-1" class="sp-arrow sp-a1"></label>
+        <label for="button-2" class="sp-arrow sp-a2"></label>
+        <label for="button-3" class="sp-arrow sp-a3"></label>
+        <label for="button-4" class="sp-arrow sp-a4"></label>
+        <label for="button-5" class="sp-arrow sp-a5"></label>
+        
+        <div class="sp-content">
+          <div class="sp-parallax-bg"></div>
+          <ul class="sp-slider clearfix">
+           <<li><img 
+    style=" erflow: hidden;
+    background-position: center left;" src="<%= asset_path('slider/slider1.png') %>" alt="titulo" /></li>
+            <li><img src="<%= asset_path('slider/2.jpg') %>" alt="image02" /></li>
+            <li><img src="<%= asset_path('slider/tendencias.jpg') %>" alt="image03" /></li>
+            <li><img src="<%= asset_path('slider/slider2prueba.png') %>"  alt="image04" /></li>
+            <li><img src="<%= asset_path('slider/3.jpg') %>"  alt="image05" /></li>
+          </ul>
+        </div><!-- sp-content -->
+        
+      </div><!-- sp-slideshow -->
+  </div>
+
+
+<!--///////////////////////////////////////////////////////
+       // End slider section 
+       //////////////////////////////////////////////////////////-->
+
+
+
+<!--///////////////////////////////////////////////////////
+       // About section 
+       //////////////////////////////////////////////////////////-->
+
+
+  <div class="about-parlex" id="about">
+    <section class="parlex7-back">
+      <div class="w-container">
+        <div id="about-animation">
+        <div class="wrap">
+          <div class="about">
+            <br>
+            <h1 class="about-heading">NOSOTROS</h1>
+            <div class="about-text">QUIENES SOMOS?</div>
+            <div class="sepreater"></div>
+          </div>
+          <p class="about-des">Somos CRÜMBIK, el mejor CRM del mercado. Equipo de profesionales, creamos un espacio para nuestros clientes donde podrán tener al alcance el manejo de campañas, reenvío de correos y demás seguimientos.&nbsp;
+            <br>Ofrecemos también aplicación para ANDROID, los clientes tendrán el acceso a su dominio personalizado, nuestro mejor esfuerzo para los mejores gustos. 
+          </p>
+          <br>
+          <br>
+          <br>
+          <br>
+          <img class="about-img" src="<%= asset_path('logo.png') %>"
+          alt="52de15aa5d3566c14300015e_about2.jpg">
+          <br>
+          <br>
+          <br>
+          <br>
+        </div>
+      </div>
+      </div>
+    </section>
+  </div>
+
+
+<!--///////////////////////////////////////////////////////
+       // End about section 
+       //////////////////////////////////////////////////////////-->
+
+
+  
+
+
+
+
+<!--///////////////////////////////////////////////////////
+       // Service section 
+       //////////////////////////////////////////////////////////-->
+
+
+  <section class="service-parlex" id="service">
+    <section class="parlex-back">
+      <div class="w-container">
+        <div class="wrap">
+          <div class="service-combo">
+            <div class="services">
+              <h1 class="service-heading">SERVICIOS</h1>
+              <div class="services-text">¿QUÉ HACEMOS?</div>
+              <div class="sepreater service"></div>
+            </div>
+            <div class="services-text">“ PROPORCIONAMOS LOS MEJORES RESULTADOS PARA TU EMPRESA, HEMOS LOGRADO PROYECTOS DE ALTA CALIDAD ”
+              <br>Como equipo complacemos las peticiones del cliente, entendiendolo y creando su espacio de manera eficiente. El resultado final es una combinación de las mejores técnicas de gestión, creatividad y trabajo.</div>
+            <div class="w-row">
+              <div class="w-col w-col-3 services-column">
+                <div class="service-icon">
+                  <img src="<%= asset_path('services/marketing.png') %>">
+                </div>
+                <h4 class="service-head">SEGUIMIENTO</h4>
+              </div>
+              <div class="w-col w-col-3">
+                <div class="service-icon">
+                  <img  src="<%= asset_path('services/android.png') %>">
+                </div>
+                <h4 class="service-head">ACCESO MOVIL</h4>
+              </div>
+              <div class="w-col w-col-3">
+                                <div class="service-icon">
+                  <img src="<%= asset_path('services/Motion-Video.png') %>">
+                </div>
+                <h4 class="service-head">CAMPAÑAS EN REDES</h4>
+              </div>
+              <div class="w-col w-col-3">
+                <div class="service-icon">
+                  <img src="<%= asset_path('services/UX-UI.png') %>">
+                </div>
+                <h4 class="service-head">SEGUIMIENTO DE PRODUCTOS</h4>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </section>
+
+<!--///////////////////////////////////////////////////////
+       // End Service section 
+       //////////////////////////////////////////////////////////-->
+
+
+
+
+<!--///////////////////////////////////////////////////////
+       // Porfolio section 
+       //////////////////////////////////////////////////////////-->
+
+  <div class="portfolio-parlex" id="portfolio">
+    <div class="parlex3-back">
+      <div class="w-container">
+        <div class="wrap">
+          <div class="portfolio">
+            <h1 class="portfolio-heading">NUESTROS TRABAJOS</h1>
+            <div class="sepreater"></div>
+          </div>
+          <p class="porfolio-paragraph">Nuestros clientes aman lo que hacemos.</p>
+            <div class="container demo-1">
+      <ul class="grid cs-style-1">
+        <li>
+          <figure>
+            <img class="portfolio-images" src="<%= asset_path('portfolio/EPA.jpg') %>" alt="img01">
+            <figcaption>
+              <a href="#">Click</a>
+            </figcaption>
+          </figure>
+        </li>
+        <li>
+          <figure>
+            <img class="portfolio-images" src="<%= asset_path('portfolio/polar.png') %>" alt="img02">
+            <figcaption>
+              <a href="#">Click</a>
+            </figcaption>
+          </figure>
+        </li>
+        <li>
+          <figure>
+            <img class="portfolio-images" src="<%= asset_path('portfolio/bbva.jpg') %>" alt="img04">
+            <figcaption>
+              <a href="#">Click</a>
+            </figcaption>
+          </figure>
+        </li>
+      </ul>
+    </div><!-- /container -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!--///////////////////////////////////////////////////////
+       // End Porfolio section 
+       //////////////////////////////////////////////////////////-->
+
+<!--///////////////////////////////////////////////////////
+       // Our-plan section 
+       //////////////////////////////////////////////////////////-->
+
+  <div class="our-plan-parlex" id="plan">
+    <div class="parlex4-back">
+      <div class="w-container">
+        <div class="wrap">
+          <div class="our-plans">
+            <h1 class="ourplan-heading">NUESTROS PLANES</h1>
+            <div class="our-plan-text">SELECCIONA TU MEJOR PLAN</div>
+          </div>
+          <div class="sepreater"></div>
+          <p class="our-plan-paragraph">Como un equipo creativo te ofrecemos servicios para tus necesidades.
+            <br>Te acercamos a tus clientes con los mejores planes del mercado</p>
+          <div class="w-row">
+            <div class="w-col w-col-3">
+              <div class="plan1">
+                <div class="plan1-ser1">
+                  <h4>GRATIS</h4>
+                  <div class="price">$0 / Mensual</div>
+                </div>
+                <p class="plan1-ser1-para">
+                  <br>Cuentas y contactos
+                  <br>
+                  <br>Seguimiento de tareas y eventos
+                  <br>
+                  <br>Acceso desde tu móvil
+                  <br>
+                  <br>Chat y Redes Sociales de la Empresa
+                  <br></p>
+                  <a class="plan-1-butn plan-1-butn3" href="ingresar.html">Comprar!</a>
+                </div>
+            </div>
+            <div class="w-col w-col-3">
+              <div class="plan1 plan2">
+                <div class="plan2-ser2">
+                  <h4>BÁSICO</h4>
+                  <div class="price">$100 / Mensual</div>
+                </div>
+                <p class="plan1-ser1-para">
+                  <br>Seguimiento de tareas y eventos
+                  <br>
+                  <br>Cuentas y contactos
+                  <br>
+                  <br>Acceso desde tu móvil
+                  <br>
+                  <br>Chat y Redes Sociales de la Empresa
+                  <br>
+                  <br>Campañas Publicitarias</p>
+                  <a class="plan-1-butn2 plan-1-butn" href="ingresar.html">Comprar!</a>
+              </div>
+            </div>
+            <div class="w-col w-col-3">
+              <div class="plan1 plan3">
+                <div class="plan1-ser1 plan3-ser3">
+                  <h4>PROFESIONAL</h4>
+                  <div class="price">$150 / Mensual</div>
+                </div>
+                <p class="plan1-ser1-para">
+                  <br>Seguimiento de tareas y eventos
+                  <br>
+                  <br>Cuentas y contactos
+                  <br>
+                  <br>Acceso desde tu móvil
+                  <br>
+                  <br>Chat y Redes Sociales de la Empresa
+                  <br>
+                  <br>Permisos limitados a Roles
+                  <br>
+                  <br>Campañas Publicitarias</p><a class="plan-1-butn plan-1-butn3" href="ingresar.html">Comprar!</a>
+              </div>
+            </div>
+            <div class="w-col w-col-3">
+              <div class="plan1 plan4">
+                <div class="plan1-ser1 plan4-ser4">
+                  <h4>AVANZADO</h4>
+                  <div class="price">$299/ Month</div>
+                </div>
+                <p class="plan1-ser1-para">
+                  <br>Seguimiento de tareas y eventos
+                  <br>
+                  <br>Cuentas y contactos
+                  <br>
+                  <br>Acceso desde tu móvil
+                  <br>
+                  <br>Chat y Redes Sociales de la Empresa
+                  <br>
+                  <br>Formatos de página y perfiles
+                  <br>
+                  <br>Permisos limitados a Roles
+                  <br>
+                  <br>Campañas Publicitarias</p><a class="plan-1-butn plan-4-butn4" href="ingresar.html">Comprar!</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!--///////////////////////////////////////////////////////
+       // End Our-Plan section 
+       //////////////////////////////////////////////////////////-->
+                    
+<!--///////////////////////////////////////////////////////
+       // Contact section 
+       //////////////////////////////////////////////////////////-->
+
+  <div class="contacto-parlex" id="contact">
+    <div class="parlex3-back">
+      <div class="w-container">
+        <div class="wrap">
+          <div class="contact-div">
+            <h1 class="contact-heading">CONTÁCTANOS</h1>
+            <div class="sepreater"></div>
+          </div>
+          <p class="contact-para">Gracias por tomarte un tiempo para contactarnos!
+            <br>Estaremos respondiendo a tus preguntas en la menor brebedad posible!</p>
+          <div class="w-form">
+            <form action="contact.php" method="post">
+            <label for="name">Nombre:</label>
+             <input class="w-input" type="text" placeholder="Ingresa tu nombre" name="cf_name">
+           <label for="email">Correo Electrónico:</label>
+             <input class="w-input" placeholder="Ingresa tu cdirección de correo electrónico" type="text" name="cf_email" required="required">
+           <label for="email">Escribe tu mensaje:</label>
+             <textarea class="w-input message" placeholder="Escribe tu ensaje aquí" name="cf_message"></textarea><br>
+           <div class="btn-ex-two">
+                  <a class="ex-btn-two" href="#">Enviar</a>
+                </div>
+         </form>
+          <div class="w-form-done">
+              <p>Thank you! Your submission has been received!</p>
+            </div>
+            <div class="w-form-fail">
+              <p>Oops! Something went wrong while submitting the form :(</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="w-widget w-widget-map contac-map" data-widget-latlng="37.782163,-122.400591" data-widget-style="roadmap" data-widget-zoom="10" data-widget-tooltip="Carino Headquater"></div>
+      </div>
+  </div>
+
+<!--///////////////////////////////////////////////////////
+       // End Contact section 
+       //////////////////////////////////////////////////////////-->
+
+
+
+
+
+<!--///////////////////////////////////////////////////////
+       // Footer section 
+       //////////////////////////////////////////////////////////-->  
+
+ <footer class="footer" style="background: #000">
+    <div class="container footer-content">
+      <div class="w-row">
+    <div id="image-column" class="w-col w-col-1 center-div">
+      <img id="logo-foot" src="<%= asset_path('crumbikfoot.png') %>">
+    </div>
+      <div class="w-col w-col-3 centro" >
+      <p class="blanco" style="text-align:center">Ll&aacute;manos a cualquier hora</p>
+      <span class="blanco grande"> 0500 - </span><span class="magenta grande"> 2783245</span> <span class="blanco grande"> - 00</span>
+      </div>
+
+      <div class="w-col w-col-2 chula" >
+        <h6 class="morado">QUICK LINKS</h6>
+        <p class="blanco delgado"> Features</p>
+        <p class="blanco delgado"> Pricing & Sign Up</p>
+        <p class="blanco delgado"> Features</p>
+      </div>
+
+      <div class="w-col w-col-3 chula" >
+        <h6 class="rosado">RESOURCES</h6>
+        <p class="blanco delgado"> Help Center</p>
+        <p class="blanco delgado"> Certified Consultants</p>
+        <p class="blanco delgado"> Demo Videos</p>
+        <p class="blanco delgado"> Developer API</p>
+        <p class="blanco delgado"> Blogs</p>
+        <p class="blanco delgado"> User Community</p>
+        <p class="blanco delgado"> Discussion Forum</p>
+
+      </div>
+
+      <div class="w-col w-col-2 chula">
+        <h6 class="azul">ABOUT CRM</h6>
+        <p class="blanco delgado"> what is CRM software</p>
+        <p class="blanco delgado"> How CRM Works?</p>
+        <p class="blanco delgado"> How To Evaluate CRM Software?</p>
+        <p class="blanco delgado"> How To Buy CRM Software?</p>
+        <p class="blanco delgado"> Compare CRM Software</p>
+        <p class="blanco delgado"> New to CRM?</p>
+
+      </div>
+
+      </div>
+
+    </div>
+          <div class="iconos" style="height: initial;">
+
+            <i class="fa fa-facebook fa-2x"></i>
+                          
+        
+          <i class="fa fa-twitter fa-2x"></i>
+          
+          
+        <i class="fa fa-linkedin fa-2x"></i>
+
+  </div>
+</footer>
+
+       <!--///////////////////////////////////////////////////////
+       // End Footer section 
+       //////////////////////////////////////////////////////////-->
+
+  <%= javascript_include_tag "home/jquery.js" %>
+  <%= javascript_include_tag "home/normal.js" %>
+  <%= javascript_include_tag "home/jquery-1.10.2.min.js" %>
+  <%= javascript_include_tag "home/carousels.js" %>
+  <%= javascript_include_tag "home/slider-modernizr.js" %>
+  <%= javascript_include_tag "home/classie.js" %>
+  <%= javascript_include_tag "home/portfolio-effects.js" %>
+  <%= javascript_include_tag "home/toucheffects.js" %>
+  <%= javascript_include_tag "home/modernizr.js" %>
+  <%= javascript_include_tag "home/animation.js" %>
+
+<!--
+  <script type="text/javascript" src="js/normal.js"></script>
+  <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+  <script type="text/javascript" src="js/carousels.js"></script>
+  <script type="text/javascript" src="js/slider-modernizr.js"></script>
+  <script src="js/classie.js"></script>
+  <script src="js/portfolio-effects.js"></script>
+  <script src="js/toucheffects.js"></script>
+  <script src="js/modernizr.js"></script>
+  <script src="js/animation.js"></script>-->
+
+</body>
+</html>

@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>CRUMBIK -LOGIN</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+ <%= stylesheet_link_tag  "home/normal.css" %>
+  <%= stylesheet_link_tag  "style.css" %>
+   <%= stylesheet_link_tag  "style2.css" %>
+    <%= stylesheet_link_tag  "animation.css" %>
+    
+
+<!--
+  <link rel="stylesheet" type="text/css" href="css/normal.css">
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <link rel="stylesheet" type="text/css" href="css/style2.css">
+  <link rel="stylesheet" href="css/animation.css">-->
+<%= javascript_include_tag "https://ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js" %>
+ <!-- <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js"></script>-->
+  <script>
+    if (/mobile/i.test(navigator.userAgent)) document.documentElement.className += ' w-mobile';
+  </script>
+  <link rel="shortcut icon" type="image/x-icon" href="<%=asset_path 'logo.ico' %>">
+  <!--[if lt IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
+</head>
+<body>
+  <div class="fix-header" id="home">
+    <div class="w-container">
+      <div class="w-nav" data-collapse="medium" data-animation="default" data-duration="400"></div>
+    </div>
+  </div>
+  <div class="fixed-header">
+    <div class="w-container container">
+      <div class="w-row">
+
+       <!--///////////////////////////////////////////////////////
+       // Logo section 
+       //////////////////////////////////////////////////////////-->
+
+
+        <div class="w-col w-col-3 logo">
+          <a href="#"><span class="morado"><img class="navbar-brand" src="<%=asset_path 'logo.png' %>">CRUMBIK</span></a>      
+        </div>
+
+        <!--///////////////////////////////////////////////////////
+       // End Logo section 
+       //////////////////////////////////////////////////////////-->
+
+        <div class="w-col w-col-9" >
+
+       <!--///////////////////////////////////////////////////////
+       // Menu section 
+       //////////////////////////////////////////////////////////-->
+
+
+          <div class="w-nav navbar" data-collapse="medium" data-animation="default" data-duration="400" data-contain="1">
+            <div class="w-container nav">
+              <nav class="w-nav-menu nav-menu" role="navigation">
+
+                 <%= link_to 'VOLVER', root_path, :class => 'w-nav-link menu-li' %>
+                
+                                
+              </nav>
+              <div class="w-nav-button">
+                <div class="w-icon-nav-menu"></div>
+              </div>
+            </div>
+          </div>
+
+
+          <!--///////////////////////////////////////////////////////
+       // End Menu section 
+       //////////////////////////////////////////////////////////-->
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+       <!--///////////////////////////////////////////////////////
+       // Ingresar section 
+       //////////////////////////////////////////////////////////-->
+
+<div class="ingreso-parlex" id="ingresar">
+    <div class="parlexingreso2-back">
+      <div class="w-container">
+        <div class="wrap">
+          <div class="our-plans">
+            <br>
+            <h1 class="ourplan-heading">INICIAR SESIÓN</h1>
+          </div>
+          <div class="sepreater"></div>
+          <p class="our-plan-paragraph">
+            <br>Ingresa tus datos</p>
+          <div class="w-row">
+          <!-- Username -->
+          <label for="name">Correo Electrónico:</label>
+          <input id="txtemail" name="email" class="w-input" type="text" placeholder="Dirección de correo electrónico" name="cf_name">
+          
+          <label for="name">Contraseña:</label>
+          
+          <input id="txtpassword" name="password" class="w-input" type="password"  placeholder="Contraseña" name="cf_name">
+          
+          <div class="btn-ex-two">
+                  <a class="ex-btn-two"  href="#">Entrar</a>
+              </br> </br>  <%= link_to "Accede con Twitter", "http://127.0.0.1:3000/auth/twitter", :class => "ex-btn-two" %>
+                 
+          </div>
+          </div>
+          <div style="margin-left: 370px;">
+                   <br>
+                    <%= link_to 'Aun no te has registrado?', register_path %>
+                 </div>
+        </div>
+      </div>
+      <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+    </div>
+  </div>
+
+
+
+
+<!--///////////////////////////////////////////////////////
+       // End Ingresarsection 
+       //////////////////////////////////////////////////////////-->  
+
+
+
+
+  <!--///////////////////////////////////////////////////////
+       // Footer section 
+       //////////////////////////////////////////////////////////-->  
+
+ <footer class="footer">
+    <div class="container footer-content">
+      <div class="w-row">
+    <div id="image-column" class="w-col w-col-1 center-div">
+      <img id="logo-foot" src="images/crumbikfoot.png">
+    </div>
+      <div class="w-col w-col-3 centro" >
+      <p class="blanco" style="text-align:center">Ll&aacute;manos a cualquier hora</p>
+      <span class="blanco grande"> 0500 - </span><span class="magenta grande"> 2783245</span> <span class="blanco grande"> - 00</span>
+      </div>
+
+      <div class="w-col w-col-2 chula" >
+        <h6 class="morado">QUICK LINKS</h6>
+        <p class="blanco delgado"> Features</p>
+        <p class="blanco delgado"> Pricing & Sign Up</p>
+        <p class="blanco delgado"> Features</p>
+      </div>
+
+      <div class="w-col w-col-3 chula" >
+        <h6 class="rosado">RESOURCES</h6>
+        <p class="blanco delgado"> Help Center</p>
+        <p class="blanco delgado"> Certified Consultants</p>
+        <p class="blanco delgado"> Demo Videos</p>
+        <p class="blanco delgado"> Developer API</p>
+        <p class="blanco delgado"> Blogs</p>
+        <p class="blanco delgado"> User Community</p>
+        <p class="blanco delgado"> Discussion Forum</p>
+
+      </div>
+
+      <div class="w-col w-col-2 chula">
+        <h6 class="azul">ABOUT CRM</h6>
+        <p class="blanco delgado"> what is CRM software</p>
+        <p class="blanco delgado"> How CRM Works?</p>
+        <p class="blanco delgado"> How To Evaluate CRM Software?</p>
+        <p class="blanco delgado"> How To Buy CRM Software?</p>
+        <p class="blanco delgado"> Compare CRM Software</p>
+        <p class="blanco delgado"> New to CRM?</p>
+
+      </div>
+
+      </div>
+
+    </div>
+          <div class="iconos" style="height: initial;">
+
+            <i class="fa fa-facebook fa-2x"></i>
+                          
+        
+          <i class="fa fa-twitter fa-2x"></i>
+          
+          
+        <i class="fa fa-linkedin fa-2x"></i>
+
+  </div>
+</footer>
+
+       <!--///////////////////////////////////////////////////////
+       // End Footer section 
+       //////////////////////////////////////////////////////////-->
+<%= javascript_include_tag "home/jquery.js" %>
+  <%= javascript_include_tag "home/normal.js" %>
+  <%= javascript_include_tag "home/jquery-1.10.2.min.js" %>
+  <%= javascript_include_tag "home/carousels.js" %>
+  <%= javascript_include_tag "home/slider-modernizr.js" %>
+  <%= javascript_include_tag "home/classie.js" %>
+  <%= javascript_include_tag "home/portfolio-effects.js" %>
+  <%= javascript_include_tag "home/toucheffects.js" %>
+  <%= javascript_include_tag "home/modernizr.js" %>
+  <%= javascript_include_tag "home/animation.js" %>
+  <!--
+  <script type="text/javascript" src="js/jquery.js"></script>
+  <script type="text/javascript" src="js/normal.js"></script>
+  <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+  <script type="text/javascript" src="js/carousels.js"></script>
+  <script type="text/javascript" src="js/slider-modernizr.js"></script>
+  <script src="js/classie.js"></script>
+  <script src="js/portfolio-effects.js"></script>
+  <script src="js/toucheffects.js"></script>
+  <script src="js/modernizr.js"></script>
+  <script src="js/animation.js"></script>-->
+
+</body>
+</html>

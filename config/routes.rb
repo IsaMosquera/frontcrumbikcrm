@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
+  root 'home#home'
 
+  get 'login' => 'home#login'
+
+  get 'register' => 'home#register'
 namespace :front do
+
  get 'organization' => 'adminorganization#organization'
 
  get 'activity' => 'adminorganization#activity'
@@ -41,7 +46,7 @@ namespace :front do
 
  get 'state' => 'adminorganization#state'
 
- 
+  
  
 
 end
