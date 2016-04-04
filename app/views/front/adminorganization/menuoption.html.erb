@@ -1,0 +1,191 @@
+
+   <!-- === INICIO CONTENIDO DE LA VENTANA === -->
+   <div id="page-content-wrapper">
+     <div class="container-fluid">
+      <div class="row">
+
+  <form role="form" id="form" data-toggle="validator">
+            <div class="panel panel-primary">
+          <div class="panel-heading">
+            <h3 class="panel-title">Gestión de Clientes</h3>
+          </div>
+          <div class="panel-body">
+            En este panel podrá agregar, modificar o eliminar las clientes del CRM.
+
+    <div id="ModalNewCustomer" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+        <!-- === INICIO PANEL DE EDICIÓN === -->   
+        <div class="panel panel-primary" align="center">
+             <div class="panel-heading">
+                <h2 class="text-center"> Datos de la Opción de Menú </h2>
+              </div>   
+              <div class="panel-body">
+                 En este panel podrá agregar, modificar o eliminar los país del CRM.
+               <p></p>
+
+                     <!-- === INPUTS TXT === -->  
+             
+             <div class="form-group col-md-6">
+                <label for="exampleInputEmail1">Nombre de la Nueva Opción del Menu</label>
+                <input type="text" class="form-control" id="txtMenu" placeholder="Opcion de Menu" name="Menu">
+              </div>
+
+               <div class="form-group col-md-6">
+                 <label for="exampleInputEmail1">Rol al que pertenece</label>
+                  <select class="form-control" id="cmbTipoRol">
+                  </select>
+               </div>
+
+              <div class="form-group col-md-6 required">
+                <label >HREF</label>
+                <input class="form-control" id="txtHref" type="text" name="HREF" placeholder="HRF">
+              </div>
+
+              <div class="form-group col-md-6">
+                <label> Opción Menú Padre</label>
+                  <select class="form-control" id="cmbMenuPadre" name="Padre">
+                  </select>
+              </div>
+
+                <label for="ejemplo_text_1"></label>
+                <input class="form-control" type="text"  style="visibility:hidden" name="IdMenu" id="txtIdMenu"/>
+
+              <div id="id-error" style="color:red;">
+              <label for="name" class="error" generated="true" ></label>
+             </div>
+           </div>
+
+            <p></p><p></p>
+           <div class="modal-footer">
+          <!-- === BOTONES === -->  
+            <button type="submit" id="Guardar" class="btn btn-lg btn-info">Guardar</button>
+            <button type="button" class="btn btn-lg btn-info" data-dismiss="modal">Cerrar</button>
+             <!-- === FIN BOTONES === -->  
+         </div>
+      </div>
+    </div>
+       <!-- === FIN MODAL === -->
+    </div>
+
+
+        </div>
+    <!-- === FIN CONTENIDO DE LA VENTANA === -->
+  </form>
+
+         <div class="panel panel-primary">
+         <div class="panel-body">
+           <p>
+          <!-- === BOTONES === -->  
+            <div class="form-group col-md-6" style="margin-top:10px" align="center">
+                 <!-- === BOTONES DE ACCION === -->  
+                 <button type="button" class="btn btn-lg btn-info" data-toggle="modal" 
+                          data-target="#ModalNewCustomer">Agregar Nueva Opción del Menú</button>
+               </div>
+             <!-- === FIN BOTONES === -->  
+          </p>
+        </div>
+      </div>
+          </div>
+  
+ 
+<div class="panel panel-primary">
+    <div class="panel-heading">
+      <h3 class="panel-title">Listado de las Opciones del Menú</h3>
+    </div>
+    <div class="panel-body">
+      Puede visualizar los Clientes actualmente almacenados en el sistema
+
+      <div id="TablaMenu"></div>
+     
+    <!-- ====== FIN DATATABLE======= -->
+  </div>
+</div>
+
+<!-- you need to include the shieldui css and js assets in order for the grids to work -->
+
+
+ <style>
+.error {
+    color:red;
+}
+.valid {
+    color:green;
+}
+</style>
+
+<style type="text/css">
+    .sui-button-cell
+    {
+        text-align: center;
+    }
+
+    .sui-checkbox
+    {
+        font-size: 17px !important;
+        padding-bottom: 4px !important;
+    }
+
+    .deleteButton img
+    {
+          -webkit-border-radius: 28;
+          -moz-border-radius: 28;
+          border-radius: 28px;
+          font-family: Arial;
+          color: #ffffff;
+          font-size: 9px;
+          background: #3498db;
+          padding: 10px 20px 10px 20px;
+          text-decoration: none;
+    }
+
+    .bigicon
+    {
+        color: #5CB85C;
+        font-size: 20px;
+    }
+</style>
+
+
+<!-- Bootstrap Editable Grid - END -->
+
+</div>
+    <!-- ====== FIN DATATABLE======= -->
+  </div>
+
+</div>
+
+
+<!-- Libreria Jquery de Bootstrap -->
+<%= javascript_include_tag "bootstrap.js" %>
+<%= javascript_include_tag "bootbox.js" %>
+<%= javascript_include_tag "jquery.js" %>
+<%= javascript_include_tag "http://www.prepbootstrap.com/Content/shieldui-lite/dist/js/shieldui-lite-all.min.js" %>
+<%= stylesheet_link_tag "http://www.prepbootstrap.com/Content/shieldui-lite/dist/css/light/all.min.css" %>
+
+<%= javascript_include_tag "jquery.validate.js" %>
+<%= javascript_include_tag "additional-methods.js" %>
+<%= javascript_include_tag "messages_es.js" %>
+
+<%= javascript_include_tag "jquery.dataTables.js" %>
+<%= javascript_include_tag "bootstrap-treeview.js" %>
+
+ 
+<%= javascript_include_tag "fnReloadAjax.js" %>
+
+<%= javascript_include_tag "newMenuOption.js" %>
+  <style>
+.error {
+    color:red;
+}
+.valid {
+    color:green;
+}
+</style>
+
+<script>
+  $("#menu-toggle").click(function(e) {
+      e.preventDefault();
+      $("#wrapper").toggleClass("toggled");
+  });
+  </script>
+
