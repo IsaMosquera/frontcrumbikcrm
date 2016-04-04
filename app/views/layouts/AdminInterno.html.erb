@@ -138,13 +138,12 @@
                         <label for="ejemplo_email_1">Redactar un Tweet</label>
                         </div>
                         <div class="form-group col-md-12">
-                          <textarea maxlength="140" id="txtTuit" placeholder="¿Qué está pasando?" rows="4" cols="50"></textarea>
+                          <textarea id="myTextarea" maxlength="140" id="txtTuit" placeholder="¿Qué está pasando?" rows="4" cols="50"></textarea>
                         </div>
 
                      <div class="modal-footer">
                     <!-- === BOTONES === -->  
-                      <button type="submit" id="enviarTuit" class="btn btn-lg btn-info" name="tuiter">
-                      <span class="glyphicons glyphicons-edit" aria-hidden="true"></span>Twittear</button>
+                      <button type="submit" id="enviarTuit" class="btn btn-lg btn-info" name="tuiter">Twittear</button>
                       <button type="button" class="btn btn-lg btn-info" data-dismiss="modal">Cerrar</button>
                    </div>
           </div>
@@ -152,12 +151,15 @@
     </div>
 </div>
     
-   <%= javascript_include_tag "jquery.js" %>
+       <%= javascript_include_tag "jquery.js" %>
    
-  <%= javascript_include_tag 'jquery.js' %>
+      <%= javascript_include_tag 'jquery.js' %>
+      <%= javascript_include_tag 'tweet.js' %>
 
     <%= yield :javascript_personalizado %>
     <%= javascript_include_tag 'jQuery_Main.js' %>
+
+
 
    <!-- === FIN  BARRA LATERAL === -->      
    <br><!--Saltos de Linea-->

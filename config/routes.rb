@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get 'login' => 'home#login'
 
   get 'register' => 'home#register'
+
 namespace :front do
 
  get 'organization' => 'adminorganization#organization'
@@ -46,15 +47,15 @@ namespace :front do
 
  get 'state' => 'adminorganization#state'
 
-<<<<<<< HEAD
+
  get 'indexCrumbik' => 'adminorganization#indexCrumbik'
  get 'indexOrganization' => 'adminorganization#indexOrganization'
 
-=======
+
  get 'menuoption' => 'adminorganization#menuoption'
 
   get 'userrol' => 'adminorganization#userrol'
->>>>>>> 0800abd7a9c20568eda4ac4fb6f10037c5ad0545
+
   
  
 
