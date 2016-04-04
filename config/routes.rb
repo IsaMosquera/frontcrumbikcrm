@@ -46,6 +46,9 @@ namespace :front do
 
  get 'state' => 'adminorganization#state'
 
+ get 'menuoption' => 'adminorganization#menuoption'
+
+  get 'userrol' => 'adminorganization#userrol'
   
  
 
