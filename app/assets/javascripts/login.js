@@ -47,6 +47,7 @@ $('#Enviar').on("click",function(e) {
         async: false,
         //Si todo funciona bien entra al sucess
         success: function(data) {
+<<<<<<< HEAD
           
           if (data == 1) 
           {
@@ -57,6 +58,14 @@ $('#Enviar').on("click",function(e) {
           alert("Bienvenido");
           window.location.replace("http://127.0.0.1:3002/front/organization");
           }
+=======
+          alert(data.email);
+<<<<<<< HEAD
+           // e.preventDefault();
+=======
+         
+>>>>>>> cae8c23cd55bbecdfe540e41a30c9841d5cbd4d5
+>>>>>>> be9d9f0fbe77f0ec907c942c4d75ba40f44ef319
           //Actualiza la datatable automáticamente
           //var table = $('#TablaCiudad').dataTable();
                       // Example call to reload from original file

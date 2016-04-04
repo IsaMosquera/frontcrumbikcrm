@@ -46,6 +46,9 @@ namespace :front do
 
  get 'state' => 'adminorganization#state'
 
+ get 'indexCrumbik' => 'adminorganization#indexCrumbik'
+ get 'indexOrganization' => 'adminorganization#indexOrganization'
+
   
  
 

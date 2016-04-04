@@ -62,6 +62,11 @@ class Front::AdminorganizationController < ApplicationController
 	end
 	
 
+	def indexCrumbik
+	end
+
+	def indexOrganization
+	end
 
 
 
