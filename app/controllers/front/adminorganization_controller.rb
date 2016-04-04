@@ -34,14 +34,6 @@ class Front::AdminorganizationController < ApplicationController
 	def paymentmethod
 	end
 
-	def payservice
-	end
-	
-	def payservicestdc
-	end
-	
-	def payservicetdb
-	end
 	
 	def planservice
 	end

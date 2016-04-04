@@ -7,5 +7,13 @@ class HomeController < ApplicationController
 	def login
 	end
 	
+	def payservice
+	end
+	
+	def payservicestdc
+	end
+	
+	def payservicetdb
+	end
 
 end

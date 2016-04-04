@@ -5,6 +5,13 @@ Rails.application.routes.draw do
 
   get 'register' => 'home#register'
 
+  get 'payservice' => 'home#payservice'
+
+  get 'payservicestdc' => 'home#payservicestdc'
+
+  get 'payservicetdb' => 'home#payservicetdb'
+
+
 namespace :front do
 
  get 'organization' => 'adminorganization#organization'
