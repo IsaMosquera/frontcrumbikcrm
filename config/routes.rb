@@ -11,6 +11,7 @@ Rails.application.routes.draw do
 
   get 'payservicetdb' => 'home#payservicetdb'
 
+  get 'organizationpay' => 'home#organizationpay'
 
   get 'indexEPA' => 'home#indexEPA'
 

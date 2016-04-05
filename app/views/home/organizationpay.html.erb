@@ -1,0 +1,161 @@
+ 
+
+
+ <!-- === INICIO CONTENIDO DE LA VENTANA === -->
+   <div id="page-content-wrapper">
+     <div class="container-fluid">
+      <div class="row">
+        <form role="form" id="form" data-toggle="validator">
+        <!-- === INICIO PANEL DE EDICIÓN === -->   
+          <div class="panel panel-primary">
+            <div class="panel-heading">
+              <h3 class="panel-title">Datos de la Organizacion</h3>
+            </div>
+          <div class="panel-body">
+            En este panel podrá agregar datos de la Organizacion.
+    <!-- === INPUTS TXT === -->
+          <p></p>
+           <!-- CONTENIDO MODAL Servicios-->
+
+                         <div class="panel-body">                           
+                                                          
+                                     <div class="form-group col-md-6">
+                                        <label for="rifEmpresa">Nombre o Razón Social</label>
+                                        <input type="text" class="form-control" id="txtNombre" placeholder="Nombre o Razón Social">
+                                      </div>
+                                     <div class="form-group col-md-6">
+                                    <label for="rifEmpresa">Slogan</label>
+                                        <input type="text" class="form-control" id="txtSlogan" placeholder="Nombre o Razón Social">
+                                      </div>
+
+                                     <div class="form-group col-md-6">
+                                        <label > Logo de la Empresa&nbsp;</label>
+                                        <input id="txtFoto" type="text">
+                                      </div>
+
+
+                                      <div class="form-group col-md-6">
+                                        <label for="exampleInputEmail1">Correo</label>
+                                        <input type="email" class="form-control" id="txtCorreo" placeholder="Correo Electrónico">
+                                       </div>
+                                    
+                                     <div class="form-group col-md-6">
+                                       <label > Mision</label>
+                                       <textarea class="form-control" id="txtMision" type="text" name="url" 
+                                       placeholder="Mision"></textarea>
+                                     </div>
+
+                                     <div class="form-group col-md-6">
+                                       <label > Vision</label>
+                                       <textarea class="form-control" id="txtVision" type="text" name="url" 
+                                       placeholder="Vision"></textarea>
+                                     </div>
+                                      <div class="form-group col-md-6">
+                                         <label for="exampleInputTelefono1"> Subdominio </label>
+                                          <input class="form-control" id="txtSubdominio" type="tel" name="Subdominio"
+                                          placeholder="Subdominio">
+                                     </div>
+
+
+                                      <div class="form-group col-md-6">
+                                        <label > Dirección</label>
+                                        <input class="form-control" id="txtDireccion" type="text" name="direccion"
+                                                placeholder="Direccion">
+                                      </div>
+                                      <div class="form-group col-md-6">
+                                         <label for="exampleInputTelefono1"> Telefono 1</label>
+                                          <input class="form-control" id="txtTelefono1" type="tel" name="telefono de la Empresa"
+                                          placeholder="Teléfono">
+                                     </div>
+
+                                      <div class="form-group col-md-6">
+                                         <label for="exampleInputTelefono1"> Telefono 2</label>
+                                          <input class="form-control" id="txtTelefono2" type="tel" 
+                                          name="telefono de la Empresa" placeholder="Teléfono">
+                                     </div>
+
+                                     <label for="ejemplo_text_1"></label>
+                                     <input class="form-control" type="text" style="visibility:hidden" 
+                                            name="IdOrganizacion" id="txtIdOrganizacion"/>
+
+                        </div>
+                          <div class="modal-footer">
+                            <button type="submit" id="Guardar" class="btn btn-lg btn-info">Guardar</button>
+                        </div>    
+                    </div>
+                </div>
+        </div>
+
+    <!-- === FIN CONTENIDO DE LA VENTANA === -->
+  </form>
+
+</div>
+
+                             
+
+<style type="text/css">
+    .sui-button-cell
+    {
+        text-align: center;
+    }
+
+    .sui-checkbox
+    {
+        font-size: 17px !important;
+        padding-bottom: 4px !important;
+    }
+
+    .deleteButton img
+    {
+          -webkit-border-radius: 28;
+          -moz-border-radius: 28;
+          border-radius: 28px;
+          font-family: Arial;
+          color: #ffffff;
+          font-size: 9px;
+          background: #3498db;
+          padding: 10px 20px 10px 20px;
+          text-decoration: none;
+    }
+
+    .bigicon
+    {
+        color: #5CB85C;
+        font-size: 20px;
+    }
+</style>
+
+<!-- Bootstrap Editable Grid - END -->
+
+</div>
+    <!-- ====== FIN DATATABLE======= -->
+  </div>
+
+<!-- === FIN CONTENIDO DE LA VENTANA === -->
+
+<%= javascript_include_tag "bootstrap.js" %>
+<%= javascript_include_tag "bootbox.js" %>
+<%= javascript_include_tag "jquery.js" %>
+<%= javascript_include_tag "http://www.prepbootstrap.com/Content/shieldui-lite/dist/js/shieldui-lite-all.min.js" %>
+<%= stylesheet_link_tag "http://www.prepbootstrap.com/Content/shieldui-lite/dist/css/light/all.min.css" %>
+
+<%= javascript_include_tag "jquery.validate.js" %>
+<%= javascript_include_tag "additional-methods.js" %>
+<%= javascript_include_tag "messages_es.js" %>
+
+<%= javascript_include_tag "jquery.dataTables.js" %>
+<%= javascript_include_tag "bootstrap-treeview.js" %>
+
+ 
+<%= javascript_include_tag "fnReloadAjax.js" %>
+
+<%= javascript_include_tag "organizationpay.js" %>
+  <style>
+.error {
+    color:red;
+}
+.valid {
+    color:green;
+}
+</style>
+
