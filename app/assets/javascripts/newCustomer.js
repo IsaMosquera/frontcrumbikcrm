@@ -114,7 +114,7 @@ var table = $("#TablaCliente").shieldGrid({
 
                             $.ajax({
                                 type: "POST",
-                                url: "http://localhost:3000/api/v1/customers",
+                                url: "http://127.0.0.1:3000/api/v1/customers",
                                
                                 dataType: "json",
                                 data: newItem,
