@@ -49,6 +49,7 @@ $('#Guardar').on("click",function(e) {
   if ($("#form").valid()) {
     e.preventDefault();
     ConfirmGuardar();
+    enviarCorreo();
   }
 }); 
 $('#Modificar').on("click",function(e) {
@@ -423,6 +424,40 @@ var table = $("#TablaCampaing").shieldGrid({
 function validarSalida(){
  
 }
+
+
+function enviarCorreo() {        
+      //Capturar datos del formulario
+      bootbox.alert("entro ");
+     
+      //Agregamos los datos capturados a un arreglo => arr
+        
+      //Evento ajax para enviar los datos
+      $.ajax({
+        //Ruta para enviar el servicio
+        url: 'http://localhost:3000/api/v1/advertcampains/enviarCorreo',
+        type: 'GET',    
+        //url: '127.0.0.1:3000/advertcampains/enviarCorreo',
+        //Enviamos el arreglo ar
+        async: false,
+        params:{},
+        //Si todo funciona bien entra al sucess
+        success: function(resultado, request) {
+          bootbox.alert("Correo enviado", function() {
+          
+          });
+         },
+        error: function() {
+          bootbox.alert("Error ", function() {
+          
+          });
+           // e.preventDefault();
+        }
+                  });
+
+    }
+
+
     
 
 

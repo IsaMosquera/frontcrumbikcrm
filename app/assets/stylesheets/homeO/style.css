@@ -1,0 +1,358 @@
+
+html, body {
+height: 100%;
+}
+
+/*INDEX*/
+
+.navbar-admin{
+  height: 97px;
+}
+/* Wrapper for page content to push down footer */
+#wrap {
+min-height: 100%;
+height: auto !important;
+height: 100%;
+margin-bottom: -150px;
+}
+
+#carousel-example-generic {
+height: 500px;
+}
+#carousel-example-generic img{
+height: 480px;
+width: 100%;
+}
+
+/*Paginas*/
+
+.hr { 
+  display: block;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  margin-left: auto;
+  margin-right: auto;
+  border-style: dotted;
+  border-width: 0.5em;
+  border-color: #99ccff;
+
+}
+
+.font-16{
+font-size: 16px;
+font-weight: bold;
+color: blue;
+text-align: center;
+
+}
+
+.font-14{
+font-size: 14px;
+font-weight: bold;
+text-align: left;
+
+}
+
+.font-subtitle{
+font-size: 1.59em;
+text-align: center;
+color: #723be2;
+}
+
+
+.button {
+    background-color: #723be2; 
+    padding: 2px 4px;
+    font: 25px helvetica;
+    text-decoration: none;
+    border: 2px solid #000;
+    border-color: #aaa #444 #444 #aaa;
+    color: white;
+    top: 50%;
+    margin-left: 125px;
+}
+.button:hover { background-color: #99ccff ; }
+.contenedor-servicios {
+margin-bottom: 150px;
+}
+
+.wrapper {
+    text-align: center;
+}
+
+/* centered columns styles */
+.row-centered {
+  text-align:center;
+}
+.col-centered {
+  display:inline-block;
+  float:none;
+  /* reset the text-align */
+  text-align:left;
+  /* inline-block space fix */
+  margin-right:-4px;
+}
+
+ /*
+
+COMIENZO TEXTO
+
+ */
+
+input[type="text"] {
+  padding: 10px;
+  border: solid 1px #fff;
+  box-shadow: inset 1px 1px 2px 0 #707070;
+  transition: box-shadow 0.3s;
+}
+input[type="text"]:focus {
+  outline: none;
+}
+
+input[type="email"] {
+  padding: 10px;
+  border: solid 1px #fff;
+  box-shadow: inset 1px 1px 2px 0 #707070;
+  transition: box-shadow 0.3s;
+}
+input[type="email"]:focus {
+  outline: none;
+}
+input[type="text-area"] {
+  padding: 10px;
+  border: solid 1px #fff;
+  box-shadow: inset 1px 1px 2px 0 #707070;
+  transition: box-shadow 0.3s;
+}
+input[type="text-area"]:focus {
+  outline: none;
+}
+ input[type="password"] {
+  padding: 10px;
+  border: solid 1px #fff;
+  box-shadow: inset 1px 1px 2px 0 #707070;
+  transition: box-shadow 0.3s;
+}
+input[type="text-area"]:focus {
+  outline: none;
+}
+ /*
+
+FIN TEXTO
+
+ */
+
+.columna{
+/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#c10f53+0,bf3d6f+57,c16689+100 */
+background: #c10f53; /* Old browsers */
+background: -moz-linear-gradient(top,  #c10f53 0%, #bf3d6f 57%, #c16689 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#c10f53), color-stop(57%,#bf3d6f), color-stop(100%,#c16689)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  #c10f53 0%,#bf3d6f 57%,#c16689 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  #c10f53 0%,#bf3d6f 57%,#c16689 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  #c10f53 0%,#bf3d6f 57%,#c16689 100%); /* IE10+ */
+background: linear-gradient(to bottom,  #c10f53 0%,#bf3d6f 57%,#c16689 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c10f53', endColorstr='#c16689',GradientType=0 ); /* IE6-9 */
+
+}
+
+#intro {
+color: #723be2;
+text-align: right;
+}
+
+#titulo {
+color:#99ccff;
+text-align: center;
+font-weight: bold;
+margin-top: 20px;
+
+}
+
+.navbar-header{
+  height: 97px;
+}
+
+#tree_el{
+  position: absolute !important;
+  left: -250px;
+
+}
+
+
+/*HEADER*/
+
+
+
+.x-panel-header-default {
+  height: 35px;
+  margin-bottom: 15px;
+}
+@media (max-width: 768px) {
+  .arbol {
+    width: 100%;
+  }
+}
+
+
+@media (min-width: 768px) {
+    .navbar .navbar-nav {
+        display: inline-block;
+        float: none;
+        vertical-align: top;
+    }
+
+    .navbar .navbar-collapse {
+        text-align: center;
+    }
+    .navbar-brand,
+  .navbar-nav li a {
+    height: 58px;
+
+}
+.home-dropdown li a {
+  height: 25px;
+}
+
+}
+
+.top-nav .username {
+  color: black;
+}
+.navbar-brand {
+  padding: 0px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+/*tamano y posicion del logo */
+.logo-crm {
+  margin-top: 5px;
+  height: 45px;
+  width: 170px;
+}
+/* validacion para que cuando la pantalla llegue a ese
+   tamano, el logo se ponga mas pequeno */
+@media (max-width:479px) {
+  
+  .logo-crm {
+  margin-top: 10px;
+  height: 35px;
+  width: 135px;
+  }
+
+}
+
+/* Footer  */
+
+.footer {
+  background-image: url("../images/backgroundfooter.png");
+  /* Set the fixed height of the footer here */
+  height: initial;
+  margin-top: 150px;
+}
+.footer-content{
+  margin-top: 15px;
+  background-image: url("/images/backgroundfooter.png");
+  
+}
+}
+
+
+#logo{
+  width: 75px;
+  height:75px;
+  margin-top: 50px;
+  
+}
+
+.centro{
+  text-align: center;
+  line-height: 10px;
+  margin-top: 50px;
+
+}
+
+.grande{
+  font-weight: 180;
+  font-size: 18px;
+}
+.blanco {
+  color: #ffffff;
+}
+
+.delgado{
+  font-weight: 200;
+}
+.morado {
+  color: #723be2;
+}
+
+.rosado {
+  color: #c24978;
+}
+.azul {
+  color: #99ccff;
+}
+.magenta {
+  color: #c24978;
+}
+.chula {
+  line-height: 4px;
+  font-size: 12px;
+  margin-left: 20px;
+}
+
+.iconos {
+  background-color: #000000;
+  background: rgba(0,0,0,0.5);
+  text-align: center; 
+}
+i{
+  margin-top: 5px;
+  color: #ffffff; 
+  margin-right: 40px;
+}
+
+/*----------------------------------------------CONTAINER DE IMAGENES------------------------------------------*/
+
+#container-imagenes{
+    margin-top: 50px;
+    margin-bottom: 100px;
+    background: #F8F8F8;
+}
+#container-imagenes img{
+    /*box-shadow: 10px 10px 5px;*/
+    width: 300px; 
+    height: 150px;
+}
+#container-imagenes #descripcion{
+    color: white;
+    font-family: Helvetica, Arial;
+    font-size: 28px;
+    font-style: italic;
+    position: absolute;
+    margin-top: 100px;
+    padding: 100px;
+
+    -webkit-animation: mover 1s; /* Chrome, Safari, Opera */
+    animation: mover 1s;
+}
+#container-imagenes #descripcion h3{
+    font-size: 68px;
+    font-weight: bolder;
+    font-style: normal;
+    text-shadow: 2px 2px 3px rgba(0,0,0,0.9);
+}
+/* Chrome, Safari, Opera */
+@-webkit-keyframes mover {
+    from {left: -200px;}
+    to {left: 20px;}
+}
+
+/* Standard syntax */
+@keyframes mover {
+    from {left: -200px;}
+    to {left: 20px;}
+}
+
+
+/*------------------------------------------FIN CONTAINER DE IMAGENES------------------------------------------*/

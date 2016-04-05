@@ -16,4 +16,6 @@ class HomeController < ApplicationController
 	def payservicetdb
 	end
 
+	def indexEPA
+	end
 end

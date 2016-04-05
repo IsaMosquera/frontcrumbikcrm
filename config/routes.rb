@@ -12,6 +12,9 @@ Rails.application.routes.draw do
   get 'payservicetdb' => 'home#payservicetdb'
 
 
+  get 'indexEPA' => 'home#indexEPA'
+
+
 namespace :front do
 
  get 'organization' => 'adminorganization#organization'
