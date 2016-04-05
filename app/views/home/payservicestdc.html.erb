@@ -1,48 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <!--  PARA MANEJAR Ñ y ACENTOS y RESPONSIVO -->
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!--  TITULO DEL SITIO -->
-  <title>CRUMBIK - PAGO EN BANCO - TDC</title>
-  <script src="../js/jquery.js"></script>
-
-  <!--  INCLUSION DE HEADS CSS y JS -->
-  <script type="text/javascript">
-    function unWrapPlaceholder(){
-     $(this).contents().unwrap();
-   }  $(function(){
-    $("#Heads").load("Templates/Heads.html", unWrapPlaceholder); 
-    $("#BarraSuperior").load("Templates/BarraSuperior.html", unWrapPlaceholder); 
-    $("#BarraLateral").load("Templates/BarraLateral.html", unWrapPlaceholder);
-
-
-  });
-</script> 
-<div id="Heads"></div>
-
-</head>
-
-<body>
-  <!-- === BARRA SUPERIOR  === -->
-  <!-- === Inclusion de archivo  === -->
-  <div id="BarraSuperior"></div>
-  <!-- === FIN DE BARRA SUPERIOR  === -->
-</nav>
-
-
-<!-- === INICIO INCLUSION BARRA LATERAL === -->
-<div class="container-fluid">
-  <div id="wrapper">
-   <div id="BarraLateral"></div>  
-
-   <!-- === FIN  BARRA LATERAL === -->      
-   <br><!--Saltos de Linea-->
-   <br>
-   <br>
    <!-- === INICIO CONTENIDO DE LA VENTANA === -->
    <div id="page-content-wrapper">
      <div class="container-fluid">
@@ -126,26 +82,8 @@
 <!-- /#wrapper -->
 </div>
 
-<!-- Libreria Jquery de Bootstrap -->
-
-  <script src="../js/bootstrap.js" type="text/javascript"></script>
-
-  <script src="../js/bootbox.js"></script>
-  <!-- jQuery -->
-  <!-- LIBRERIA PADRE -->
-  <script src="../js/jquery.js"></script>
-  <!-- LIBRERIA PADRE -->
-  <script src="../js/jquery.validate.js"></script>
-  <script src="../js/additional-methods.js"></script>
-  <script src="../js/messages_es.js"></script>
- 
-
-  <!-- DATATABLE -->
-  <script src="../js/jquery.dataTables.js" type="text/javascript"></script>
-  <!-- Cargar menu de usuario desde JSON -->
-  <script src="../js/bootstrap-treeview.js"></script>
-  <!-- TOGGLE para que el menu superior sea responsivo -->
-     <script>
+<!-- TOGGLE para que el menu superior sea responsivo -->
+<script>
   $("#menu-toggle").click(function(e) {
       e.preventDefault();
       $("#wrapper").toggleClass("toggled");
@@ -153,14 +91,25 @@
   </script>
 
 
-  <!-- Script para activar las validaciones -->
-
-  <!-- Script para recargar el datatable automaticamente -->
-  <script src="../js/fnReloadAjax.js"></script>
-    <!-- Script para funciones del formulario -->
-  <script src="../js/FormsJS/PayServicestdc.js"></script>
- <!-- Menu Toggle Script -->
   
+<%= javascript_include_tag "bootstrap.js" %>
+<%= javascript_include_tag "bootbox.js" %>
+<%= javascript_include_tag "jquery.js" %>
+<%= javascript_include_tag "http://www.prepbootstrap.com/Content/shieldui-lite/dist/js/shieldui-lite-all.min.js" %>
+<%= stylesheet_link_tag "http://www.prepbootstrap.com/Content/shieldui-lite/dist/css/light/all.min.css" %>
+
+<%= javascript_include_tag "jquery.validate.js" %>
+<%= javascript_include_tag "additional-methods.js" %>
+<%= javascript_include_tag "messages_es.js" %>
+
+<%= javascript_include_tag "jquery.dataTables.js" %>
+<%= javascript_include_tag "bootstrap-treeview.js" %>
+
+ 
+<%= javascript_include_tag "fnReloadAjax.js" %>
+
+<%= javascript_include_tag "PayServicestdc.js" %>
+
 
   <style>
 .error {
@@ -170,5 +119,3 @@
     color:green;
 }
 </style>
-</body>
-</html>

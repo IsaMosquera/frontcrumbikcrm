@@ -50,15 +50,17 @@ $('#Enviar').on("click",function(e) {
           
           if (data == 1) 
           {
-            alert("Usuario No existe")
+            alert("Datos incorrectos")
           }
           else
           {
-          alert("Bienvenido");
-          window.location.replace("http://127.0.0.1:3002/front/organization");
+             if (data == 0) 
+              {
+            alert("Bienvenido");
+            window.location.replace("http://127.0.0.1:3002/front/organization");
+              }
+          
           }
-
-          alert(data.email);
 
                     },
         //Si algo falla en el API indica

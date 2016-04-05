@@ -55,18 +55,18 @@
     </form>
     <ul class="nav navbar-nav navbar-right" role="search">
      <li><a href="#">Ayuda</a></li>
-    <li><a href="#">Mensajes</a></li>
-    <li><a href="#">Users Online</a></li>
-    <li><a class="fa fa-pencil-square-o"  data-toggle="modal" 
+     <li><a class="fa fa-pencil-square-o"  data-toggle="modal" 
                           data-target="#NewTuit">Tweet</a></li>
-       
+      
       <li class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Juan Perez <b class="caret"></b></a>
+       
+               <a href="#" class="dropdown-toggle" data-toggle="dropdown">Empresa<b class="caret"></b></a>
+       
+           
         <ul class="dropdown-menu">
          
-          <li><a href="#">Cuenta</a></li>
-          <li class="divider"></li>
-          <li><a href="#">Salir</a></li>
+         
+          <li><%= link_to "Salir", "http://127.0.0.1:3000/signout" %></li>
           
         </ul>
       </li>
@@ -97,7 +97,7 @@
       <div id="sidebar-wrapper">
          
          <div id="tree_el" class="arbol collapsed" style="margin-top:50px;"></div>
-       <% content_for :javascript_personalizado do %>
+      
          <!-- Incluya los javascripts: Extjs 5.1 -->
 
           <%= javascript_include_tag 'ext-all.js' %>
@@ -115,7 +115,7 @@
           <%= javascript_include_tag 'arbolOrganization.js' %>
          
     
-       <% end%>
+     
        </div>
     </div>
  </div>
@@ -137,13 +137,16 @@
                           <br>
                         <label for="ejemplo_email_1">Redactar un Tweet</label>
                         </div>
-                        <div class="form-group col-md-12">
-                          <textarea id="myTextarea" maxlength="140" id="txtTuit" placeholder="¿Qué está pasando?" rows="4" cols="50"></textarea>
-                        </div>
+                      <%= form_tag("http://127.0.0.1:3000/api/v1/twits", method: "get") do %>
+ 
+                        <%= text_field_tag(:twit) %>
+                        <%= submit_tag("Twitear") %>
+                      <% end %>
 
                      <div class="modal-footer">
                     <!-- === BOTONES === -->  
-                      <button type="submit" id="enviarTuit" class="btn btn-lg btn-info" name="tuiter">Twittear</button>
+                   
+                       
                       <button type="button" class="btn btn-lg btn-info" data-dismiss="modal">Cerrar</button>
                    </div>
           </div>
@@ -156,7 +159,7 @@
       <%= javascript_include_tag 'jquery.js' %>
       <%= javascript_include_tag 'tweet.js' %>
 
-    <%= yield :javascript_personalizado %>
+   
     <%= javascript_include_tag 'jQuery_Main.js' %>
 
 
