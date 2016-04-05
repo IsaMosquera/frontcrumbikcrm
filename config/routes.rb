@@ -15,6 +15,8 @@ Rails.application.routes.draw do
 
   get 'indexEPA' => 'home#indexEPA'
 
+  get 'indexPOLAR' => 'home#indexPOLAR'
+
 
 namespace :front do
 

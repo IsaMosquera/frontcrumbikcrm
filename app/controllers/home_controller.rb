@@ -18,4 +18,7 @@ class HomeController < ApplicationController
 
 	def indexEPA
 	end
+
+	def indexPOLAR
+	end
 end
