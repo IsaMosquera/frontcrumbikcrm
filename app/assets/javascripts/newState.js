@@ -234,7 +234,6 @@ var table = $("#TablaEstado").shieldGrid({
               alert(data.idEstado),
               alert(data.Estado)
               alert(data.Pais)
-              alert(data.Estatus)
             });
     }
 
@@ -281,10 +280,9 @@ var table = $("#TablaEstado").shieldGrid({
 
       var Estado = document.getElementById("txtEstado").value;
       var Pais = document.getElementById("cmbPais").value;
-      var idEstado = document.getElementById("txtIdEstado").value;
-      var Estatus = document.getElementById("txtEstatus").value;
+
       //Agregamos los datos capturados a un arreglo => arr
-      var arr = { Estado:Estado,Pais:Pis,idEstado:idEstado,Estatus:Estatus };
+      var state = { id:IdEstado, description:Estado,country_id:Pais };
       
       //Evento ajax para enviar los datos
       $.ajax({
@@ -318,12 +316,10 @@ var table = $("#TablaEstado").shieldGrid({
 
     function EliminarState() {        
 
-      var Estado = document.getElementById("txtEstado").value;
-      var Pais = document.getElementById("cmbPais").value;
-      var idEstado = document.getElementById("txtIdEstado").value;
-      var Estatus = document.getElementById("txtEstatus").value;
+   
+      var Estatus = 0;
       //Agregamos los datos capturados a un arreglo => arr
-      var arr = { Estado:Estado,Pais:Pis,idEstado:idEstado,Estatus:Estatus };
+      var arr = {id:IdEstado, estatus:Estatus };
       
       //Evento ajax para enviar los datos
       $.ajax({

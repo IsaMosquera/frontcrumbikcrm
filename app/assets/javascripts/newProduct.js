@@ -17,9 +17,6 @@ cargarComboOrganizacion();
         Cantidad: "required",
         Precio: "required",  
         FotoProducto: "required", 
- 
-
-        
 
     },
     messages: {
@@ -306,11 +303,10 @@ var table = $("#TablaNewProduct").shieldGrid({
       var Precio = document.getElementById("txtPrecio").value;
       var FotoProducto = document.getElementById("txtFotoProducto").value;
       var Organizacion = document.getElementById("cmbOrganizacion").value;
-      var Estatus = 1;
       
       //Agregamos los datos capturados a un arreglo => arr
       var arr = { id:idProducto, name:Nombre,description:Descripcion, image:FotoProducto, quantity:Cantidad,
-                  organizacion:Organizacion, price:Precio, status:Estatus};
+                  organizacion:Organizacion, price:Precio};
       //Evento ajax para enviar los datos
       $.ajax({
         //Ruta para enviar el servicio
@@ -391,7 +387,7 @@ function validarSalida(){
 
   function ConfirmGuardar() {     
      bootbox.dialog({
-  message: "¿Esta seguro de guardar esto?",
+  message: "¿Esta seguro de guardar este Producto?",
   title: "Confirmación",
   buttons: {
      danger: {
@@ -447,7 +443,7 @@ function validarSalida(){
 
      function ConfirmEliminar() {     
      bootbox.dialog({
-  message: "¿Esta seguro de Eliminar esto?",
+  message: "¿Esta seguro de Eliminar este Producto?",
   title: "Confirmación",
   buttons: {
      danger: {

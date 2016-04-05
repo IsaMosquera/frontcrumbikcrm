@@ -335,14 +335,11 @@ var table = $("#TablaNewOrganization").shieldGrid({
       var Direccion = document.getElementById("txtDireccion").value;    
       var Telefono1 = document.getElementById("txtTelefono1").value;
       var Telefono2 = document.getElementById("txtTelefono2").value;
-      var Status = 1;
-      
-
 
       //Agregamos los datos capturados a un arreglo => arr
       var arr = { id:IdOrganization, name:Nombre,email:Correo,slogan:Slogan,logo:Logo,
                   mission:Mision, view:Vision, subdomain:Subdominio, address:Direccion, 
-                  phone_number:Telefono1, phone_number_two:Telefono2, status:Status };
+                  phone_number:Telefono1, phone_number_two:Telefono2};
       //Evento ajax para enviar los datos
       $.ajax({
         //Ruta para enviar el servicio
@@ -425,7 +422,7 @@ function validarSalida(){
 
   function ConfirmGuardar() {     
      bootbox.dialog({
-  message: "¿Esta seguro de guardar esto?",
+  message: "¿Esta seguro de guardar Esta Organización?",
   title: "Confirmación",
   buttons: {
      danger: {
@@ -453,7 +450,7 @@ function validarSalida(){
 
       function ConfirmModificar() {     
      bootbox.dialog({
-  message: "¿Esta seguro de guardar esto?",
+  message: "¿Esta seguro de guardar Esta Organización?",
   title: "Confirmación",
   buttons: {
      danger: {

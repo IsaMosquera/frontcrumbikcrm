@@ -286,10 +286,9 @@ var table = $("#TablaNewPlanService").shieldGrid({
       var Nombre = document.getElementById("txtNombre").value;
       var Descripcion = document.getElementById("txtDescripcion").value;
       var Precio = document.getElementById("txtPrecio").value;
-      var Estatus = 1;
 
       //Agregamos los datos capturados a un arreglo => arr
-      var arr = { id:idServicio, name:Nombre,description:Descripcion, cost:Precio, status:Estatus };
+      var arr = { id:idServicio, name:Nombre,description:Descripcion, cost:Precio};
       
       //Evento ajax para enviar los datos
       $.ajax({
@@ -400,7 +399,7 @@ function validarSalida(){
 
       function ConfirmModificar() {     
      bootbox.dialog({
-  message: "¿Esta seguro de modificar esto?",
+  message: "¿Esta seguro de modificar este plan de servicio?",
   title: "Confirmación",
   buttons: {
      danger: {
@@ -428,7 +427,7 @@ function validarSalida(){
 
      function ConfirmEliminar() {     
      bootbox.dialog({
-  message: "¿Esta seguro de Eliminar esto?",
+  message: "¿Esta seguro de Eliminar este plan de servicio?",
   title: "Confirmación",
   buttons: {
      danger: {

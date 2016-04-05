@@ -1,51 +1,30 @@
-
 //=======INICIO DE DOCUMENT READY==============
 
  //EVENTO CUANDO CARGA TODO EL DOCUMENTO
    $(document).ready(function() {
-//Cargar DataTable
-CargarTabla();
+alert('Entrando');
 
-//Cargar combobox
-cargarComboPais();
-cargarComboEstado();
-cargarComboCiudad();
-cargarComboTipoCliente();
+CargarTabla();
+cargarComboTipoActividad();
+
+
 //Validar documento, configurar
  $("#form").validate({
   
     rules: {
-        Nombre: "required",
-        Apellido: "required",
-        Cedula: "required",
-        Direccion: "required",
-        Pais: "required",
-        Estado: "required",
-        Ciudad: "required",
-        Email: "required",
-        Telefono: "required",
-        TelefonoCelular: "required",
-        FechaNacimiento: "required",
-        TipoCliente: "required",
-        SitioWeb: "required",
-        FotoPerfil: "required",
+
+        TipoActividad: "required",
+        Descripcion: "required",         
+
     },
     messages: {
-        Nombre: "Debes escribir un nombre",
-        Apellido: "Debes escribir un apellido",
-        Cedula: "Debes escribir una cedula",
-        Direccion: "Debes escribir una direccion",
-        Pais: "Debes seleccionar un país",
-        Estado: "Debes seleccionar un estado",
-        Ciudad: "Debes seleccionar una ciudad",
-        Email: "Debes escibir un e-mail",
-        Telefono: "Debes escibir un teléfono",
-        TelefonoCelular: "Debes escribir un teléfono celular",
-        FechaNacimiento: "Debes seleccionar una fecha de nacimiento",
-        TipoCliente: "Debes seleccionar un tipo de cliente",
-        SitioWeb: "Debes escribir un sitio web",      
+    
+        TipoActividad: "Debe seleccionar un tipo de actividad",
+        Descripcion: "Debe escrubir una Descripcion",
+        
     }
 })
+
 
 //Eventos en botones de el formulario
 $('#Guardar').on("click",function(e) {
@@ -71,6 +50,7 @@ $('#Eliminar').on("click",function(e) {
 }); 
 
 
+//Cargar DataTable
 
 
    
@@ -83,7 +63,7 @@ $('#Eliminar').on("click",function(e) {
 
 var gridData = GetElementos();
 //you need to include the shieldui css and js assets in order for the grids to work //
-var table = $("#TablaCliente").shieldGrid({
+var table = $("#TablaNewHomework").shieldGrid({
             dataSource: {
                 events: {
                     error: function (event) {
@@ -101,23 +81,20 @@ var table = $("#TablaCliente").shieldGrid({
                         }
                     }
                 },
-                remote: {
+                    remote: {
                     read: {
                         type: "GET",
-                        url: "http://localhost:3000/api/v1/customers",
+                        url: "http://localhost:3000/api/v1/activities",
                         dataType: "json"
                     },
                     modify: {
                         create: function (items, success, error) {
-                            var newItem = {customer:items[0].data};
-                           
-
+                            var newItem = items[0];
                             $.ajax({
                                 type: "POST",
-                                url: "http://localhost:3000/api/v1/customers",
-                               
+                                url: "http://localhost:3000/api/v1/activities",
                                 dataType: "json",
-                                data: newItem,
+                                data: newItem.data,
                                 complete: function (xhr) {
                                     if (xhr.readyState == 4) {
                                         if (xhr.status == 201) {
@@ -132,23 +109,20 @@ var table = $("#TablaCliente").shieldGrid({
                                     error(xhr);
                                 }
                             });
-                        },
+						},
                         update: function (items, success, error) {
-                           var newItem = {customer:items[0].data};
-
                             $.ajax({
                                 type: "PUT",
-                                url: "http://localhost:3000/api/v1/customers/" + newItem.customer.id ,
+                                url: "http://localhost:3000/api/v1/activities" + items[0].data.Id,
                                 dataType: "json",
                                 contentType: "application/json",
                                 data: JSON.stringify(items[0].data)
                             }).then(success, error);
                         },
                         remove: function (items, success, error) {
-                          var newItem = {customer:items[0].data};
                             $.ajax({
                                 type: "DELETE",
-                                url: "http://localhost:3000/api/v1/customers/"  + newItem.customer.id
+                                url: "http://localhost:3000/api/v1/activities" + items[0].data.Id
                             }).then(success, error);
                         }
                     }
@@ -156,29 +130,17 @@ var table = $("#TablaCliente").shieldGrid({
                 schema: {
                     fields: {
                         id: { path: "id", type: Number },
-                        name: { path: "name", type: String },
-                        last_name: { path: "last_name", type: String },
-                        address: { path: "address", type: String},
-                        email: { path: "email", type: String},
-                        website:{ path: "website", type: String},
-                        phone: { path: "phone", type: String},
-                        celular: { path: "celular", type: String},
-                        sex: { path: "sex", type: String},
+                        descripcion: { path: "descripcion", type: String },
+                        activitietype_id: { path: "activitietype.name", type: String }
                     }
                 }
             },
             sorting: true,
             rowHover: false,
             columns: [
-                { field: "id", title: "Codigo", width: "120px" },
-                { field: "name", title: "Nombre", width: "80px" },
-                { field: "last_name", title: "Apellido", width: "80px" },
-                { field: "address", title: "Dirección", width: "80px" },
-                { field: "email", title: "E-mail", width: "80px" },
-                { field: "website", title: "Website", width: "80px" },
-                { field: "phone", title: "Teléfono", width: "80px" },
-                { field: "celular", title: "Celular", width: "80px" },
-                { field: "sex", title: "Sexo", width: "80px" },
+                { field: "id", title: "Código"},
+                { field: "descripcion", title: "Nombre de la actividad"},
+                { field: "activitietype_id", title: "Tipo de Actividad" },                
                 {
                     width: 140,
                     title: " ",
@@ -203,7 +165,7 @@ var table = $("#TablaCliente").shieldGrid({
                                 var grid = this;
                                 $.ajax({
                                     type: "PUT",
-                                    url: "http://localhost:3000/api/v1/customers"
+                                    url: "http://localhost:3000/api/v1/activities"
                                 }).done(function () {
                                     grid.dataSource.read();
                                 });
@@ -223,8 +185,6 @@ var table = $("#TablaCliente").shieldGrid({
     
 
     });
-
-
     }
     
         function myCustomEditor(cell, item) {
@@ -243,11 +203,11 @@ var table = $("#TablaCliente").shieldGrid({
     function GetElementos() {
       jQuery.support.cors = true;
       $.ajax({
-        url: 'http://localhost:3000/api/v1/customers',
+        url: 'http://localhost:3000/api/v1/activities',
         type: 'GET',
         dataType: 'json',            
         success: function (data) {                
-         return data; 
+          WriteResponse(data);
         },
         error: function (x, y, z) {
           alert(x + '\n' + y + '\n' + z);
@@ -255,54 +215,33 @@ var table = $("#TablaCliente").shieldGrid({
       });        
     }
 
-
-      // Luego de obtener el JSON esta funcion lo escribe donde pidamos
+    // Luego de obtener el JSON esta funcion lo escribe donde pidamos
     function WriteResponse(data) {        
 
             $.each(data, function (index, data) {                        
-              alert(data.Nombre),
-              alert(data.Apellido)
-              alert(data.Direccion)
-              alert(data.Pais)
+              alert(data.NombreResponsable),
+              alert(data.Asunto)
+              alert(data.TipoActividad)
+              alert(data.FechaVencimiento)
+              alert(data.Descripcion)
               alert(data.Estado)
-              alert(data.Ciudad)
-              alert(data.Email)
-              alert(data.Telefono)
-              alert(data.TelefonoCelular)
-              alert(data.FechaNacimiento)
-              alert(data.TipoCliente)
-              alert(data.SitioWeb)
-              alert(data.FotoPerfil)
             });
     }
-
     //Guardar elementos en DataBase
-     function GuardarCustomer() {        
+     function GuardarActividad() {        
       //Capturar datos del formulario
-      var Nombre = document.getElementById("txtNombre").value;
-      var Apellido = document.getElementById("txtApellido").value;
-      var Direccion = document.getElementById("txtDireccion").value;
-      var Ciudad = document.getElementById("cmbCiudad").value;
-      var Email = document.getElementById("txtEmail").value;
-      var Sexo = document.getElementById("cmbSexo").value;
-      var Telefono = document.getElementById("txtTelefono").value;
-      var TelefonoCelular = document.getElementById("txtTelefonoCelular").value;
-      var FechaNacimiento = document.getElementById("txtFechaNacimiento").value;
-      var TipoCliente = document.getElementById("cmbTipoCliente").value;
-      var SitioWeb = document.getElementById("txtSitioWeb").value;
-
-
+      var Descripcion = document.getElementById("txtDescripcion").value;
+      var TipoActividad = document.getElementById("cmbTipoActividad").value;
+      
       //Agregamos los datos capturados a un arreglo => arr
-      var customer = {name:Nombre,last_name:Apellido, address:Direccion,city:Ciudad,email:Email,website:SitioWeb,
-                  phone:Telefono, celular:TelefonoCelular,birthdate:FechaNacimiento,sex:Sexo,
-                  customertype:TipoCliente};
+      var arr = { id, descripcion:Descripcion, activitieType_id:TipoActividad};
       //Evento ajax para enviar los datos
       $.ajax({
         //Ruta para enviar el servicio
-        url: 'http://localhost:3000/api/v1/customers',
+        url: 'http://localhost:3000/api/v1/activities',
         type: 'POST',
-        //Enviamos el arreglo ar
-        data: JSON.stringify(customer),
+    //Enviamos el arreglo ar
+        data: JSON.stringify(arr),
         contentType: 'application/json; charset=utf-8',
         async: false,
         //Si todo funciona bien entra al sucess
@@ -312,7 +251,7 @@ var table = $("#TablaCliente").shieldGrid({
           });
            // e.preventDefault();
           //Actualiza la datatable automáticamente
-          var table = $('#TablaCustomer').dataTable();
+          var table = $('#TablaNewHomework').dataTable();
                       // Example call to reload from original file
                       table.fnReloadAjax();
                     },
@@ -327,31 +266,16 @@ var table = $("#TablaCliente").shieldGrid({
 
     }
 
-    function ModificarCustomer() {        
-
-      var idCustomer = document.getElementById("txtCedula").value;
-      var Nombre = document.getElementById("txtNombre").value;
-      var Apellido = document.getElementById("txtApellido").value;
-      var Direccion = document.getElementById("txtDireccion").value;
-      var Cedula = document.getElementById("txtCedula").value;
-      var Ciudad = document.getElementById("cmbCiudad").value;
-      var Email = document.getElementById("txtEmail").value;
-      var Sexo = document.getElementById("cmbSexo").value;
-      var Telefono = document.getElementById("txtTelefono").value;
-      var TelefonoCelular = document.getElementById("txtTelefonoCelular").value;
-      var FechaNacimiento = document.getElementById("txtFechaNacimiento").value;
-      var TipoCliente = document.getElementById("cmbTipoCliente").value;
-      var SitioWeb = document.getElementById("txtSitioWeb").value;
-      var FotoPerfil = document.getElementById("txtFotoPerfil").value;
-
+    function ModificarActividad() {        
+      var Descripcion = document.getElementById("txtDescripcion").value;
+      var TipoActividad = document.getElementById("cmbTipoActividad").value;
+      
       //Agregamos los datos capturados a un arreglo => arr
-      var arr = { id:idCustomer,name:Nombre,last_name:Apellido, address:Direccion,city:Ciudad,email:Email,
-                  phone:Telefono, celular:TelefonoCelular,birthdate:FechaNacimiento,sex:Sexo,
-                  customertype:TipoCliente,website:SitioWeb, image:FotoPerfil};
+      var arr = { descripcion:Descripcion, activitieType_id:TipoActividad};
       //Evento ajax para enviar los datos
       $.ajax({
         //Ruta para enviar el servicio
-        url: 'http://localhost:3000/api/v1/customers',
+        url: 'http://localhost:3000api/v1/activities/',
         type: 'PUT',
         //Enviamos el arreglo ar
         data: JSON.stringify(arr),
@@ -364,7 +288,7 @@ var table = $("#TablaCliente").shieldGrid({
           });
            // e.preventDefault();
           //Actualiza la datatable automáticamente
-          var table = $('#TablaCustomer').dataTable();
+          var table = $('#TablaNewHomework').dataTable();
                       // Example call to reload from original file
                       table.fnReloadAjax();
                     },
@@ -377,19 +301,16 @@ var table = $("#TablaCliente").shieldGrid({
         }
                   });
     }
-
-    function EliminarCustomer() {        
-
-      var idCustomer = document.getElementById("txtCedula").value;
-      var Estatus = 0;
-
-      //Agregamos los datos capturados a un arreglo => arr
-      var arr = { id:idCustomer, status:Estatus};
+    function EliminarActividad() {  
+      var Descripcion = document.getElementById("txtDescripcion").value;
+      var TipoActividad = document.getElementById("cmbTipoActividad").value;
       
+      //Agregamos los datos capturados a un arreglo => arr
+      var arr = { id, descripcion:Descripcion, activitieType_id:TipoActividad};
       //Evento ajax para enviar los datos
-      $.ajax({
+     $.ajax({
         //Ruta para enviar el servicio
-        url: 'http://localhost:3000/api/v1/customers/+id',
+        url: 'http://localhost:5414/api/v1/Funcion/10',
         type: 'DELETE',
         //Enviamos el arreglo ar
         data: JSON.stringify(arr),
@@ -402,7 +323,7 @@ var table = $("#TablaCliente").shieldGrid({
           });
            // e.preventDefault();
           //Actualiza la datatable automáticamente
-          var table = $('#TablaCustomer').dataTable();
+          var table = $('#TablaNewHomework').dataTable();
                       // Example call to reload from original file
                       table.fnReloadAjax();
                     },
@@ -413,46 +334,17 @@ var table = $("#TablaCliente").shieldGrid({
           });
            // e.preventDefault();
         }
-                  });
+                 });
     }
 function validarSalida(){
-
-  bootbox.dialog({
-  message: "¿Esta seguro que desea salir de esta ventana?",
-  title: "Confirmación",
-  buttons: {
-     danger: {
-      label: "No estoy seguro",
-      className: "btn-danger",
-      callback: function() {
-                
-      }
-    },
-    success: {
-      label: "Si, Estoy seguro",
-      className: "btn-success",
-      callback: function() {
-        
-        bootbox.hideAll();
-      }
-          }
-      
-    }
-  
-});
  
 }
-    
-
-
-
-
 // ========== FUNCIONES PARA MENSAJE DE CONFIRMACION ================
 
 
   function ConfirmGuardar() {     
      bootbox.dialog({
-  message: "¿Esta seguro de guardar esta Función?",
+  message: "¿Esta seguro de guardar esto?",
   title: "Confirmación",
   buttons: {
      danger: {
@@ -468,7 +360,7 @@ function validarSalida(){
       callback: function() {
         
         bootbox.hideAll();
-        GuardarCustomer();
+        GuardarFuncion();
       }
           }
       
@@ -480,7 +372,7 @@ function validarSalida(){
 
       function ConfirmModificar() {     
      bootbox.dialog({
-  message: "¿Esta seguro de modificar este cliente?",
+  message: "¿Esta seguro de modificar esto?",
   title: "Confirmación",
   buttons: {
      danger: {
@@ -496,7 +388,7 @@ function validarSalida(){
       callback: function() {
         
         bootbox.hideAll();
-        ModificarCustomer();
+        ModificarActividad();
       }
           }
       
@@ -508,7 +400,7 @@ function validarSalida(){
 
      function ConfirmEliminar() {     
      bootbox.dialog({
-  message: "¿Esta seguro de Eliminar este cliente?",
+  message: "¿Esta seguro de Eliminar esto?",
   title: "Confirmación",
   buttons: {
      danger: {
@@ -524,118 +416,40 @@ function validarSalida(){
       callback: function() {
         
         bootbox.hideAll();
-        EliminarCostumer();
+        EliminarActividad();
       }
           }
       
     }
   
 });
-
-    
+     
     }
-
-    //CARGAR COMBOS
-
-function cargarComboPais()
-    {
-       jQuery.support.cors = true;
-        $.ajax({
-            url: 'http://localhost:3000/api/v1/countrys',
-            type: 'GET',
-            dataType: 'json',            
-            success: function (data) {                
-
-
-               var listItems="";
-
-                for (var i=0; i< data.length; i++)
-                {
-                  listItems+="<option value='" + data[i].country_id+"'>" + data[i].description + "</option>";
-
-                }
-                $("#cmbPais").html(listItems);
-            },
-            error: function (x, y, z) {
-                alert(x + '\n' + y + '\n' + z);
-            }
-        }); 
-      } 
-
-   function cargarComboEstado()
-    {
-       jQuery.support.cors = true;
-        $.ajax({
-            url: 'http://localhost:3000/api/v1/states',
-            type: 'GET',
-            dataType: 'json',            
-            success: function (data) {                
-
-
-               var listItems="";
-
-                for (var i=0; i< data.length; i++)
-                {
-                  listItems+="<option value='" + data[i].id+"'>" + data[i].description + "</option>";
-
-                }
-                $("#cmbEstado").html(listItems);
-            },
-            error: function (x, y, z) {
-                alert(x + '\n' + y + '\n' + z);
-            }
-        }); 
-      }
-
-function cargarComboCiudad()
-    {
-       jQuery.support.cors = true;
-        $.ajax({
-            url: 'http://localhost:3000/api/v1/cities',
-            type: 'GET',
-            dataType: 'json',            
-            success: function (data) {                
-
-
-               var listItems="";
-
-                for (var i=0; i< data.length; i++)
-                {
-                  listItems+="<option value='" + data[i].id+"'>" + data[i].description + "</option>";
-
-                }
-                $("#cmbCiudad").html(listItems);
-            },
-            error: function (x, y, z) {
-                alert(x + '\n' + y + '\n' + z);
-            }
-        }); 
-      } 
-
-
-
-function cargarComboTipoCliente()
-    {
-       jQuery.support.cors = true;
-        $.ajax({
-            url: 'http://localhost:3000/api/v1/customertypes',
-            type: 'GET',
-            dataType: 'json',            
-            success: function (data) {                
-
-
-               var listItems="";
-
-                for (var i=0; i< data.length; i++)
-                {
-                  listItems+="<option value='" + data[i].id+"'>" + data[i].description + "</option>";
-
-                }
-                $("#cmbTipoCliente").html(listItems);
-            },
-            error: function (x, y, z) {
-                alert(x + '\n' + y + '\n' + z);
-            }
-        }); 
-      } 
 //============FIN DE LAS FUNCIONES============
+    
+
+ function cargarComboTipoActividad()
+    {
+       jQuery.support.cors = true;
+        $.ajax({
+            url: 'http://localhost:3000/api/v1/activitietypes',
+            type: 'GET',
+            dataType: 'json',            
+            success: function (data) {                
+
+
+               var listItems="";
+
+                for (var i=0; i< data.length; i++)
+                {
+                  listItems+="<option value='" + data[i].id+"'>" + data[i].name + "</option>";
+
+                }
+                $("#cmbTipoActividad").html(listItems);
+            },
+            error: function (x, y, z) {
+                alert(x + '\n' + y + '\n' + z);
+            }
+        }); 
+      } 
+

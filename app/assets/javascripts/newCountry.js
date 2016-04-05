@@ -224,8 +224,6 @@ var table = $("#TablaPais").shieldGrid({
             $.each(data, function (index, data) {                        
               alert(data.IdPais),
               alert(data.Pais)
-              alert(data.Estatus)
-
             });
     }
 
@@ -233,13 +231,10 @@ var table = $("#TablaPais").shieldGrid({
      function GuardarCountry() {        
       //Capturar datos del formulario
 
-
-      var Pais =  document.getElementById("txtPais").value;
-      var Estatus = 1;
-
+     var Pais =  document.getElementById("txtPais").value;
 
       //Agregamos los datos capturados a un arreglo => country
-      var country = { description:Pais,status:Estatus };
+      var country = { description:Pais};
       //Evento ajax para enviar los datos
       $.ajax({
         //Ruta para enviar el servicio
@@ -275,11 +270,9 @@ var table = $("#TablaPais").shieldGrid({
 
       var IdPais = document.getElementById("txtIdPais").value;
       var Pais =  document.getElementById("txtPais").value;
-      var Estatus = 1;
-
 
       //Agregamos los datos capturados a un arreglo => arr
-      var country = { id:IdPais,description:Pais,status:Estatus };
+      var country = { id:IdPais,description:Pais};
       
       //Evento ajax para enviar los datos
       $.ajax({

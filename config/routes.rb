@@ -54,14 +54,16 @@ namespace :front do
 
  get 'state' => 'adminorganization#state'
 
+ get 'homework'  => 'adminorganization#homework'
+
 
  get 'indexCrumbik' => 'adminorganization#indexCrumbik'
+ 
  get 'indexOrganization' => 'adminorganization#indexOrganization'
-
 
  get 'menuoption' => 'adminorganization#menuoption'
 
-  get 'userrol' => 'adminorganization#userrol'
+ get 'userrol' => 'adminorganization#userrol'
 
   
  

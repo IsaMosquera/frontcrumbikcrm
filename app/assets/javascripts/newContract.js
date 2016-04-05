@@ -305,13 +305,10 @@ var table = $("#TablaNewContract").shieldGrid({
       var Vencimiento = document.getElementById("txtVencimiento").value;
       var Organizacion = document.getElementById("cmbOrganizacion").value;
       var Plan_Servicio = document.getElementById("cmbPlanServicio").value;
-      var Status = 1;
-      
-
 
       //Agregamos los datos capturados a un arreglo => arr
       var arr = { Numero:id,creation_date:Fecha_Creacion,due_date:Vencimiento,
-                  organization:Organizacion,serviceplan:Plan_Servicio, status:Status };
+                  organization:Organizacion,serviceplan:Plan_Servicio};
       //Evento ajax para enviar los datos
       $.ajax({
         //Ruta para enviar el servicio

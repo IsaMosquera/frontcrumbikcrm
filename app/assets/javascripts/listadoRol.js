@@ -9,19 +9,12 @@
   
     rules: {
         
-        Nombre: "required",
-
-
-        
+        Nombre: "required",       
 
     },
     messages: {
         
         Nombre: "Debes escribir un nombre",
-
-
-        
-
         
     }
 })
@@ -321,9 +314,6 @@ var table = $("#TablaListadoRol").shieldGrid({
       //Capturar datos del formulario
       var idRol = document.getElementById("txtIdRol").value;
     
-      
-
-
       //Agregamos los datos capturados a un arreglo => arr
       var arr = { id:idRol };
       

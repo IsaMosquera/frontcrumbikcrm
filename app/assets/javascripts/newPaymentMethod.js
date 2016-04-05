@@ -268,11 +268,9 @@ var table = $("#TablaMetodoPago").shieldGrid({
 
       var IdMetodo = document.getElementById("txtIdMetodo").value;
       var Metodo =  document.getElementById("txtMetodo").value;
-      var Estatus = 1;
-
 
       //Agregamos los datos capturados a un arreglo => arr
-      var arr = { id:IdMetodo,name:Metodo,status:Estatus };
+      var arr = { id:IdMetodo,name:Metodo};
       
       //Evento ajax para enviar los datos
       $.ajax({

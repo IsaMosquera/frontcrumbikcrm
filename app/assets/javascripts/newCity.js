@@ -237,7 +237,6 @@ var table = $("#TablaCiudad").shieldGrid({
               alert(data.Pais)
               alert(data.Estado)
               alert(data.Ciudad)
-              alert(data.Estatus)
 
             });
     }
@@ -293,11 +292,10 @@ var table = $("#TablaCiudad").shieldGrid({
       var Pais = document.getElementById("cmbPais").value;
       var Estado =  document.getElementById("cmbEstado").value;
       var Ciudad =  document.getElementById("txtCiudad").value;
-      var Estatus = 1;
 
 
       //Agregamos los datos capturados a un arreglo => arr
-      var city = { IdCiudad:id,country:Pais,state:Estado,description:Ciudad,status:Estatus };
+      var city = { id:IdCiudad,description:Ciudad,state_id:Estado };
       
       //Evento ajax para enviar los datos
       $.ajax({
@@ -336,7 +334,7 @@ var table = $("#TablaCiudad").shieldGrid({
 
 
       //Agregamos los datos capturados a un arreglo => arr
-      var arr = { IdCiudad:id,status:Estatus };
+      var arr = { id:IdCiudad,status:Estatus };
       
       //Evento ajax para enviar los datos
       $.ajax({

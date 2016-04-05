@@ -1,100 +1,78 @@
 
 <!-- === INICIO INCLUSION BARRA LATERAL === -->
-<div class="container-fluid">
-  <div id="wrapper">
-   <div id="BarraLateral"></div>  
-
-   <!-- === FIN  BARRA LATERAL === -->      
-   <br><!--Saltos de Linea-->
-   <br>
-   <br>
    <!-- === INICIO CONTENIDO DE LA VENTANA === -->
-   <div id="page-content-wrapper">
-     <div class="container-fluid">
-      <div class="row">
-<form role="form" id="form" data-toggle="validator">
+<div id="page-content-wrapper">
+  <div class="container-fluid">
+    <div class="row"> 
+
+   <!-- === INICIO CONTENIDO DE LA VENTANA === -->
+    <form role="form" id="form" data-toggle="validator">
         <!-- === INICIO PANEL DE EDICIÓN === -->   
-        <div class="panel panel-primary">
-          <div class="panel-heading">
-            <h3 class="panel-title">Datos de Redes Sociales</h3>
-          </div>
-          <div class="panel-body">
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+           <h3 class="panel-title">Datos de Redes Sociales</h3>
+        </div>
+        <div class="panel-body">
             En este panel podrá agregar datos de Redes Sociales.
-
-
-    <!-- === INPUTS TXT === -->
+        <p></p>
+        
 
  <!--INFORMACIÓN DEL MODAL MOSTRAR Servicio -->
-     <div id="myModalServiceNew" class="modal fade" role="dialog">
+       <div id="myModalServiceNew" class="modal fade" role="dialog">
          <div class="modal-dialog">
 
            <!-- CONTENIDO MODAL Servicios-->
-         <div class="row ">
+            <div class="panel panel-primary">
+              <div class="panel-heading">
+                <h2 class="text-center"> Datos de Redes Sociales </h2>
+              </div>
 
-                <div class="col-md-12" >
-                    <!-- Advanced Tables -->
-                    <div class="panel panel-primary">
-                        <div class="panel-heading">
-                               <h2 class="text-center"> Datos de Redes Sociales </h2>
-                        </div>
-
-                         <div class="panel-body">                           
-                           <div class="form-group" align="center">
-                            <label for="ejemplo_text_1">Red Social</label>
-                            <input class="form-control" id="txtRedSocial" placeholder="Red Social" name="RedSocial">
-                          </div>
-                          <label for="ejemplo_text_1"></label>
-                          <input class="form-control" type="text"  style="visibility:hidden" name="IdRedSocial" id="txtIdRedSocial"/>
-                           
-                            <div id="id-error" style="color:red;">
-                              <label for="name" class="error" generated="true" ></label>
-                            </div>
-
-                        </div>
-                          <div class="modal-footer">
-                            <button type="submit" id="Guardar" class="btn btn-lg btn-info">Guardar</button>
-                            <button type="button" class="btn btn-lg btn-info" data-dismiss="modal">Cerrar</button>
-                        </div>    
-                    </div>
-                </div>
-        </div>
-
-
-       </div>
-      </div> 
-
+              <div class="form-group" align="center">
+                <label for="ejemplo_text_1">Red Social</label>
+                <input class="form-control" id="txtRedSocial" placeholder="Red Social" name="RedSocial">
+              </div>
    
-
+              <label for="ejemplo_text_1"></label>
+              <input class="form-control" type="text"  style="visibility:hidden" name="IdRedSocial" id="txtIdRedSocial"/>
+                           
+              <div id="id-error" style="color:red;">
+               <label for="name" class="error" generated="true" ></label>
+              </div>
+            
+              <div class="modal-footer">
+                <button type="submit" id="Guardar" class="btn btn-lg btn-info">Guardar</button>
+                <button type="button" class="btn btn-lg btn-info" data-dismiss="modal">Cerrar</button>
+              </div>    
+          </div>
+          </div>
         </div>
+        </div>
+  
+    </form>
+
         <div class="panel panel-primary">
          <div class="panel-body">
-           <p>
           <!-- === BOTONES === -->  
             <div class="form-group col-md-6" style="margin-top:10px" align="center">
                  <!-- === BOTONES DE ACCION === -->  
                  <button type="button" class="btn btn-lg btn-info" data-toggle="modal" data-target="#myModalServiceNew">Agregar Redes Sociales</button>
-                 <button type="button" class="btn btn-lg btn-info">Salir</button>
-               </div>
+             </div>
              <!-- === FIN BOTONES === -->  
-          </p>
+         </div>
         </div>
       </div>
-    </div>
     <!-- === FIN CONTENIDO DE LA VENTANA === -->
-  </form>
+ 
   <!-- === PANEL DE TABLA === --> 
 <div class="panel panel-primary">
-    <div class="panel-heading">
-      <h3 class="panel-title">Lista de Redes Sociales</h3>
-    </div>
-    <div class="panel-body">
-      Puede visualizar las Redes Sociales actualmente almacenados en el sistema
-
-      <div id="TablaSocialMedia"></div>
-      
-     
-    <!-- ====== FIN DATATABLE======= -->
+  <div class="panel-heading">
+    <h3 class="panel-title">Lista de Redes Sociales</h3>
   </div>
+  <div class="panel-body">
+      Puede visualizar las Redes Sociales actualmente almacenados en el sistema
+     <div id="TablaSocialMedia"></div>   
+    <!-- ====== FIN DATATABLE======= -->
+ </div>
 </div>
 
 
@@ -136,8 +114,7 @@
     <!-- ====== FIN DATATABLE======= -->
   </div>
 </div>
-</div>
-</div>
+
   <!-- TOGGLE para que el menu superior sea responsivo -->
  <script>
   $("#menu-toggle").click(function(e) {

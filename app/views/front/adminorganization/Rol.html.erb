@@ -39,6 +39,10 @@
                                   <input type="text" class="form-control" id="txtNombre" placeholder="Nombre del Rol">
                                 </div>
 
+                               <div id="id-error" style="color:red;">
+                                 <label for="name" class="error" generated="true" ></label>
+                               </div>
+
                                  <label for="ejemplo_text_1"></label>
                                 <input class="form-control" type="text"  style="visibility:hidden" name="IdRol" id="txtIdRol"/>
 
@@ -56,63 +60,8 @@
        </div>
       </div> 
 
-
-
-
            <!--INFORMACIÓN DEL MODAL MOSTRAR ROLL -->
-     <div id="myModalRoll" class="modal fade" role="dialog">
-         <div class="modal-dialog">
-
-           <!-- CONTENIDO MODAL ROLLES-->
-         <div class="row ">
-
-                <div class="col-md-12" >
-                    <!-- Advanced Tables -->
-                    <div class="panel panel-primary">
-                        <div class="panel-heading">
-                               <h2 class="text-center"> Roles </h2>
-                        </div>
-
-                         <div class="panel-body">
-
-                            <div class="table-responsive">
-
-                                <table class="table table-striped table-bordered table-hover " id="example">
-                            <thead>
-                                        <tr>
-                                            <th>Rol</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                         <tr>
-                                                <td>Administrador</td>
-                                          </tr>
-                                          <tr>
-                                                <td>Ejecutivo</td>
-                                          </tr>
-                                          <tr>
-                                                <td>Analista</td>
-                                          </tr>
-                                           <tr>
-                                                <td>Cliente</td>
-                                          </tr>
-
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                          <div class="modal-footer">
-                            <button type="button" class="btn btn-lg btn-info" data-dismiss="modal">Cerrar</button>
-                        </div>    
-                    </div>
-                </div>
-        </div>
-
-
-       </div>
-      </div> 
-
-
+ 
           <div class="panel panel-primary">
          <div class="panel-body">
            <p>
@@ -120,7 +69,6 @@
             <div class="form-group col-md-6" style="margin-top:10px" align="center">
                  <!-- === BOTONES DE ACCION === -->  
                  <button type="button" class="btn btn-lg btn-info" data-toggle="modal" data-target="#myModalRollNew">Agregar Roles</button>
-                 <button type="button" class="btn btn-lg btn-info">Salir</button>
                </div>
              <!-- === FIN BOTONES === -->  
           </p>
