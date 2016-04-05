@@ -59,8 +59,8 @@ else
         success: function(data) {
           if (data == 1) 
           {
-            alert("GUARDANDO");
-            //window.location.replace("http://127.0.0.1:3002/front/organization");
+            //alert("GUARDANDO");
+            window.location.replace("http://127.0.0.1:3002/front/organization");
           }
           else
           {

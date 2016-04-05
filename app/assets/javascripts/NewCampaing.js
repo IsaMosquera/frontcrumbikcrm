@@ -185,11 +185,13 @@ var table = $("#TablaCampaing").shieldGrid({
                 { field: "image", title: "Imagen" },
                 { field: "activitietype_id", title: "Tipo de Actividad" },
                 {
-                    width: 140,
+                    width: 150,
                     title: " ",
                     buttons: [
                         { commandName: "edit", caption: "Editar" },
                         { commandName: "delete", caption: "Eliminar" }
+                     
+
                     ]
                 }
             ],
@@ -203,12 +205,12 @@ var table = $("#TablaCampaing").shieldGrid({
                 {
                     buttons: [
                         {
-                            caption: "Resetear Lista",
+                            caption: "Twittear",
                             click: function (e) {
                                 var grid = this;
                                 $.ajax({
-                                    type: "PUT",
-                                    url: "http://localhost:3000/api/v1/advertcampains"
+                                    type: "GET",
+                                    url: "http://127.0.0.1:3000/api/v1/advertcampains"
                                 }).done(function () {
                                     grid.dataSource.read();
                                 });

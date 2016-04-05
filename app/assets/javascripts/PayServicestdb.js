@@ -255,7 +255,7 @@ function validarSalida(){
 
   function ConfirmGuardar() {     
      bootbox.dialog({
-  message: "¿Esta seguro de guardar esta Función?",
+  message: "¿Esta seguro de esta transacción?",
   title: "Confirmación",
   buttons: {
      danger: {

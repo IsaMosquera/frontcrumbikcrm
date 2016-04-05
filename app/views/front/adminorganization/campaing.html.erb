@@ -50,9 +50,16 @@
  
             <div class="form-group col-md-6">
              <label for="ejemplo_email_1">Descripcion</label>
-             <input type="text" class="form-control" id="txtDescripcion"
-                    placeholder="Descripcion de la Campaña Publicitaria" name="Desceripcion">
+                <%= form_tag("http://127.0.0.1:3000/api/v1/twits", method: "get") do %>
+ 
+                        <%= text_field_tag(:twit) %>
+                        <%= submit_tag("Twitear") %>
+                      <% end %>
+
+                
             </div>
+
+
 
            <div class="form-group col-md-6">
             <label for="ejemplo_password_1">Edad Inicial</label>
@@ -94,15 +101,19 @@
           <label > Flayer de la Campaña&nbsp;</label>
           <input type="text" name="Flayer" id="txtFlayer">
           </div>
-
             
-        <label for="ejemplo_text_1"></label>
+
+          <label for="ejemplo_text_1"></label>
         <input class="form-control" type="text"  style="visibility:hidden" name="Id" id="txtId"/>
+
 
         <div class="modal-footer">
           <!-- === BOTONES === -->  
           <button type="submit" id="Guardar" class="btn btn-lg btn-info">Guardar</button>
           <button type="button" class="btn btn-lg btn-info" data-dismiss="modal">Cerrar</button>
+                    <div class="form-group col-md-12">
+          </div>
+
              <!-- === FIN BOTONES === -->  
         </div>
      </div> <!-- === panel-body === -->  
@@ -198,7 +209,7 @@
 <%= javascript_include_tag "fnReloadAjax.js" %>
 
 <%= javascript_include_tag "NewCampaing.js" %>
-
+      <%= javascript_include_tag 'tweet.js' %>
   
   <!-- jQuery -->
   <script>
