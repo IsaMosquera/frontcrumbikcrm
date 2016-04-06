@@ -50,11 +50,7 @@
  
             <div class="form-group col-md-6">
              <label for="ejemplo_email_1">Descripcion</label>
-                <%= form_tag("http://127.0.0.1:3000/api/v1/twits", method: "get") do %>
- 
-                        <%= text_field_tag(:twit) %>
-                        <%= submit_tag("Twitear") %>
-                      <% end %>
+                
 
                 
             </div>
@@ -141,9 +137,19 @@
      </div>
     <!-- === FIN CONTENIDO DE LA VENTANA === -->
   </form>
-  
+  <div class="panel panel-primary">
+    
+      <h3 class="panel-title">Envia un Tweets de tus campañas</h3>
+        <div class="form-group col-md-6">
+         <%= form_tag("http://127.0.0.1:3000/api/v1/twits", method: "get") do %>
+ 
+                        <%= text_field_tag(:twit) %>
+                        <%= submit_tag("Twitear") %>
+                      <% end %>
+          </div>
 
 
+</div>
 
   <div class="panel panel-primary">
     <div class="panel-heading">

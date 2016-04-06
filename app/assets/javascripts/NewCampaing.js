@@ -12,36 +12,7 @@ cargarComboTipoCliente();
 cargarComboOperador();
 cargarComboActividad();
 //Validar documento, configurar
- $("#form").validate({
-  
-    rules: {
-        Nombre: "required",
-        FechaInicio: "required",
-        FechaFinal: "required",
-        TipoCliente: "required",
-        Descripcion: "required",
-        EdadInicio: "required",
-        EdadFinal: "required",
-        Sexo: "required",
-        Operador: "required",
-        TipoActividad: "required", 
-        Flayer: "required",
-    },
-    messages: {
-  
-        Nombre: "debe escribir un nombre",
-        FechaInicio: "debe seleccionar una fecha de inicio",
-        FechaFinal: "debe seleccionar una fecha de culminación",
-        TipoCliente: "debe seleccionar el tipo de cliente",
-        Descripcion: "debe escribir una descripción sobre esta campaña",
-        EdadInicio: "debe indicar la edad inicial del usuario que puede observar la campaña",
-        EdadFinal: "debe indicar la edad final del usuario que puede observar la campaña",
-        Sexo: "debe indicar el sexo al cual va dirijido la campaña",
-        Operador: "debe seleccionar a un Operador",
-        TipoActividad: "debe seleccionar el tipo de actividad", 
-        Flayer: "debe seleccionar una imagen para la campaña",        
-    }
-})
+
 
 //Eventos en botones de el formulario
 $('#Guardar').on("click",function(e) {
